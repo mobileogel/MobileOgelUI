@@ -35,7 +35,7 @@ struct PieceInventoryView: View {
                     PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
                     PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
                 }
-                .padding(.horizontal, 10)
+                .padding(20)
             }
             
             Button(action: {
@@ -72,7 +72,8 @@ struct PieceTileView: View {
             Spacer()
         }
         .padding()
-        .background(Color.blue)
+        //.background(Color.blue)
+        .background(Color(red: 0.89, green: 0.937, blue: 1.0))
         .cornerRadius(15)
         .shadow(radius: 3)
     }

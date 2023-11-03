@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */; };
+		79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABC02AF4B29F005C22EA /* LibraryView.swift */; };
+		79E1ABC32AF4B2BE005C22EA /* ValidateImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABC22AF4B2BE005C22EA /* ValidateImageView.swift */; };
 		C4CF89552AF496AB00034239 /* MobileOgelUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF89542AF496AB00034239 /* MobileOgelUIApp.swift */; };
 		C4CF89572AF496AB00034239 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF89562AF496AB00034239 /* ContentView.swift */; };
 		C4CF89592AF496AD00034239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CF89582AF496AD00034239 /* Assets.xcassets */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		79E1ABC02AF4B29F005C22EA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		79E1ABC22AF4B2BE005C22EA /* ValidateImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateImageView.swift; sourceTree = "<group>"; };
 		C4CF89512AF496AB00034239 /* MobileOgelUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileOgelUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4CF89542AF496AB00034239 /* MobileOgelUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileOgelUIApp.swift; sourceTree = "<group>"; };
 		C4CF89562AF496AB00034239 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +86,9 @@
 				C4CF89632AF4978700034239 /* SplashView.swift */,
 				C4CF89652AF497BB00034239 /* MainView.swift */,
 				C4CF89682AF4985800034239 /* PieceInventoryView.swift */,
+				79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */,
+				79E1ABC02AF4B29F005C22EA /* LibraryView.swift */,
+				79E1ABC22AF4B2BE005C22EA /* ValidateImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,9 +163,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */,
 				C4CF89572AF496AB00034239 /* ContentView.swift in Sources */,
+				79E1ABC32AF4B2BE005C22EA /* ValidateImageView.swift in Sources */,
 				C4CF89692AF4985800034239 /* PieceInventoryView.swift in Sources */,
 				C4CF89662AF497BB00034239 /* MainView.swift in Sources */,
+				79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */,
 				C4CF89552AF496AB00034239 /* MobileOgelUIApp.swift in Sources */,
 				C4CF89642AF4978700034239 /* SplashView.swift in Sources */,
 			);
