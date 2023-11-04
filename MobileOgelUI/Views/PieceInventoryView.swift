@@ -25,8 +25,9 @@ struct PieceInventoryView: View {
             }
             .padding(.top)
             
+            //TODO: refactor to use list (and iterate to account for each piece struct)
             ScrollView {
-                LazyVStack() {
+                LazyVStack(spacing: 20) {
                     // for example...
                     PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
                     PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
@@ -35,20 +36,22 @@ struct PieceInventoryView: View {
                     PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
                     PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
                 }
-                .padding(20)
+                .padding(5)
             }
+            .padding(20)
             
             Button(action: {
                 // TODO: nav to library page
             }) {
                 Text("See build options")
                     .bold()
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .padding(20)
             }
-                .background(Color.green)
-                .cornerRadius(20)
+            .background(Color(red: 0.859, green: 0.929, blue: 0.702))
+            .cornerRadius(20)
         }
+            
     }
 }
 
@@ -71,8 +74,7 @@ struct PieceTileView: View {
             
             Spacer()
         }
-        .padding()
-        //.background(Color.blue)
+        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         .background(Color(red: 0.89, green: 0.937, blue: 1.0))
         .cornerRadius(15)
         .shadow(radius: 3)

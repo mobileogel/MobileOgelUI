@@ -15,36 +15,14 @@ struct ValidateImageView: View {
                 .font(.largeTitle)
                 .bold()
             
+            //Captured image goes here
             Rectangle()
                 .frame(width: 300, height: 500)
                 .padding(40)
             
             HStack (spacing: 50){
-                Button(action: {
-                    // Action for the third button
-                    // Add your code here
-                }) {
-                    Text("Retake")
-                        .bold()
-                        .foregroundColor(.black)
-                        .padding(20)
-                        .font(.title)
-                }
-                .background(Color.green)
-                .cornerRadius(20)
-                
-                Button(action: {
-                    // Action for the third button
-                    // Add your code here
-                }) {
-                    Text("Proceed")
-                        .bold()
-                        .foregroundColor(.black)
-                        .padding(20)
-                        .font(.title)
-                }
-                .background(Color.green)
-                .cornerRadius(20)
+                NavButton(destination: MainView(), title: "Retake", width: 150)
+                NavButton(destination: PieceInventoryView(), title: "Proceed", width: 150)
             }
         }
     }

@@ -2,69 +2,53 @@
 //  HomeView.swift
 //  MobileOgelUI
 //
-//  Created by Harsimran Kanwar on 2023-11-03.
+//  Created by Shuvaethy Neill on 2023-11-03.
 //
 
 import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        ZStack{
-            Color(red: 0.70, green: 0.84, blue: 1.0)
-            VStack {
-                
+        NavigationStack{
+            VStack(spacing:20) {
                 Text("HOME")
-                    .bold()
                     .font(.largeTitle)
+                    .bold()
+                    .padding(.top)
                 
-                Button(action: {
-                    // Action for the first button
-                    // Add your code here
-                }) {
-                    Text("Scan")
-                        .bold()
-                        .foregroundColor(.black)
-                        .font(.title)
-                        .padding(30)
-                        .frame(width: 300, height: 100)
-                }
-                .background(Color.blue)
-                .cornerRadius(20)
+                Spacer()
                 
-                Button(action: {
-                    // Action for the second button
-                    // Add your code here
-                }) {
-                    Text("My Pieces")
-                        .bold()
-                        .foregroundColor(.black)
-                        .font(.title)
-                        .padding(30)
-                        .frame(width: 300, height: 100)
-                }
-                .background(Color.red)
-                .cornerRadius(20)
+                NavButton(destination: EmptyView(), title: "Scan", width: 300)
+                NavButton(destination: PieceInventoryView(), title: "My Pieces", width: 300)
+                NavButton(destination: LibraryView(), title: "Library", width: 300)
                 
-
-                Button(action: {
-                    // Action for the third button
-                    // Add your code here
-                }) {
-                    Text("Library")
-                        .bold()
-                        .foregroundColor(.black)
-                        .padding(30)
-                        .font(.title)
-                        .frame(width: 300, height: 100)
-                }
-                .background(Color.green)
-                .cornerRadius(20)
+                Spacer()
+                    .frame(height: 40)
             }
-            
         }
-        .edgesIgnoringSafeArea(.all)
     }
         
+}
+
+struct NavButton<Destination: View>: View {
+    let destination: Destination
+    let title: String
+    let width: CGFloat
+    
+    var body: some View {
+        NavigationLink(
+            destination: destination.navigationBarBackButtonHidden(true),
+            label: {
+                Text(title)
+                    .bold()
+                    .foregroundColor(.black)
+                    .font(.title3)
+                    .padding(EdgeInsets(top: 24, leading: 12, bottom: 24, trailing: 12))
+                    .frame(maxWidth: width)
+            })
+            .background(Color(red: 0.859, green: 0.929, blue: 0.702))
+            .cornerRadius(10)
+    }
 }
 
 struct HomeView_Previews: PreviewProvider {
