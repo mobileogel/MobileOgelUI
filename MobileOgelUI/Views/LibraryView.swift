@@ -15,46 +15,34 @@ struct LibraryView: View {
     @State private var selectedItem: FilterCategory = .Perfect // Default
 
     var body: some View {
-        
-        VStack {
-            HStack{
-                Text("Library")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.leading)
-                Spacer()
-                Image(systemName: "house.fill")
-                    .font(.largeTitle)
-                    .padding(.trailing)
-                    .onTapGesture {
-                        // go to home page
-                    }
-            }
-            .padding(.top)
-            
+        NavigationStack{
             VStack {
-                //perhaps we can do something like this
-                ScrollView {
-                    HStack() {
-                        ForEach(FilterCategory.allCases, id: \.self) { item in
-                            FilterItem(filterCategory: item, selectedFilter: $selectedItem)
+                HeaderView(title: "Library")
+                
+                VStack {
+                    //perhaps we can do something like this
+                    ScrollView {
+                        HStack() {
+                            ForEach(FilterCategory.allCases, id: \.self) { item in
+                                FilterItem(filterCategory: item, selectedFilter: $selectedItem)
+                            }
+                        }
+                        switch selectedItem {
+                        case .All:
+                            //TODO: iterate all results that fall under perfect
+                            Text("All results!")
+                        case .Similar:
+                            //TODO: iterate all results that fall under perfect
+                            Text("Fuzzy results!")
+                        default:
+                            //TODO: iterate all results that fall under perfect
+                            Text("Perfect results!")
                         }
                     }
-                    switch selectedItem {
-                    case .All:
-                        //TODO: iterate all results that fall under perfect
-                        Text("All results!")
-                    case .Similar:
-                        //TODO: iterate all results that fall under perfect
-                        Text("Fuzzy results!")
-                    default:
-                        //TODO: iterate all results that fall under perfect
-                        Text("Perfect results!")
-                    }
                 }
+                
+                Spacer()
             }
-            
-            Spacer()
         }
     }
 }

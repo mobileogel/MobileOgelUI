@@ -18,9 +18,9 @@ struct HomeView: View {
                 
                 Spacer()
                 
-                NavButton(destination: EmptyView(), title: "Scan", width: 300)
-                NavButton(destination: PieceInventoryView(), title: "My Pieces", width: 300)
-                NavButton(destination: LibraryView(), title: "Library", width: 300)
+                NavButton(destination: EmptyView(), title: "Scan", width: 300,cornerRadius: 10)
+                NavButton(destination: PieceInventoryView(), title: "My Pieces", width: 300, cornerRadius: 10)
+                NavButton(destination: LibraryView(), title: "Library", width: 300, cornerRadius: 10)
                 
                 Spacer()
                     .frame(height: 40)
@@ -34,6 +34,7 @@ struct NavButton<Destination: View>: View {
     let destination: Destination
     let title: String
     let width: CGFloat
+    let cornerRadius: CGFloat
     
     var body: some View {
         NavigationLink(
@@ -47,7 +48,7 @@ struct NavButton<Destination: View>: View {
                     .frame(maxWidth: width)
             })
             .background(Color(red: 0.859, green: 0.929, blue: 0.702))
-            .cornerRadius(10)
+            .cornerRadius(cornerRadius)
     }
 }
 
