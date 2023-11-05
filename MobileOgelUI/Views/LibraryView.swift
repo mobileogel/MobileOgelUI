@@ -54,18 +54,16 @@ struct LibraryView: View {
                     switch selectedItem {
                     case .All:
                         //TODO: rely on data from endpoint
-                        SetsListView(setList: allSampleData, selectedFilter: $selectedItem)
+                        SetsListView(setList: allSampleData)
                     case .Similar:
                         //TODO: rely on data from endpoint
-                        SetsListView(setList: fuzzySampleData, selectedFilter: $selectedItem)
+                        SetsListView(setList: fuzzySampleData)
                     default:
                         //TODO: rely on data from endpoint
-                        SetsListView(setList: perfectSampleData, selectedFilter: $selectedItem)
+                        SetsListView(setList: perfectSampleData)
                     }
                     
                 }
-                
-                Spacer()
             }
         }
         
@@ -96,7 +94,6 @@ struct FilterItem: View {
 
 struct SetsListView: View {
     var setList: [LegoSet]
-    @Binding var selectedFilter: FilterCategory
     
     var body: some View {
         ScrollView {
@@ -104,11 +101,11 @@ struct SetsListView: View {
                 Section {
                     
                     ForEach(setList, id: \.self) { sample in
-                        LegoSetView(set: sample).alignmentGuide(.top, computeValue: { _ in 0 })
+                        LegoSetView(set: sample)
                     }
                 }
             }
-            .padding(6)
+            .padding(20)
         }
     }
 }
@@ -134,10 +131,7 @@ struct LegoSetView: View {
             
             Spacer()
         }
-        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-        .background(Color(red: 0.89, green: 0.937, blue: 1.0))
-        .cornerRadius(15)
-        .shadow(radius: 3)
+        .modifier(TileViewModifier())
     }
 }
 

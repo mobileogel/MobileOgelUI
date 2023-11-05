@@ -30,7 +30,7 @@ struct PieceInventoryView: View {
                 
                 
                 NavButton(destination: LibraryView(), title:"See Build Options" , width: 200, cornerRadius: 25)
-                    
+                
             }
         }
     }
@@ -58,10 +58,7 @@ struct PieceTileView: View {
             
             Spacer()
         }
-        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-        .background(Color(red: 0.89, green: 0.937, blue: 1.0))
-        .cornerRadius(15)
-        .shadow(radius: 3)
+        .modifier(TileViewModifier())
     }
 }
 
@@ -93,3 +90,11 @@ struct PieceInventoryView_Previews: PreviewProvider {
         PieceInventoryView()
     }
 }
+
+struct TileViewModifier: ViewModifier { func body(content: Content) -> some View { content         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+        .background(Color(red: 0.89, green: 0.937, blue: 1.0))
+        .cornerRadius(15)
+        .shadow(radius: 3)
+    }
+}
+
