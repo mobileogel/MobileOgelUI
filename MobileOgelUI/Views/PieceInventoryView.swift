@@ -2,7 +2,7 @@
 //  PieceInventoryView.swift
 //  MobileOgel
 //
-//  Created by Shuvaethy Neill on 2023-11-02.
+//  Contributors: Shuvaethy Neill, and Guy Morgenshtern
 //
 
 import SwiftUI
@@ -17,12 +17,12 @@ struct PieceInventoryView: View {
                 ScrollView {
                     LazyVStack(spacing: 20) {
                         // for example...
-                        PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
-                        PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
-                        PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
-                        PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
-                        PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
-                        PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
+                        PieceTileView(piece: LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4))
+                        PieceTileView(piece: LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4))
+                        PieceTileView(piece: LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4))
+                        PieceTileView(piece: LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4))
+                        PieceTileView(piece: LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4))
+                        PieceTileView(piece: LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4))
                     }
                     .padding(5)
                 }
@@ -35,22 +35,25 @@ struct PieceInventoryView: View {
         }
     }
 }
-
-struct PieceTileView: View {
+struct LegoPiece: Hashable {
+    let id = UUID()
     var imageName: String
     var pieceName: String
     var quantity: Int
+}
+struct PieceTileView: View {
+    var piece: LegoPiece
     
     var body: some View {
         HStack {
-            Image(imageName)
+            Image(piece.imageName)
                 .resizable()
                 .frame(width: 80, height:80)
             
             VStack(alignment: .leading) {
-                Text(pieceName)
+                Text(piece.pieceName)
                     .font(.headline)
-                Text("Quantity: \(quantity)")
+                Text("Quantity: \(piece.quantity)")
             }
             
             Spacer()
