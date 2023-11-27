@@ -29,9 +29,12 @@ struct PieceInventoryView: View {
                 .padding(20)
                 
                 
+                
                 NavButton(destination: LibraryView(), title:"See Build Options" , width: 200, cornerRadius: 25)
                 
             }
+            .background(Color(red: 0.89, green: 0.937, blue: 1.0))
+            
         }
     }
 }

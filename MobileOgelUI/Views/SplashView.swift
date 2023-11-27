@@ -13,7 +13,9 @@ struct SplashView: View {
     var body: some View {
         ZStack {
             if self.isActive {
-                MainView()
+                //MainView()
+                //for now :)
+                HomeView()
             } else {
                 Color.white.edgesIgnoringSafeArea(.all)
                 Image("mobile_ogel_logo")
