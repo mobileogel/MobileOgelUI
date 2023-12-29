@@ -2,7 +2,7 @@
 //  HomeView.swift
 //  MobileOgelUI
 //
-//  Created by Shuvaethy Neill on 2023-11-03.
+//  Contributors: Shuvaethy Neill and Harsimran Kanwar
 //
 
 import SwiftUI
@@ -18,7 +18,7 @@ struct HomeView: View {
                 
                 Spacer()
                 
-                NavButton(destination: EmptyView(), title: "Scan", width: 300,cornerRadius: 10)
+                NavButton(destination: CameraView(), title: "Scan", width: 300,cornerRadius: 10)
                 NavButton(destination: PieceInventoryView(), title: "My Pieces", width: 300, cornerRadius: 10)
                 NavButton(destination: LibraryView(), title: "Library", width: 300, cornerRadius: 10)
                 
