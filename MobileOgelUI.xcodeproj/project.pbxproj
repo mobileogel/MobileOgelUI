@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */; };
 		79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABC02AF4B29F005C22EA /* LibraryView.swift */; };
-		79E1ABC32AF4B2BE005C22EA /* ValidateImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABC22AF4B2BE005C22EA /* ValidateImageView.swift */; };
 		7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6AB902AF82E66006C5BD7 /* Styling.swift */; };
 		C4CF89552AF496AB00034239 /* MobileOgelUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF89542AF496AB00034239 /* MobileOgelUIApp.swift */; };
 		C4CF89572AF496AB00034239 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF89562AF496AB00034239 /* ContentView.swift */; };
@@ -18,12 +17,14 @@
 		C4CF89642AF4978700034239 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF89632AF4978700034239 /* SplashView.swift */; };
 		C4CF89662AF497BB00034239 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF89652AF497BB00034239 /* MainView.swift */; };
 		C4CF89692AF4985800034239 /* PieceInventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF89682AF4985800034239 /* PieceInventoryView.swift */; };
+		C4FEEA152B3A2447000E7C3C /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FEEA142B3A2447000E7C3C /* CameraViewModel.swift */; };
+		C4FEEA172B3EB57A000E7C3C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FEEA162B3EB57A000E7C3C /* CameraView.swift */; };
+		C4FEEA192B3ECAF0000E7C3C /* CapturedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FEEA182B3ECAF0000E7C3C /* CapturedImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		79E1ABC02AF4B29F005C22EA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
-		79E1ABC22AF4B2BE005C22EA /* ValidateImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateImageView.swift; sourceTree = "<group>"; };
 		7AD6AB902AF82E66006C5BD7 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
 		C4CF89512AF496AB00034239 /* MobileOgelUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileOgelUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4CF89542AF496AB00034239 /* MobileOgelUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileOgelUIApp.swift; sourceTree = "<group>"; };
@@ -33,6 +34,9 @@
 		C4CF89632AF4978700034239 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		C4CF89652AF497BB00034239 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C4CF89682AF4985800034239 /* PieceInventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceInventoryView.swift; sourceTree = "<group>"; };
+		C4FEEA142B3A2447000E7C3C /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		C4FEEA162B3EB57A000E7C3C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		C4FEEA182B3ECAF0000E7C3C /* CapturedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 		C4CF89532AF496AB00034239 /* MobileOgelUI */ = {
 			isa = PBXGroup;
 			children = (
+				C4FEEA0D2B3A1AA4000E7C3C /* ViewModel */,
 				C4CF89622AF4976B00034239 /* Views */,
 				C4CF89542AF496AB00034239 /* MobileOgelUIApp.swift */,
 				C4CF89562AF496AB00034239 /* ContentView.swift */,
@@ -90,10 +95,19 @@
 				C4CF89682AF4985800034239 /* PieceInventoryView.swift */,
 				79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */,
 				79E1ABC02AF4B29F005C22EA /* LibraryView.swift */,
-				79E1ABC22AF4B2BE005C22EA /* ValidateImageView.swift */,
 				7AD6AB902AF82E66006C5BD7 /* Styling.swift */,
+				C4FEEA162B3EB57A000E7C3C /* CameraView.swift */,
+				C4FEEA182B3ECAF0000E7C3C /* CapturedImageView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C4FEEA0D2B3A1AA4000E7C3C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C4FEEA142B3A2447000E7C3C /* CameraViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,11 +180,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4FEEA192B3ECAF0000E7C3C /* CapturedImageView.swift in Sources */,
 				7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */,
 				79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */,
+				C4FEEA172B3EB57A000E7C3C /* CameraView.swift in Sources */,
 				C4CF89572AF496AB00034239 /* ContentView.swift in Sources */,
-				79E1ABC32AF4B2BE005C22EA /* ValidateImageView.swift in Sources */,
 				C4CF89692AF4985800034239 /* PieceInventoryView.swift in Sources */,
+				C4FEEA152B3A2447000E7C3C /* CameraViewModel.swift in Sources */,
 				C4CF89662AF497BB00034239 /* MainView.swift in Sources */,
 				79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */,
 				C4CF89552AF496AB00034239 /* MobileOgelUIApp.swift in Sources */,
@@ -303,9 +319,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 354D93C92Q;
+				DEVELOPMENT_TEAM = 4RPYL3R62A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -332,9 +349,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 354D93C92Q;
+				DEVELOPMENT_TEAM = 4RPYL3R62A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

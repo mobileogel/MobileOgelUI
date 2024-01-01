@@ -9,13 +9,14 @@ import SwiftUI
 
 struct SplashView: View {
     @State var isActive: Bool = false
+    @StateObject private var cameraViewModel = CameraViewModel()
     
     var body: some View {
         ZStack {
             if self.isActive {
-                //MainView()
-                //for now :)
-                HomeView()
+                MainView()
+                    .environmentObject(cameraViewModel)
+                //HomeView()
             } else {
                 Color.white.edgesIgnoringSafeArea(.all)
                 Image("mobile_ogel_logo")

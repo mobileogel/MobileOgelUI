@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject private var cameraViewModel = CameraViewModel()
+    
     var body: some View {
         NavigationStack{
             VStack(spacing:20) {
@@ -18,7 +20,12 @@ struct HomeView: View {
                 
                 Spacer()
                 
-                NavButton(destination: EmptyView(), title: "Scan", width: 300,cornerRadius: 10)
+                NavButton(destination: MainView().environmentObject(cameraViewModel), title: "Scan", width: 300,cornerRadius: 10)
+                    .onTapGesture {
+                        // not reaching here for some reason
+                        cameraViewModel.isShowingInstructions = false
+                        cameraViewModel.isImagePickerPresented = true
+                    }
                 NavButton(destination: PieceInventoryView(), title: "My Pieces", width: 300, cornerRadius: 10)
                 NavButton(destination: LibraryView(), title: "Library", width: 300, cornerRadius: 10)
                 
@@ -27,7 +34,7 @@ struct HomeView: View {
             }
         }
     }
-        
+    
 }
 
 struct NavButton<Destination: View>: View {
@@ -47,8 +54,8 @@ struct NavButton<Destination: View>: View {
                     .padding(EdgeInsets(top: 24, leading: 12, bottom: 24, trailing: 12))
                     .frame(maxWidth: width)
             })
-            .background(Color(red: 0.859, green: 0.929, blue: 0.702))
-            .cornerRadius(cornerRadius)
+        .background(Color(red: 0.859, green: 0.929, blue: 0.702))
+        .cornerRadius(cornerRadius)
     }
 }
 
