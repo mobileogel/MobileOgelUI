@@ -9,20 +9,31 @@ import SwiftUI
 import AVFoundation
 
 struct MainView: View {
-    @State private var showingInstructions: Bool = true
-    //@State private var isShowingCamera = false
+    //@State private var showingInstructions: Bool = true
+    @EnvironmentObject private var cameraViewModel: CameraViewModel
+    @State private var isImageSelected = false
+    
     
     var body: some View {
         ZStack {
-            CameraPreview()
-            
-            //Overlay with instructions
-            if showingInstructions {
-                InstructionsOverlay(okAction: {
-                    showingInstructions = false
-                    // Show camera when instructions are dismissed
-                    //isShowingCamera = true
+            if cameraViewModel.isImagePickerPresented {
+                // closure called when use photo button is pressed
+                CameraView(usePhotoNav: {
+                    isImageSelected = true
                 })
+            }
+            
+            // overlay with instructions
+            if cameraViewModel.isShowingInstructions {
+                InstructionsOverlay(okAction: {
+                    cameraViewModel.isShowingInstructions = false
+                    cameraViewModel.isImagePickerPresented = true
+                })
+            }
+            
+            // display captured image if one is taken
+            if isImageSelected {
+                CapturedImageView(capturedImage: cameraViewModel.capturedImage)
             }
         }
         .edgesIgnoringSafeArea(.all)
@@ -60,8 +71,8 @@ struct InstructionsOverlay: View {
                         .foregroundColor(.black)
                         .padding(20)
                 }
-                    .background(Color.white)
-                    .cornerRadius(20)
+                .background(Color.white)
+                .cornerRadius(20)
             }
         }
     }
@@ -84,14 +95,6 @@ struct InstructionText: View {
             .font(.system(size:20))
             .foregroundColor(.blue)
             .padding()
-    }
-}
-
-//TODO: Implement camera view
-struct CameraPreview: View {
-    var body: some View {
-        Text("Camera Preview Goes Here")
-            .foregroundColor(.black)
     }
 }
 
