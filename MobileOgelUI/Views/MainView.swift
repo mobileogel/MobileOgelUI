@@ -9,10 +9,8 @@ import SwiftUI
 import AVFoundation
 
 struct MainView: View {
-    //@State private var showingInstructions: Bool = true
     @EnvironmentObject private var cameraViewModel: CameraViewModel
     @State private var isImageSelected = false
-    @State private var goHome = false
 
     var body: some View {
         NavigationStack{
@@ -27,7 +25,6 @@ struct MainView: View {
                 }
                 
                 // overlay with instructions
-                //if cameraViewModel.isShowingInstructions {
                 if cameraViewModel.isShowingInstructions {
                     InstructionsOverlay(okAction: {
                         cameraViewModel.isShowingInstructions = false
