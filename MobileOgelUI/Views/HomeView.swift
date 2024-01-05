@@ -2,7 +2,7 @@
 //  HomeView.swift
 //  MobileOgelUI
 //
-//  Created by Shuvaethy Neill on 2023-11-03.
+//  Crontributors: Shuvaethy Neill and Harsimran Kanwar
 //
 
 import SwiftUI
@@ -21,11 +21,11 @@ struct HomeView: View {
                 Spacer()
                 
                 NavButton(destination: MainView().environmentObject(cameraViewModel), title: "Scan", width: 300,cornerRadius: 10)
-                    .onTapGesture {
-                        // not reaching here for some reason
+                    .simultaneousGesture(TapGesture().onEnded{
                         cameraViewModel.isShowingInstructions = false
                         cameraViewModel.isImagePickerPresented = true
-                    }
+                    })
+                
                 NavButton(destination: PieceInventoryView(), title: "My Pieces", width: 300, cornerRadius: 10)
                 NavButton(destination: LibraryView(), title: "Library", width: 300, cornerRadius: 10)
                 

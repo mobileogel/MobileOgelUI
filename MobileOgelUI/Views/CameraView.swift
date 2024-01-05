@@ -2,7 +2,7 @@
 //  CameraView.swift
 //  MobileOgelUI
 //
-//  Created by Shuvaethy Neill on 2023-12-23.
+//  Contributors: Shuvaethy Neill and Harsimran Kanwar
 //
 
 import Foundation
@@ -44,7 +44,10 @@ struct CameraView: UIViewControllerRepresentable {
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             viewModel.capturedImage = nil
             viewModel.isImagePickerPresented = false
-            viewModel.isShowingInstructions = true
+            if !UserDefaults.standard.bool(forKey: "hasLaunchedBefore") { //only show if first launch
+                viewModel.isShowingInstructions = true
+            }
+            
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

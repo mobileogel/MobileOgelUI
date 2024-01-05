@@ -2,41 +2,55 @@
 //  MainView.swift
 //  MobileOgel
 //
-//  Created by Shuvaethy Neill on 2023-11-01.
+//  Contributors: Shuvaethy Neill and Harsimran Kanwar
 //
 
 import SwiftUI
 import AVFoundation
 
 struct MainView: View {
-    //@State private var showingInstructions: Bool = true
     @EnvironmentObject private var cameraViewModel: CameraViewModel
     @State private var isImageSelected = false
-    
-    
+
     var body: some View {
-        ZStack {
-            if cameraViewModel.isImagePickerPresented {
-                // closure called when use photo button is pressed
-                CameraView(usePhotoNav: {
-                    isImageSelected = true
-                })
+        NavigationStack{
+            ZStack {
+                if cameraViewModel.isImagePickerPresented {
+                    // closure called when use photo button is pressed
+                    CameraView(usePhotoNav: {
+                        isImageSelected = true
+                    })
+                    .ignoresSafeArea(.all)
+                    .zIndex(1)
+                }
+                
+                // overlay with instructions
+                if cameraViewModel.isShowingInstructions {
+                    InstructionsOverlay(okAction: {
+                        cameraViewModel.isShowingInstructions = false
+                        cameraViewModel.isImagePickerPresented = true
+                    })
+                }else{
+                    HomeView()
+                }
+                
+                // display captured image if one is taken
+                if isImageSelected {
+                    CapturedImageView(capturedImage: cameraViewModel.capturedImage)
+                    
+                }
             }
-            
-            // overlay with instructions
-            if cameraViewModel.isShowingInstructions {
-                InstructionsOverlay(okAction: {
-                    cameraViewModel.isShowingInstructions = false
-                    cameraViewModel.isImagePickerPresented = true
-                })
-            }
-            
-            // display captured image if one is taken
-            if isImageSelected {
-                CapturedImageView(capturedImage: cameraViewModel.capturedImage)
+            //.edgesIgnoringSafeArea(.all)
+            .onAppear {
+                if !UserDefaults.standard.bool(forKey: "hasLaunchedBefore") {
+                    cameraViewModel.isShowingInstructions = true // Show instructions
+                    UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+                } else {
+                    cameraViewModel.isShowingInstructions = false // Don't show instructions
+                }
+                print(cameraViewModel.isShowingInstructions)
             }
         }
-        .edgesIgnoringSafeArea(.all)
     }
 }
 
