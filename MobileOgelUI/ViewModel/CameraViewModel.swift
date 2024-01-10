@@ -12,4 +12,16 @@ class CameraViewModel: ObservableObject {
     @Published var isShowingInstructions = true
     @Published var capturedImage: UIImage?
     @Published var isImagePickerPresented = false
+    
+    // handle logic related to showing instructions
+    func handleInstructions() {
+        if !UserDefaults.standard.bool(forKey: "hasLaunchedBefore") {
+            isShowingInstructions = true
+            isImagePickerPresented = true
+            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+        } else {
+            isShowingInstructions = false
+        }
+    }
+    
 }

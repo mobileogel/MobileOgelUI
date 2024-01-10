@@ -32,6 +32,7 @@ struct CameraView: UIViewControllerRepresentable {
     }
     
     // handle cancel and use photo actions
+    // bridge between UIKit UIImagePickerController and CameraViewModel
     class Coordinator : NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         var viewModel: CameraViewModel
         var usePhotoNav: (() -> Void)?
