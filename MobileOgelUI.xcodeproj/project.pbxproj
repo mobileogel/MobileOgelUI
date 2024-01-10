@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */; };
 		79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABC02AF4B29F005C22EA /* LibraryView.swift */; };
+		7A1FA6D72B4F0A5E00D4C2D9 /* best.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FA6D62B4F0A5E00D4C2D9 /* best.mlpackage */; };
+		7A1FA6DA2B4F0B0000D4C2D9 /* best.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FA6D92B4F0B0000D4C2D9 /* best.mlmodel */; };
 		7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6AB902AF82E66006C5BD7 /* Styling.swift */; };
 		C4CF89552AF496AB00034239 /* MobileOgelUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF89542AF496AB00034239 /* MobileOgelUIApp.swift */; };
 		C4CF89572AF496AB00034239 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF89562AF496AB00034239 /* ContentView.swift */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		79E1ABC02AF4B29F005C22EA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		7A1FA6D62B4F0A5E00D4C2D9 /* best.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best.mlpackage; sourceTree = "<group>"; };
+		7A1FA6D92B4F0B0000D4C2D9 /* best.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = best.mlmodel; sourceTree = "<group>"; };
 		7AD6AB902AF82E66006C5BD7 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
 		C4CF89512AF496AB00034239 /* MobileOgelUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileOgelUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4CF89542AF496AB00034239 /* MobileOgelUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileOgelUIApp.swift; sourceTree = "<group>"; };
@@ -50,6 +54,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A1FA6D82B4F0A9300D4C2D9 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				7A1FA6D92B4F0B0000D4C2D9 /* best.mlmodel */,
+				7A1FA6D62B4F0A5E00D4C2D9 /* best.mlpackage */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		C4CF89482AF496AB00034239 = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +82,7 @@
 		C4CF89532AF496AB00034239 /* MobileOgelUI */ = {
 			isa = PBXGroup;
 			children = (
+				7A1FA6D82B4F0A9300D4C2D9 /* models */,
 				C4FEEA0D2B3A1AA4000E7C3C /* ViewModel */,
 				C4CF89622AF4976B00034239 /* Views */,
 				C4CF89542AF496AB00034239 /* MobileOgelUIApp.swift */,
@@ -182,6 +196,7 @@
 			files = (
 				C4FEEA192B3ECAF0000E7C3C /* CapturedImageView.swift in Sources */,
 				7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */,
+				7A1FA6DA2B4F0B0000D4C2D9 /* best.mlmodel in Sources */,
 				79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */,
 				C4FEEA172B3EB57A000E7C3C /* CameraView.swift in Sources */,
 				C4CF89572AF496AB00034239 /* ContentView.swift in Sources */,
@@ -191,6 +206,7 @@
 				79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */,
 				C4CF89552AF496AB00034239 /* MobileOgelUIApp.swift in Sources */,
 				C4CF89642AF4978700034239 /* SplashView.swift in Sources */,
+				7A1FA6D72B4F0A5E00D4C2D9 /* best.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
