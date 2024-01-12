@@ -48,7 +48,6 @@ struct CameraView: UIViewControllerRepresentable {
             if !UserDefaults.standard.bool(forKey: "hasLaunchedBefore") { //only show if first launch
                 viewModel.isShowingInstructions = true
             }
-            
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -57,9 +56,7 @@ struct CameraView: UIViewControllerRepresentable {
             }
             viewModel.isImagePickerPresented = false
             // nav to CapturedImageView
-            print("here")
             usePhotoNav?()
-            print("wut")
         }
     }
 }
