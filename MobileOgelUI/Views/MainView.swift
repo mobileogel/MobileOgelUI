@@ -37,17 +37,11 @@ struct MainView: View {
                 // display captured image if one is taken
                 if isImageSelected {
                     CapturedImageView(capturedImage: cameraViewModel.capturedImage)
-                    
                 }
             }
             //.edgesIgnoringSafeArea(.all)
             .onAppear {
-                if !UserDefaults.standard.bool(forKey: "hasLaunchedBefore") {
-                    cameraViewModel.isShowingInstructions = true // Show instructions
-                    UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
-                } else {
-                    cameraViewModel.isShowingInstructions = false // Don't show instructions
-                }
+                cameraViewModel.handleInstructions()
                 print(cameraViewModel.isShowingInstructions)
             }
         }

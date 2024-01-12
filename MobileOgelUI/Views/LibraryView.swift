@@ -11,23 +11,6 @@ enum FilterCategory: String, CaseIterable {
     case Perfect, Similar, All
 }
 
-struct LegoSet: Identifiable, Hashable, Equatable {
-    let id = UUID()
-    var setId: Int
-    var setName: String
-    var pieceCount: Int
-    var piecesMissing: [LegoPiece]?
-    
-    //these two functions are apparently needed to fix "not conforming to Type Hashable and Equatable error, because of "missingPieces" var
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-
-    static func == (lhs: LegoSet, rhs: LegoSet) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
-
 //this is data that should come from an endpoint (not necessarily formated to be an object)
 var allSampleData: [LegoSet] = [LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328), LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328, piecesMissing: [LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4), LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 2)]), LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328, piecesMissing: [LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 1)])]
 
@@ -41,33 +24,35 @@ struct LibraryView: View {
     
     var body: some View {
         NavigationStack{
-            VStack {
-                HeaderView(title: "Library")
-                
+            ZStack {
+                Color(.white)
+                    .ignoresSafeArea()
                 VStack {
-                    HStack() {
-                        ForEach(FilterCategory.allCases, id: \.self) { item in
-                            FilterItem(filterCategory: item, selectedFilter: $selectedItem)
+                    HeaderView(title: "Library")
+                    
+                    VStack {
+                        HStack() {
+                            ForEach(FilterCategory.allCases, id: \.self) { item in
+                                FilterItem(filterCategory: item, selectedFilter: $selectedItem)
+                            }
+                            
+                        }
+                        switch selectedItem {
+                        case .All:
+                            //TODO: rely on data from endpoint
+                            SetsListView(setList: allSampleData)
+                        case .Similar:
+                            //TODO: rely on data from endpoint
+                            SetsListView(setList: fuzzySampleData)
+                        default:
+                            //TODO: rely on data from endpoint
+                            SetsListView(setList: perfectSampleData)
                         }
                         
                     }
-                    switch selectedItem {
-                    case .All:
-                        //TODO: rely on data from endpoint
-                        SetsListView(setList: allSampleData)
-                    case .Similar:
-                        //TODO: rely on data from endpoint
-                        SetsListView(setList: fuzzySampleData)
-                    default:
-                        //TODO: rely on data from endpoint
-                        SetsListView(setList: perfectSampleData)
-                    }
-                    
                 }
             }
         }
-        
-        
     }
 }
 
@@ -99,7 +84,6 @@ struct SetsListView: View {
         ScrollView {
             LazyVStack(spacing: 20) {
                 Section {
-                    
                     ForEach(setList, id: \.self) { sample in
                         LegoSetView(set: sample)
                     }
@@ -121,8 +105,10 @@ struct LegoSetView: View {
             
             VStack(alignment: .leading) {
                 Text(set.setName)
+                    .foregroundStyle(.black)
                     .font(.headline)
                 Text("\(set.pieceCount) Pieces")
+                    .foregroundStyle(.black)
                 Link("Instructions", destination: URL(string: "https://www.lego.com/en-ca/service/buildinginstructions/\(set.setId)")!)
                 if set.piecesMissing != nil {
                     MissingPiecesView(visible: false, missingPieces: set.piecesMissing!)
@@ -149,6 +135,7 @@ struct MissingPiecesView: View {
             if visible {
                 ForEach(missingPieces, id: \.self) { piece in
                     PieceTileView(piece: piece).scaleEffect(1)
+                        .padding(.bottom, 10)
                 }
             }
         }

@@ -36,12 +36,7 @@ struct PieceInventoryView: View {
         }
     }
 }
-struct LegoPiece: Hashable {
-    let id = UUID()
-    var imageName: String
-    var pieceName: String
-    var quantity: Int
-}
+
 struct PieceTileView: View {
     var piece: LegoPiece
     
@@ -53,8 +48,10 @@ struct PieceTileView: View {
             
             VStack(alignment: .leading) {
                 Text(piece.pieceName)
+                    .foregroundStyle(.black)
                     .font(.headline)
                 Text("Quantity: \(piece.quantity)")
+                    .foregroundStyle(.black)
             }
             
             Spacer()
@@ -72,6 +69,7 @@ struct HeaderView: View {
             Text(title)
                 .font(.largeTitle)
                 .bold()
+                .foregroundStyle(.black)
                 .padding(.leading)
             Spacer()
             

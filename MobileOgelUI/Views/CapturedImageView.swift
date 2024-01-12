@@ -32,6 +32,7 @@ struct CapturedImageView: View {
                     
                 }
             }
+            .ignoresSafeArea()
         }
     }
 }

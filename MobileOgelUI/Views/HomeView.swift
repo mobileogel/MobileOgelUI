@@ -12,25 +12,30 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack{
-            VStack(spacing:20) {
-                Text("HOME")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.top)
-                
-                Spacer()
-                
-                NavButton(destination: MainView().environmentObject(cameraViewModel), title: "Scan", width: 300,cornerRadius: 10)
-                    .simultaneousGesture(TapGesture().onEnded{
-                        cameraViewModel.isShowingInstructions = false
-                        cameraViewModel.isImagePickerPresented = true
-                    })
-                
-                NavButton(destination: PieceInventoryView(), title: "My Pieces", width: 300, cornerRadius: 10)
-                NavButton(destination: LibraryView(), title: "Library", width: 300, cornerRadius: 10)
-                
-                Spacer()
-                    .frame(height: 40)
+            ZStack {
+                Color.white
+                    .ignoresSafeArea()
+                VStack(spacing:20) {
+                    Text("HOME")
+                        .font(.largeTitle)
+                        .foregroundStyle(.black)
+                        .bold()
+                        .padding(.top, 40)
+                    
+                    Spacer()
+                    
+                    NavButton(destination: MainView().environmentObject(cameraViewModel), title: "Scan", width: 300,cornerRadius: 10)
+                        .simultaneousGesture(TapGesture().onEnded{
+                            cameraViewModel.isShowingInstructions = false
+                            cameraViewModel.isImagePickerPresented = true
+                        })
+                    
+                    NavButton(destination: PieceInventoryView(), title: "My Pieces", width: 300, cornerRadius: 10)
+                    NavButton(destination: LibraryView(), title: "Library", width: 300, cornerRadius: 10)
+                    
+                    Spacer()
+                        .frame(height: 40)
+                }
             }
         }
     }
