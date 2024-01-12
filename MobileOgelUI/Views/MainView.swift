@@ -30,13 +30,26 @@ struct MainView: View {
                         cameraViewModel.isShowingInstructions = false
                         cameraViewModel.isImagePickerPresented = true
                     })
-                }else{
+                }else if !cameraViewModel.isShowingInstructions{
                     HomeView()
                 }
                 
                 // display captured image if one is taken
                 if isImageSelected {
                     CapturedImageView(capturedImage: cameraViewModel.capturedImage)
+                }
+                
+                if cameraViewModel.loadCamera{
+                    LoaderView()
+                    .onAppear {
+                        print("LoaderView appeared")
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                            cameraViewModel.isImagePickerPresented = true
+                            cameraViewModel.loadCamera = false
+                            cameraViewModel.isShowingInstructions = false
+                        }
+                    }
+                    
                 }
             }
             //.edgesIgnoringSafeArea(.all)
