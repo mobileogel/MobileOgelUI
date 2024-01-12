@@ -13,6 +13,8 @@
 		C4B1847F2B4F3917008EB167 /* LegoPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B1847E2B4F3917008EB167 /* LegoPiece.swift */; };
 		C4B184812B4F3926008EB167 /* LegoSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B184802B4F3926008EB167 /* LegoSet.swift */; };
 		C4B184832B4F3972008EB167 /* best.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C4B184822B4F3972008EB167 /* best.mlpackage */; };
+		C4B184872B519137008EB167 /* LegoPieceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B184862B519137008EB167 /* LegoPieceViewModel.swift */; };
+		C4B184892B519BA8008EB167 /* LegoSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B184882B519BA8008EB167 /* LegoSetViewModel.swift */; };
 		C4CF89552AF496AB00034239 /* MobileOgelUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF89542AF496AB00034239 /* MobileOgelUIApp.swift */; };
 		C4CF89572AF496AB00034239 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF89562AF496AB00034239 /* ContentView.swift */; };
 		C4CF89592AF496AD00034239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CF89582AF496AD00034239 /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 		C4B1847E2B4F3917008EB167 /* LegoPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LegoPiece.swift; path = MobileOgelUI/LegoPiece.swift; sourceTree = SOURCE_ROOT; };
 		C4B184802B4F3926008EB167 /* LegoSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoSet.swift; sourceTree = "<group>"; };
 		C4B184822B4F3972008EB167 /* best.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best.mlpackage; sourceTree = "<group>"; };
+		C4B184862B519137008EB167 /* LegoPieceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoPieceViewModel.swift; sourceTree = "<group>"; };
+		C4B184882B519BA8008EB167 /* LegoSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoSetViewModel.swift; sourceTree = "<group>"; };
 		C4CF89512AF496AB00034239 /* MobileOgelUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileOgelUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4CF89542AF496AB00034239 /* MobileOgelUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileOgelUIApp.swift; sourceTree = "<group>"; };
 		C4CF89562AF496AB00034239 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,9 +63,9 @@
 		7A1FA6D82B4F0A9300D4C2D9 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				C4B1847E2B4F3917008EB167 /* LegoPiece.swift */,
 				C4B184822B4F3972008EB167 /* best.mlpackage */,
 				C4B184802B4F3926008EB167 /* LegoSet.swift */,
-				C4B1847E2B4F3917008EB167 /* LegoPiece.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -123,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				C4FEEA142B3A2447000E7C3C /* CameraViewModel.swift */,
+				C4B184862B519137008EB167 /* LegoPieceViewModel.swift */,
+				C4B184882B519BA8008EB167 /* LegoSetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -197,9 +203,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4B184892B519BA8008EB167 /* LegoSetViewModel.swift in Sources */,
 				C4B184812B4F3926008EB167 /* LegoSet.swift in Sources */,
 				C4FEEA192B3ECAF0000E7C3C /* CapturedImageView.swift in Sources */,
 				7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */,
+				C4B184872B519137008EB167 /* LegoPieceViewModel.swift in Sources */,
 				C4B184832B4F3972008EB167 /* best.mlpackage in Sources */,
 				79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */,
 				C4FEEA172B3EB57A000E7C3C /* CameraView.swift in Sources */,

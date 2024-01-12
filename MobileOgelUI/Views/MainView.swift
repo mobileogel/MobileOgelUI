@@ -10,7 +10,6 @@ import AVFoundation
 
 struct MainView: View {
     @EnvironmentObject private var cameraViewModel: CameraViewModel
-    @State private var isImageSelected = false
 
     var body: some View {
         NavigationStack{
@@ -18,7 +17,7 @@ struct MainView: View {
                 if cameraViewModel.isImagePickerPresented {
                     // closure called when use photo button is pressed
                     CameraView(usePhotoNav: {
-                        isImageSelected = true
+                        cameraViewModel.isImageSelected = true
                     })
                     .ignoresSafeArea(.all)
                     .zIndex(1)
@@ -35,7 +34,7 @@ struct MainView: View {
                 }
                 
                 // display captured image if one is taken
-                if isImageSelected {
+                if cameraViewModel.isImageSelected {
                     CapturedImageView(capturedImage: cameraViewModel.capturedImage)
                 }
             }
@@ -53,7 +52,7 @@ struct InstructionsOverlay: View {
     
     var body: some View {
         ZStack {
-            // Once we have the camera view working I can make the overlay look better
+            // For now, instructions overlay does not overlay live camera
             Color.black.opacity(0.85)
             
             VStack {
