@@ -9,16 +9,15 @@ import SwiftUI
 import AVFoundation
 
 struct MainView: View {
-    @EnvironmentObject private var cameraViewModel: CameraViewModel
-    @State private var isImageSelected = false
+    @Environment(CameraViewModel.self) private var cameraViewModel
 
     var body: some View {
         NavigationStack{
             ZStack {
                 if cameraViewModel.isImagePickerPresented {
                     // closure called when use photo button is pressed
-                    CameraView(usePhotoNav: {
-                        isImageSelected = true
+                    CameraView(viewModel: cameraViewModel, usePhotoNav: {
+                        cameraViewModel.isImageSelected = true
                     })
                     .ignoresSafeArea(.all)
                     .zIndex(1)
@@ -35,7 +34,7 @@ struct MainView: View {
                 }
                 
                 // display captured image if one is taken
-                if isImageSelected {
+                if cameraViewModel.isImageSelected {
                     CapturedImageView(capturedImage: cameraViewModel.capturedImage)
                 }
                 
@@ -64,7 +63,7 @@ struct InstructionsOverlay: View {
     
     var body: some View {
         ZStack {
-            // Once we have the camera view working I can make the overlay look better
+            // For now, instructions overlay does not overlay live camera
             Color.black.opacity(0.85)
             
             VStack {
@@ -107,7 +106,7 @@ struct TitleView: View {
 }
 
 struct InstructionText: View {
-    var text: String
+    var text: LocalizedStringResource
     
     var body: some View {
         Text(text)
@@ -120,5 +119,6 @@ struct InstructionText: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environment(CameraViewModel())
     }
 }

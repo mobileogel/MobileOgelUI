@@ -1,0 +1,166 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld Pieces" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lldPièces"
+          }
+        }
+      }
+    },
+    "1. Place your lego pieces in a pile on a flat surface in front of you" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Placez vos pièces LEGO en tas sur une surface plane devant vous."
+          }
+        }
+      }
+    },
+    "2. Take a photo from a birds eye view" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Prendre une photo à partir d’une vue d'oiseau"
+          }
+        }
+      }
+    },
+    "3. Discover the sets you can build!" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Découvrez les ensembles que vous pouvez construire !"
+          }
+        }
+      }
+    },
+    "Captured Image" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image Capturée"
+          }
+        }
+      }
+    },
+    "Detect pieces" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détecter les pièces"
+          }
+        }
+      }
+    },
+    "Get started" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commencer"
+          }
+        }
+      }
+    },
+    "HOME" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ACCUEIL"
+          }
+        }
+      }
+    },
+    "Instructions" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instructions"
+          }
+        }
+      }
+    },
+    "Library" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bibliothèque"
+          }
+        }
+      }
+    },
+    "Missing Pieces" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pièces Manquantes"
+          }
+        }
+      }
+    },
+    "My Pieces" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mes pièces"
+          }
+        }
+      }
+    },
+    "Quantity: %lld" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quantité : %lld"
+          }
+        }
+      }
+    },
+    "Ready to build? Le-go!" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prêt à construire? Le-go!"
+          }
+        }
+      }
+    },
+    "Scan" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analyse"
+          }
+        }
+      }
+    },
+    "See Build Options" : {
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voir les options de construction"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
