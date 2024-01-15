@@ -2,7 +2,7 @@
 //  LoaderView.swift
 //  MobileOgelUI
 //
-//  Created by Harsimran Kanwar on 2024-01-12.
+//  Contributors: Harsimran and Shuvaethy
 //
 
 import SwiftUI
@@ -14,11 +14,9 @@ struct LoaderView: View {
                 .edgesIgnoringSafeArea(.all)
             
             ProgressView()
-                .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                .progressViewStyle(CircularProgressViewStyle())
+                .tint(Color.gray)
                 .scaleEffect(2)
-                .padding()
-                .background(Color.white.opacity(0.8))
-                .cornerRadius(10)
         }
     }
 }

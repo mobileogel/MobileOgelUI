@@ -10,7 +10,8 @@
 		79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */; };
 		79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABC02AF4B29F005C22EA /* LibraryView.swift */; };
 		7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6AB902AF82E66006C5BD7 /* Styling.swift */; };
-		C4B1847F2B4F3917008EB167 /* LegoPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B1847E2B4F3917008EB167 /* LegoPiece.swift */; };
+		C4A1F3382B55AEFD0017A1A3 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */; };
+		C4A1F33A2B55AF830017A1A3 /* LegoPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1F3392B55AF830017A1A3 /* LegoPiece.swift */; };
 		C4B184812B4F3926008EB167 /* LegoSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B184802B4F3926008EB167 /* LegoSet.swift */; };
 		C4B184832B4F3972008EB167 /* best.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C4B184822B4F3972008EB167 /* best.mlpackage */; };
 		C4B184872B519137008EB167 /* LegoPieceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B184862B519137008EB167 /* LegoPieceViewModel.swift */; };
@@ -31,7 +32,8 @@
 		79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		79E1ABC02AF4B29F005C22EA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		7AD6AB902AF82E66006C5BD7 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
-		C4B1847E2B4F3917008EB167 /* LegoPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LegoPiece.swift; path = MobileOgelUI/LegoPiece.swift; sourceTree = SOURCE_ROOT; };
+		C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		C4A1F3392B55AF830017A1A3 /* LegoPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoPiece.swift; sourceTree = "<group>"; };
 		C4B184802B4F3926008EB167 /* LegoSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoSet.swift; sourceTree = "<group>"; };
 		C4B184822B4F3972008EB167 /* best.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best.mlpackage; sourceTree = "<group>"; };
 		C4B184862B519137008EB167 /* LegoPieceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoPieceViewModel.swift; sourceTree = "<group>"; };
@@ -63,9 +65,9 @@
 		7A1FA6D82B4F0A9300D4C2D9 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				C4B1847E2B4F3917008EB167 /* LegoPiece.swift */,
 				C4B184822B4F3972008EB167 /* best.mlpackage */,
 				C4B184802B4F3926008EB167 /* LegoSet.swift */,
+				C4A1F3392B55AF830017A1A3 /* LegoPiece.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -119,6 +121,7 @@
 				7AD6AB902AF82E66006C5BD7 /* Styling.swift */,
 				C4FEEA162B3EB57A000E7C3C /* CameraView.swift */,
 				C4FEEA182B3ECAF0000E7C3C /* CapturedImageView.swift */,
+				C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				C4FEEA192B3ECAF0000E7C3C /* CapturedImageView.swift in Sources */,
 				7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */,
 				C4B184872B519137008EB167 /* LegoPieceViewModel.swift in Sources */,
+				C4A1F33A2B55AF830017A1A3 /* LegoPiece.swift in Sources */,
 				C4B184832B4F3972008EB167 /* best.mlpackage in Sources */,
 				79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */,
 				C4FEEA172B3EB57A000E7C3C /* CameraView.swift in Sources */,
@@ -217,8 +221,8 @@
 				C4CF89662AF497BB00034239 /* MainView.swift in Sources */,
 				79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */,
 				C4CF89552AF496AB00034239 /* MobileOgelUIApp.swift in Sources */,
+				C4A1F3382B55AEFD0017A1A3 /* LoaderView.swift in Sources */,
 				C4CF89642AF4978700034239 /* SplashView.swift in Sources */,
-				C4B1847F2B4F3917008EB167 /* LegoPiece.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +360,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -386,6 +391,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
