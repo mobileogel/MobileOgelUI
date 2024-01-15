@@ -2,7 +2,7 @@
 //  CameraViewModel.swift
 //  MobileOgelUI
 //
-//  Created by Shuvaethy Neill on 2023-12-25.
+//  Contributors: Shuvaethy Neill and Harsimran Kanwar
 //
 
 import Foundation
@@ -14,7 +14,8 @@ import Observation
     var capturedImage: UIImage?
     var isImagePickerPresented = false
     var isImageSelected = false
-    
+    var loadCamera = false
+
     // handle logic related to showing instructions
     func handleInstructions() {
         if !UserDefaults.standard.bool(forKey: "hasLaunchedBefore") {
@@ -24,4 +25,12 @@ import Observation
             isShowingInstructions = false
         }
     }
+    
+    //Handle scan button logic
+    func launchCamera(){
+        isImagePickerPresented = true
+        loadCamera = false
+        isShowingInstructions = false
+    }
+    
 }
