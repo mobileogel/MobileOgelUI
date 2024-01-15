@@ -2,7 +2,7 @@
 //  SplashView.swift
 //  MobileOgel
 //
-//  Created by Shuvaethy Neill on 2023-11-01.
+//  Contributors: Shuvaethy Neill and Harsimran Kanwar
 //
 
 import SwiftUI
@@ -14,9 +14,13 @@ struct SplashView: View {
     var body: some View {
         ZStack {
             if self.isActive {
-                MainView()
-                    .environmentObject(cameraViewModel)
-                //HomeView()
+                if !UserDefaults.standard.bool(forKey: "hasLaunchedBefore") {
+                    MainView()
+                        .environmentObject(cameraViewModel)
+                }else{
+                    HomeView()
+                }
+                
             } else {
                 Color.white.edgesIgnoringSafeArea(.all)
                 Image("mobile_ogel_logo")

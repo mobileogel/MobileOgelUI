@@ -31,6 +31,7 @@ struct MainView: View {
                         cameraViewModel.isImagePickerPresented = true
                     })
                 }else{
+                    //so we can navigate back home after hitting cancel on the camera
                     HomeView()
                 }
                 
