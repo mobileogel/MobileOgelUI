@@ -2,7 +2,7 @@
 //  CameraViewModel.swift
 //  MobileOgelUI
 //
-//  Created by Shuvaethy Neill on 2023-12-25.
+//  Contributors: Shuvaethy Neill and Harsimran Kanwar
 //
 
 import Foundation
@@ -12,6 +12,7 @@ class CameraViewModel: ObservableObject {
     @Published var isShowingInstructions = true
     @Published var capturedImage: UIImage?
     @Published var isImagePickerPresented = false
+    @Published var loadCamera = false
     
     // handle logic related to showing instructions
     func handleInstructions() {
@@ -21,6 +22,13 @@ class CameraViewModel: ObservableObject {
         } else {
             isShowingInstructions = false
         }
+    }
+    
+    //Handle scan button logic
+    func launchCamera(){
+        isImagePickerPresented = true
+        loadCamera = false
+        isShowingInstructions = false
     }
     
 }

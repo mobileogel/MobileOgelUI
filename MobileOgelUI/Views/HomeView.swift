@@ -26,8 +26,8 @@ struct HomeView: View {
                     
                     NavButton(destination: MainView().environmentObject(cameraViewModel), title: "Scan", width: 300,cornerRadius: 10)
                         .simultaneousGesture(TapGesture().onEnded{
-                            cameraViewModel.isShowingInstructions = false
-                            cameraViewModel.isImagePickerPresented = true
+                            cameraViewModel.loadCamera = true
+                            
                         })
                     
                     NavButton(destination: PieceInventoryView(), title: "My Pieces", width: 300, cornerRadius: 10)

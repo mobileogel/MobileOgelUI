@@ -38,6 +38,17 @@ struct MainView: View {
                 if isImageSelected {
                     CapturedImageView(capturedImage: cameraViewModel.capturedImage)
                 }
+                
+                if cameraViewModel.loadCamera{
+                    LoaderView()
+                    .onAppear {
+                        print("LoaderView appeared")
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                            cameraViewModel.launchCamera()
+                        }
+                    }
+                    
+                }
             }
             //.edgesIgnoringSafeArea(.all)
             .onAppear {
