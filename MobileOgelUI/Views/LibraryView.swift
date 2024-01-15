@@ -12,7 +12,7 @@ enum FilterCategory: String, CaseIterable {
 }
 
 struct LibraryView: View {
-    @StateObject private var viewModel = LegoSetViewModel()
+    @State private var viewModel = LegoSetViewModel()
     
     @State private var selectedItem: FilterCategory = .Perfect // Default
     

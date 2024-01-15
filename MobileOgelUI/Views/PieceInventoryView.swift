@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PieceInventoryView: View {
-    @StateObject private var viewModel = LegoPieceViewModel()
+    @State private var viewModel = LegoPieceViewModel()
     
     var body: some View {
         NavigationStack {
@@ -59,7 +59,7 @@ struct PieceTileView: View {
 
 
 struct HeaderView: View {
-    let title: String
+    let title: LocalizedStringResource
     
     var body: some View {
         HStack{

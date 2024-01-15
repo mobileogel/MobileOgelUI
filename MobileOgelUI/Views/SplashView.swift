@@ -9,13 +9,13 @@ import SwiftUI
 
 struct SplashView: View {
     @State var isActive: Bool = false
-    @StateObject private var cameraViewModel = CameraViewModel()
+    private var cameraViewModel = CameraViewModel()
     
     var body: some View {
         ZStack {
             if self.isActive {
                 MainView()
-                    .environmentObject(cameraViewModel)
+                    .environment(cameraViewModel)
                 //HomeView()
             } else {
                 Color.white.edgesIgnoringSafeArea(.all)

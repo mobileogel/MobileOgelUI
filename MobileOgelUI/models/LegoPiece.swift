@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LegoPiece: Hashable {
+struct LegoPiece: Identifiable, Hashable {
     let id = UUID()
     var imageName: String
     var pieceName: String

@@ -7,12 +7,13 @@
 
 import Foundation
 import UIKit
+import Observation
 
-class CameraViewModel: ObservableObject {
-    @Published var isShowingInstructions = true
-    @Published var capturedImage: UIImage?
-    @Published var isImagePickerPresented = false
-    @Published var isImageSelected = false
+@Observable class CameraViewModel {
+    var isShowingInstructions = true
+    var capturedImage: UIImage?
+    var isImagePickerPresented = false
+    var isImageSelected = false
     
     // handle logic related to showing instructions
     func handleInstructions() {

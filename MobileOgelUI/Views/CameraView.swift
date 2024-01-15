@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 struct CameraView: UIViewControllerRepresentable {
-    @EnvironmentObject var viewModel: CameraViewModel
+    var viewModel: CameraViewModel
     var usePhotoNav: (() -> Void)? // to handle use photo button action
     
     typealias UIViewControllerType = UIImagePickerController

@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import Observation
 
-class LegoPieceViewModel : ObservableObject {
+@Observable class LegoPieceViewModel {
     // once we have the call setup
-    //@Published var legoPieces: [LegoPiece] = []
-    @Published var legoPieces: [LegoPiece] = LegoPieceMockData.pieces
-    @Published var isLoading = false
+    //var legoPieces: [LegoPiece] = []
+    var legoPieces: [LegoPiece] = LegoPieceMockData.pieces
+    var isLoading = false
     
     func getInventoryPieces() {
         isLoading = true
