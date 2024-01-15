@@ -30,7 +30,7 @@ struct MainView: View {
                         cameraViewModel.isShowingInstructions = false
                         cameraViewModel.isImagePickerPresented = true
                     })
-                }else if !cameraViewModel.isShowingInstructions{
+                }else{
                     HomeView()
                 }
                 
@@ -44,9 +44,7 @@ struct MainView: View {
                     .onAppear {
                         print("LoaderView appeared")
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                            cameraViewModel.isImagePickerPresented = true
-                            cameraViewModel.loadCamera = false
-                            cameraViewModel.isShowingInstructions = false
+                            cameraViewModel.launchCamera()
                         }
                     }
                     
