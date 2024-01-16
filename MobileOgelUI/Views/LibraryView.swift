@@ -11,15 +11,9 @@ enum FilterCategory: String, CaseIterable {
     case Perfect, Similar, All
 }
 
-//this is data that should come from an endpoint (not necessarily formated to be an object)
-var allSampleData: [LegoSet] = [LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328), LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328, piecesMissing: [LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4), LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 2)]), LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328, piecesMissing: [LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 1)])]
-
-var fuzzySampleData: [LegoSet] = [LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328, piecesMissing: [LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4), LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 2)]), LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328, piecesMissing: [LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 1)])]
-
-var perfectSampleData: [LegoSet] = [LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328)]
-
-
 struct LibraryView: View {
+    @State private var viewModel = LegoSetViewModel()
+    
     @State private var selectedItem: FilterCategory = .Perfect // Default
     
     var body: some View {
@@ -39,16 +33,12 @@ struct LibraryView: View {
                         }
                         switch selectedItem {
                         case .All:
-                            //TODO: rely on data from endpoint
-                            SetsListView(setList: allSampleData)
+                            SetsListView(setList: viewModel.allSets)
                         case .Similar:
-                            //TODO: rely on data from endpoint
-                            SetsListView(setList: fuzzySampleData)
+                            SetsListView(setList: viewModel.fuzzySets)
                         default:
-                            //TODO: rely on data from endpoint
-                            SetsListView(setList: perfectSampleData)
+                            SetsListView(setList: viewModel.perfectSets)
                         }
-                        
                     }
                 }
             }

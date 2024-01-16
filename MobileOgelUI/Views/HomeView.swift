@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var cameraViewModel = CameraViewModel()
+    @State private var cameraViewModel = CameraViewModel()
     
     var body: some View {
         NavigationStack{
@@ -24,7 +24,7 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    NavButton(destination: MainView().environmentObject(cameraViewModel), title: "Scan", width: 300,cornerRadius: 10)
+                    NavButton(destination: MainView().environment(cameraViewModel), title: "Scan", width: 300,cornerRadius: 10)
                         .simultaneousGesture(TapGesture().onEnded{
                             cameraViewModel.loadCamera = true
                             
@@ -44,7 +44,7 @@ struct HomeView: View {
 
 struct NavButton<Destination: View>: View {
     let destination: Destination
-    let title: String
+    let title: LocalizedStringResource
     let width: CGFloat
     let cornerRadius: CGFloat
     
