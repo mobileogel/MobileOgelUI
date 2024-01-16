@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		795062BC2B5727D9006B5E9A /* LegoDetector-new.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 795062BB2B5727D9006B5E9A /* LegoDetector-new.mlpackage */; };
 		79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */; };
 		79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABC02AF4B29F005C22EA /* LibraryView.swift */; };
 		7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6AB902AF82E66006C5BD7 /* Styling.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		795062BB2B5727D9006B5E9A /* LegoDetector-new.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = "LegoDetector-new.mlpackage"; path = "../../../mobileogel-ML/LegoDetector-new.mlpackage"; sourceTree = "<group>"; };
 		79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		79E1ABC02AF4B29F005C22EA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		7AD6AB902AF82E66006C5BD7 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		7A1FA6D82B4F0A9300D4C2D9 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				795062BB2B5727D9006B5E9A /* LegoDetector-new.mlpackage */,
 				C4A1F3492B5624F90017A1A3 /* LegoDetector.mlpackage */,
 				C4B184802B4F3926008EB167 /* LegoSet.swift */,
 				C4A1F3392B55AF830017A1A3 /* LegoPiece.swift */,
@@ -238,6 +241,7 @@
 				C4FEEA152B3A2447000E7C3C /* CameraViewModel.swift in Sources */,
 				C4CF89662AF497BB00034239 /* MainView.swift in Sources */,
 				79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */,
+				795062BC2B5727D9006B5E9A /* LegoDetector-new.mlpackage in Sources */,
 				C4CF89552AF496AB00034239 /* MobileOgelUIApp.swift in Sources */,
 				C4A1F3382B55AEFD0017A1A3 /* LoaderView.swift in Sources */,
 				C4CF89642AF4978700034239 /* SplashView.swift in Sources */,
