@@ -11,57 +11,38 @@ import UIKit
 import Vision
 
 class CoreMLManager {
-    private let model: LegoDetector
+    private let modelM: LegoDetectorNew
+    let config = MLModelConfiguration()
     
     init() {
-        guard let loadedModel = try? LegoDetector(configuration: MLModelConfiguration()) else {
-            fatalError("Unable to load the CoreML model")
-        }
-        self.model = loadedModel
+        
+         guard let loadedModel = try? LegoDetectorNew(configuration: MLModelConfiguration()) else {
+         fatalError("Unable to load the CoreML model")
+         }
+         self.modelM = loadedModel
+         
+        
     }
     
-    func analyzeImage(_ image: UIImage) {
-        print("here")
+    func classifyImage(_ image: UIImage = UIImage(named: "sample_image")!) {
+        let model = try! LegoDetectorNew(configuration: MLModelConfiguration())
         
-        // convert UIImage to CVPixelBuffer
-        guard let pixelBuffer = convertToCVPixelBuffer(from: image) else {
-            print("Failed to convert UIImage to CVPixelBuffer")
-            return
+        guard let visModel = try? VNCoreMLModel(for: model.model) else {
+            fatalError("Failed to load custom vision model")
         }
         
-        // predict using model
-        if let prediction = try? model.prediction(image: pixelBuffer) {
-            print("inside prediction")
-            print("prediction result: \(prediction.var_1054)")
-            
-            // iterate through elements of MLMultiArray
-            if let multiArray = prediction.var_1054 as? MLMultiArray {
-                for index in 0..<multiArray.count {
-                    let elementValue = multiArray[index]
-                    print("element \(index): \(elementValue)")
-                }
-            } else {
-                print("var_1054 is not an MLMultiArray")
-            }
-            
-            // trying to determine what the output properties are called
-            let mirror = Mirror(reflecting: prediction)
-            
-            /*
-             for child in mirror.children {
-             print("property: \(child.label ?? "unknown"), value: \(child.value)")
-             }
-             */
-            
-            for child in mirror.children {
-                if let label = child.label, label == "provider", let provider = child.value as? MLDictionaryFeatureProvider {
-                    print("Provider Keys: \(provider.featureNames)")
-                }
-            }
-            
-        } else {
-            print("Failed to make a prediction")
+        let request = VNCoreMLRequest(model: visModel)
+        
+        guard let ciImage = CIImage(image: image) else {
+            fatalError("Failed to create CIImage from input image")
         }
+        
+        let handler = VNImageRequestHandler(ciImage: ciImage )
+        
+        try! handler.perform([request])
+        
+        print(request.results ?? "uh oh")
+        
     }
     
     // needed to convert

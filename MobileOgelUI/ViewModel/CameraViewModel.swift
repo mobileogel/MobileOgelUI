@@ -38,7 +38,7 @@ import Observation
     func processCapturedImage() {
             if let image = capturedImage {
                 print("in process captured image")
-                coreMLManager.analyzeImage(image)
+                coreMLManager.classifyImage(image)
             }
         }
 }

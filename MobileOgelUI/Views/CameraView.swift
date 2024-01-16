@@ -52,7 +52,8 @@ struct CameraView: UIViewControllerRepresentable {
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                viewModel.capturedImage = image
+                //viewModel.capturedImage = image
+                viewModel.capturedImage = UIImage(named: "sample_image")
             }
             viewModel.isImagePickerPresented = false
             // nav to CapturedImageView

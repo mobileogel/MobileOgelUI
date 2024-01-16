@@ -1,0 +1,24 @@
+{
+    "fileFormatVersion": "1.0.0",
+    "itemInfoEntries": {
+        "A1E8E29D-F3D9-4393-A119-F94CFCE83108": {
+            "author": "com.apple.CoreML",
+            "description": "External Metadata Overlay",
+            "name": "Metadata.json",
+            "path": "com.apple.CoreML/Metadata.json"
+        },
+        "E8938101-A2A4-4DC3-B48B-B412F1F04030": {
+            "author": "com.apple.CoreML",
+            "description": "External FeatureDescription Overlay",
+            "name": "FeatureDescriptions.json",
+            "path": "com.apple.CoreML/FeatureDescriptions.json"
+        },
+        "FF3576C9-9B65-464D-98E2-028FD3FA1F64": {
+            "author": "com.apple.CoreML",
+            "description": "CoreML Model Specification",
+            "name": "LegoDetector-new.mlmodel",
+            "path": "com.apple.CoreML/LegoDetector-new.mlmodel"
+        }
+    },
+    "rootModelIdentifier": "FF3576C9-9B65-464D-98E2-028FD3FA1F64"
+}
