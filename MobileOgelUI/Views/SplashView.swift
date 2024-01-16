@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SplashView: View {
     @State var isActive: Bool = false
-    private var cameraViewModel = CameraViewModel()
+    @State private var cameraViewModel = CameraViewModel()
     
     var body: some View {
         ZStack {

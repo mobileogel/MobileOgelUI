@@ -14,6 +14,10 @@ import Observation
     var legoPieces: [LegoPiece] = LegoPieceMockData.pieces
     var isLoading = false
     
+    init() {
+        // get data and set to legoPieces array
+    }
+    
     func getInventoryPieces() {
         isLoading = true
         

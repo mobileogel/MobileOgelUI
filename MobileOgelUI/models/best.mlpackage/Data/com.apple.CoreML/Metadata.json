@@ -1,6 +1,0 @@
-{
-  "MLModelCreatorDefinedKey" : {
-    "com.github.apple.coremltools.version" : "6.2",
-    "com.github.apple.coremltools.source" : "torch==2.1.0"
-  }
-}

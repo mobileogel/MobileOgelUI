@@ -26,8 +26,7 @@ struct MainView: View {
                 // overlay with instructions
                 if cameraViewModel.isShowingInstructions {
                     InstructionsOverlay(okAction: {
-                        cameraViewModel.isShowingInstructions = false
-                        cameraViewModel.isImagePickerPresented = true
+                        cameraViewModel.loadCamera = true
                     })
                 }else{
                     HomeView()
@@ -35,24 +34,21 @@ struct MainView: View {
                 
                 // display captured image if one is taken
                 if cameraViewModel.isImageSelected {
-                    CapturedImageView(capturedImage: cameraViewModel.capturedImage)
+                    CapturedImageView(cameraViewModel: cameraViewModel)
                 }
                 
                 if cameraViewModel.loadCamera{
                     LoaderView()
                     .onAppear {
-                        print("LoaderView appeared")
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                             cameraViewModel.launchCamera()
                         }
                     }
-                    
                 }
             }
             //.edgesIgnoringSafeArea(.all)
             .onAppear {
                 cameraViewModel.handleInstructions()
-                print(cameraViewModel.isShowingInstructions)
             }
         }
     }
