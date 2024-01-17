@@ -51,6 +51,7 @@ class CoreMLManager {
             }
             
             print("Predicted pieces: \(predictedPieces)")
+            self.infer_colours(img: image, results: results)
             
             
         }
@@ -72,10 +73,13 @@ class CoreMLManager {
         let cm = ColourModule()
         for detectedPiece in results {
             // Access individual observation properties here
-            let boundingBox = detectedPiece.boundingBox
-            let confidence = detectedPiece.confidence
             
-            cm.determineColourByRandomSample(img: img, observation: detectedPiece)
+            if let cgImg = img.cgImage {
+                print(cm.determineColourByRandomSample(img: cgImg, observation: detectedPiece))
+            } else {
+                print("error converting img to cgimg")
+            }
+            
             
             
             

@@ -10,6 +10,7 @@
 		79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */; };
 		79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABC02AF4B29F005C22EA /* LibraryView.swift */; };
 		7A1FA6DE2B583F4500D4C2D9 /* ColourModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FA6DD2B583F4500D4C2D9 /* ColourModule.swift */; };
+		7A1FA6E42B58735700D4C2D9 /* colors.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A1FA6E32B58735700D4C2D9 /* colors.csv */; };
 		7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6AB902AF82E66006C5BD7 /* Styling.swift */; };
 		C4797B272B572E8C009B98A7 /* LegoDetectorNew.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */; };
 		C4A1F3382B55AEFD0017A1A3 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */; };
@@ -36,6 +37,7 @@
 		79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		79E1ABC02AF4B29F005C22EA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		7A1FA6DD2B583F4500D4C2D9 /* ColourModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourModule.swift; sourceTree = "<group>"; };
+		7A1FA6E32B58735700D4C2D9 /* colors.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colors.csv; sourceTree = "<group>"; };
 		7AD6AB902AF82E66006C5BD7 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
 		C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LegoDetectorNew.mlpackage; sourceTree = "<group>"; };
 		C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
@@ -81,20 +83,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		7A1FA6DB2B583F0900D4C2D9 /* util */ = {
+		7A1FA6E52B5884FD00D4C2D9 /* res */ = {
 			isa = PBXGroup;
 			children = (
-				7A1FA6DC2B583F2400D4C2D9 /* ColourDetection */,
+				7A1FA6E32B58735700D4C2D9 /* colors.csv */,
 			);
-			path = util;
-			sourceTree = "<group>";
-		};
-		7A1FA6DC2B583F2400D4C2D9 /* ColourDetection */ = {
-			isa = PBXGroup;
-			children = (
-				7A1FA6DD2B583F4500D4C2D9 /* ColourModule.swift */,
-			);
-			path = ColourDetection;
+			path = res;
 			sourceTree = "<group>";
 		};
 		C4A1F33B2B55E23B0017A1A3 /* Reusable */ = {
@@ -126,7 +120,7 @@
 		C4CF89532AF496AB00034239 /* MobileOgelUI */ = {
 			isa = PBXGroup;
 			children = (
-				7A1FA6DB2B583F0900D4C2D9 /* util */,
+				7A1FA6E52B5884FD00D4C2D9 /* res */,
 				7A1FA6D82B4F0A9300D4C2D9 /* Models */,
 				C4FEEA0D2B3A1AA4000E7C3C /* ViewModel */,
 				C4CF89622AF4976B00034239 /* Views */,
@@ -168,6 +162,7 @@
 				C4B184862B519137008EB167 /* LegoPieceViewModel.swift */,
 				C4B184882B519BA8008EB167 /* LegoSetViewModel.swift */,
 				C4A1F34B2B563C000017A1A3 /* CoreMLManager.swift */,
+				7A1FA6DD2B583F4500D4C2D9 /* ColourModule.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -234,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A1FA6E42B58735700D4C2D9 /* colors.csv in Resources */,
 				C4CF895C2AF496AD00034239 /* Preview Assets.xcassets in Resources */,
 				C4CF89592AF496AD00034239 /* Assets.xcassets in Resources */,
 			);
