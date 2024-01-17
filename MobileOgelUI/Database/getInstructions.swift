@@ -1,7 +1,9 @@
 import MongoSwiftSync
+/*
 defer {
     cleanupMongoSwift()
 }
+ */
 
 //Global variable to allow the connection to be closed elsewhere
 private let client: MongoClient?

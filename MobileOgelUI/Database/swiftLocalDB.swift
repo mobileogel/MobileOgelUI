@@ -45,13 +45,8 @@ func decreaseQuanityByOne(type: String, colour: String)
 
 func createTable()
 {
-    let sql = "CREATE TABLE IF NOT EXISTS pieces(
-                ID INTEGER NOT NULL, 
-                ImageName varchar(255) NOT NULL, 
-                PieceName varchar(255) NOT NULL, 
-                Colour varchar(255) NOT NULL, 
-                Quantity INTEGER NOT NULL DEFAULT 0,
-                PRIMARY KEY(ID));"
+    let sql = "CREATE TABLE IF NOT EXISTS pieces(ID INTEGER NOT NULL, ImageName varchar(255) NOT NULL, PieceName varchar(255) NOT NULL, Colour varchar(255) NOT NULL, Quantity INTEGER NOT NULL DEFAULT 0,PRIMARY KEY(ID));"
+    
     let db = connectDatabase()
     
     if sqlite3_exec(db, sql, nil, nil, nil) != SQLITE_OK
@@ -62,23 +57,19 @@ func createTable()
     sqlite3_close(db)
 }
 
-func addNewPiece(piece: LegoPiece, db = OpaquePointer?)
-{
-    let sql = "INSERT INTO pieces (ID, ImageName, PieceName, Colour, Quantity)
-                VALUES ( ?, ?, ?, ?, ?);"
+func addNewPiece(piece: LegoPiece, db: OpaquePointer?) {
+    let sql = "INSERT INTO pieces (ID, ImageName, PieceName, Colour, Quantity) VALUES ( ?, ?, ?, ?, ?);"
     
     var stmt: OpaquePointer?
 
-    if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK 
-    {
+    if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
         sqlite3_bind_int(stmt, 1, Int32(piece.id))
         sqlite3_bind_text(stmt, 2, (piece.imageName as NSString).utf8String, -1, nil)
         sqlite3_bind_text(stmt, 3, (piece.pieceName as NSString).utf8String, -1, nil)
         sqlite3_bind_text(stmt, 4, (piece.colour as NSString).utf8String, -1, nil)
         sqlite3_bind_text(stmt, 5, (piece.quantity as NSString).utf8String, -1, nil)
 
-        if sqlite3_step(stmt) != SQLITE_DONE 
-        {
+        if sqlite3_step(stmt) != SQLITE_DONE {
             let errmsg = String(cString: sqlite3_errmsg(db))
             print("Error inserting piece: \(errmsg)")
         }
