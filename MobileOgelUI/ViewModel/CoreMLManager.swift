@@ -11,62 +11,58 @@ import UIKit
 import Vision
 
 class CoreMLManager {
-    private let modelM: LegoDetectorNew
-    let config = MLModelConfiguration()
+    private let model: VNCoreMLModel
     
     init() {
         
-         guard let loadedModel = try? LegoDetectorNew(configuration: MLModelConfiguration()) else {
-         fatalError("Unable to load the CoreML model")
-         }
-         self.modelM = loadedModel
-         
+        // load converted coreML model
+        guard let loadedModel = try? LegoDetectorNew(configuration: MLModelConfiguration()) else {
+            fatalError("Failed to load custom vision model")
+        }
+        
+        // create VNCoreMLModel from loaded model
+        guard let visModel = try? VNCoreMLModel(for: loadedModel.model) else {
+            fatalError("Failed to create a `VNCoreMLModel` instance.")
+        }
+        
+        self.model = visModel
         
     }
     
     func classifyImage(_ image: UIImage = UIImage(named: "sample_image")!) {
-        let model = try! LegoDetectorNew(configuration: MLModelConfiguration())
         
-        guard let visModel = try? VNCoreMLModel(for: model.model) else {
-            fatalError("Failed to load custom vision model")
+        let request = VNCoreMLRequest(model: model) { (request, error) in
+            // handle completion of request
+            if let error = error {
+                print("Error in CoreML request: \(error)")
+                return
+            }
+            
+            // check that we get the expected results
+            guard let results = request.results as? [VNRecognizedObjectObservation] else {
+                print("VNRequest produced the wrong result type: \(type(of: request.results)).")
+                return
+            }
+        
+            print(results)
+            
+            let predictedPieces = results.map { observation in
+                observation.labels.first?.identifier
+            }
+            
+            print("Predicted pieces: \(predictedPieces)")
         }
-        
-        let request = VNCoreMLRequest(model: visModel)
         
         guard let ciImage = CIImage(image: image) else {
             fatalError("Failed to create CIImage from input image")
         }
         
-        let handler = VNImageRequestHandler(ciImage: ciImage )
+        let handler = VNImageRequestHandler(ciImage: ciImage)
         
-        try! handler.perform([request])
-        
-        print(request.results ?? "uh oh")
-        
-    }
-    
-    // needed to convert
-    func convertToCVPixelBuffer(from image: UIImage) -> CVPixelBuffer? {
-        guard let ciImage = CIImage(image: image) else {
-            print("Failed to create CIImage from UIImage")
-            return nil
+        do {
+            try handler.perform([request])
+        } catch {
+            print("Error performing image request: \(error)")
         }
-        
-        let targetSize = CGSize(width: 640, height: 640)
-        let scale = targetSize.width / image.size.width
-        let resizedImage = ciImage.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
-        
-        var pixelBuffer: CVPixelBuffer?
-        CVPixelBufferCreate(kCFAllocatorDefault,
-                            Int(targetSize.width),
-                            Int(targetSize.height),
-                            kCVPixelFormatType_32ARGB,
-                            nil,
-                            &pixelBuffer)
-        
-        let context = CIContext()
-        context.render(resizedImage, to: pixelBuffer!)
-        
-        return pixelBuffer
     }
 }
