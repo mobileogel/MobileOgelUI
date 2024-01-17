@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		795062C42B585CDE006B5E9A /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 795062C32B585CDE006B5E9A /* db.sqlite */; };
+		795062C62B585CEB006B5E9A /* swiftLocalDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795062C52B585CEB006B5E9A /* swiftLocalDB.swift */; };
+		795062C82B585CF5006B5E9A /* getInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795062C72B585CF5006B5E9A /* getInstructions.swift */; };
 		79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */; };
 		79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABC02AF4B29F005C22EA /* LibraryView.swift */; };
 		7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6AB902AF82E66006C5BD7 /* Styling.swift */; };
@@ -32,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		795062C32B585CDE006B5E9A /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
+		795062C52B585CEB006B5E9A /* swiftLocalDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = swiftLocalDB.swift; sourceTree = "<group>"; };
+		795062C72B585CF5006B5E9A /* getInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getInstructions.swift; sourceTree = "<group>"; };
 		79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		79E1ABC02AF4B29F005C22EA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		7AD6AB902AF82E66006C5BD7 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
@@ -68,6 +74,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		795062C22B585CC6006B5E9A /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				795062C72B585CF5006B5E9A /* getInstructions.swift */,
+				795062C52B585CEB006B5E9A /* swiftLocalDB.swift */,
+				795062C32B585CDE006B5E9A /* db.sqlite */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		7A1FA6D82B4F0A9300D4C2D9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +124,7 @@
 		C4CF89532AF496AB00034239 /* MobileOgelUI */ = {
 			isa = PBXGroup;
 			children = (
+				795062C22B585CC6006B5E9A /* Database */,
 				7A1FA6D82B4F0A9300D4C2D9 /* Models */,
 				C4FEEA0D2B3A1AA4000E7C3C /* ViewModel */,
 				C4CF89622AF4976B00034239 /* Views */,
@@ -216,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4CF895C2AF496AD00034239 /* Preview Assets.xcassets in Resources */,
+				795062C42B585CDE006B5E9A /* db.sqlite in Resources */,
 				C4CF89592AF496AD00034239 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +251,7 @@
 				7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */,
 				C4B184872B519137008EB167 /* LegoPieceViewModel.swift in Sources */,
 				C4A1F33A2B55AF830017A1A3 /* LegoPiece.swift in Sources */,
+				795062C62B585CEB006B5E9A /* swiftLocalDB.swift in Sources */,
 				79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */,
 				C4FEEA172B3EB57A000E7C3C /* CameraView.swift in Sources */,
 				C4A1F33D2B55E2550017A1A3 /* NavButton.swift in Sources */,
@@ -247,6 +266,7 @@
 				C4CF89642AF4978700034239 /* SplashView.swift in Sources */,
 				C4A1F34C2B563C000017A1A3 /* CoreMLManager.swift in Sources */,
 				C4A1F34A2B5624F90017A1A3 /* LegoDetector.mlpackage in Sources */,
+				795062C82B585CF5006B5E9A /* getInstructions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,7 +395,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 4RPYL3R62A;
+				DEVELOPMENT_TEAM = 6T8ZXPAS5V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
@@ -406,7 +426,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 4RPYL3R62A;
+				DEVELOPMENT_TEAM = 6T8ZXPAS5V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
