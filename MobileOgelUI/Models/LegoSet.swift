@@ -2,7 +2,7 @@
 //  LegoSet.swift
 //  MobileOgelUI
 //
-//  Created by Shuvaethy Neill on 2024-01-03.
+//  Contributors: Shuvaethy Neill and Harsimran Kanwar
 //
 
 import Foundation
