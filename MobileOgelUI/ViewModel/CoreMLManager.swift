@@ -43,7 +43,7 @@ class CoreMLManager {
                 print("VNRequest produced the wrong result type: \(type(of: request.results)).")
                 return
             }
-        
+            
             print(results)
             
             let predictedPieces = results.map { observation in
@@ -51,6 +51,8 @@ class CoreMLManager {
             }
             
             print("Predicted pieces: \(predictedPieces)")
+            
+            
         }
         
         guard let ciImage = CIImage(image: image) else {
@@ -63,6 +65,20 @@ class CoreMLManager {
             try handler.perform([request])
         } catch {
             print("Error performing image request: \(error)")
+        }
+    }
+    
+    func infer_colours(img: UIImage, results: [VNRecognizedObjectObservation]) {
+        let cm = ColourModule()
+        for detectedPiece in results {
+            // Access individual observation properties here
+            let boundingBox = detectedPiece.boundingBox
+            let confidence = detectedPiece.confidence
+            
+            cm.determineColourByRandomSample(img: img, observation: detectedPiece)
+            
+            
+            
         }
     }
 }
