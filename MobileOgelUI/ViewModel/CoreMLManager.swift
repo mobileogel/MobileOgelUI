@@ -29,7 +29,7 @@ class CoreMLManager {
         
     }
     
-    func classifyImage(_ image: UIImage = UIImage(named: "sample_image")!) {
+    func classifyImage(_ image: UIImage) {
         
         let request = VNCoreMLRequest(model: model) { (request, error) in
             // handle completion of request
