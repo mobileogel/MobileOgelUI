@@ -27,7 +27,6 @@ struct HomeView: View {
                     NavButton(destination: MainView().environment(cameraViewModel), title: "Scan", width: 300,cornerRadius: 10)
                         .simultaneousGesture(TapGesture().onEnded{
                             cameraViewModel.loadCamera = true
-                            
                         })
                     
                     NavButton(destination: PieceInventoryView(), title: "My Pieces", width: 300, cornerRadius: 10)
@@ -40,28 +39,6 @@ struct HomeView: View {
         }
     }
     
-}
-
-struct NavButton<Destination: View>: View {
-    let destination: Destination
-    let title: LocalizedStringResource
-    let width: CGFloat
-    let cornerRadius: CGFloat
-    
-    var body: some View {
-        NavigationLink(
-            destination: destination.navigationBarBackButtonHidden(true),
-            label: {
-                Text(title)
-                    .bold()
-                    .foregroundColor(.black)
-                    .font(.title3)
-                    .padding(EdgeInsets(top: 24, leading: 12, bottom: 24, trailing: 12))
-                    .frame(maxWidth: width)
-            })
-        .background(Color(red: 0.859, green: 0.929, blue: 0.702))
-        .cornerRadius(cornerRadius)
-    }
 }
 
 struct HomeView_Previews: PreviewProvider {

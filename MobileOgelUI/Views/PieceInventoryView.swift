@@ -15,21 +15,27 @@ struct PieceInventoryView: View {
             VStack {
                 HeaderView(title: "My Pieces")
                 
-                ScrollView {
-                    LazyVStack(spacing: 20) {
-                        ForEach(viewModel.legoPieces, id: \.id) { piece in
-                            PieceTileView(piece: piece)
+                if viewModel.legoPieces.count == 0 {
+                    Spacer()
+                    Text("Nothing here! Please scan your pieces to start.")
+                        .foregroundStyle(Color.gray)
+                    Spacer()
+                } else {
+                    ScrollView {
+                        LazyVStack(spacing: 20) {
+                            ForEach(viewModel.legoPieces, id: \.id) { piece in
+                                PieceTileView(piece: piece)
+                            }
                         }
+                        .padding(5)
                     }
-                    .padding(5)
+                    .padding(20)
+                    
+                    NavButton(destination: LibraryView(), title:"See Build Options" , width: 200, cornerRadius: 25)
                 }
-                .padding(20)
-                
-                NavButton(destination: LibraryView(), title:"See Build Options" , width: 200, cornerRadius: 25)
-                
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(red: 0.89, green: 0.937, blue: 1.0))
-            
         }
     }
 }

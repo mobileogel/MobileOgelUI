@@ -10,10 +10,13 @@
 		79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */; };
 		79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABC02AF4B29F005C22EA /* LibraryView.swift */; };
 		7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6AB902AF82E66006C5BD7 /* Styling.swift */; };
+		C4797B272B572E8C009B98A7 /* LegoDetectorNew.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */; };
 		C4A1F3382B55AEFD0017A1A3 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */; };
 		C4A1F33A2B55AF830017A1A3 /* LegoPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1F3392B55AF830017A1A3 /* LegoPiece.swift */; };
+		C4A1F33D2B55E2550017A1A3 /* NavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1F33C2B55E2550017A1A3 /* NavButton.swift */; };
+		C4A1F34A2B5624F90017A1A3 /* LegoDetector.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C4A1F3492B5624F90017A1A3 /* LegoDetector.mlpackage */; };
+		C4A1F34C2B563C000017A1A3 /* CoreMLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1F34B2B563C000017A1A3 /* CoreMLManager.swift */; };
 		C4B184812B4F3926008EB167 /* LegoSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B184802B4F3926008EB167 /* LegoSet.swift */; };
-		C4B184832B4F3972008EB167 /* best.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C4B184822B4F3972008EB167 /* best.mlpackage */; };
 		C4B184872B519137008EB167 /* LegoPieceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B184862B519137008EB167 /* LegoPieceViewModel.swift */; };
 		C4B184892B519BA8008EB167 /* LegoSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B184882B519BA8008EB167 /* LegoSetViewModel.swift */; };
 		C4CF89552AF496AB00034239 /* MobileOgelUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CF89542AF496AB00034239 /* MobileOgelUIApp.swift */; };
@@ -32,10 +35,13 @@
 		79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		79E1ABC02AF4B29F005C22EA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		7AD6AB902AF82E66006C5BD7 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
+		C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LegoDetectorNew.mlpackage; sourceTree = "<group>"; };
 		C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		C4A1F3392B55AF830017A1A3 /* LegoPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoPiece.swift; sourceTree = "<group>"; };
+		C4A1F33C2B55E2550017A1A3 /* NavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavButton.swift; sourceTree = "<group>"; };
+		C4A1F3492B5624F90017A1A3 /* LegoDetector.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LegoDetector.mlpackage; sourceTree = "<group>"; };
+		C4A1F34B2B563C000017A1A3 /* CoreMLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLManager.swift; sourceTree = "<group>"; };
 		C4B184802B4F3926008EB167 /* LegoSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoSet.swift; sourceTree = "<group>"; };
-		C4B184822B4F3972008EB167 /* best.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best.mlpackage; sourceTree = "<group>"; };
 		C4B184862B519137008EB167 /* LegoPieceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoPieceViewModel.swift; sourceTree = "<group>"; };
 		C4B184882B519BA8008EB167 /* LegoSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoSetViewModel.swift; sourceTree = "<group>"; };
 		C4CF89512AF496AB00034239 /* MobileOgelUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileOgelUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,14 +68,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7A1FA6D82B4F0A9300D4C2D9 /* models */ = {
+		7A1FA6D82B4F0A9300D4C2D9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C4B184822B4F3972008EB167 /* best.mlpackage */,
+				C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */,
+				C4A1F3492B5624F90017A1A3 /* LegoDetector.mlpackage */,
 				C4B184802B4F3926008EB167 /* LegoSet.swift */,
 				C4A1F3392B55AF830017A1A3 /* LegoPiece.swift */,
 			);
-			path = models;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C4A1F33B2B55E23B0017A1A3 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */,
+				7AD6AB902AF82E66006C5BD7 /* Styling.swift */,
+				C4A1F33C2B55E2550017A1A3 /* NavButton.swift */,
+			);
+			path = Reusable;
 			sourceTree = "<group>";
 		};
 		C4CF89482AF496AB00034239 = {
@@ -91,7 +108,7 @@
 		C4CF89532AF496AB00034239 /* MobileOgelUI */ = {
 			isa = PBXGroup;
 			children = (
-				7A1FA6D82B4F0A9300D4C2D9 /* models */,
+				7A1FA6D82B4F0A9300D4C2D9 /* Models */,
 				C4FEEA0D2B3A1AA4000E7C3C /* ViewModel */,
 				C4CF89622AF4976B00034239 /* Views */,
 				C4CF89542AF496AB00034239 /* MobileOgelUIApp.swift */,
@@ -113,15 +130,14 @@
 		C4CF89622AF4976B00034239 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C4A1F33B2B55E23B0017A1A3 /* Reusable */,
 				C4CF89632AF4978700034239 /* SplashView.swift */,
 				C4CF89652AF497BB00034239 /* MainView.swift */,
 				C4CF89682AF4985800034239 /* PieceInventoryView.swift */,
 				79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */,
 				79E1ABC02AF4B29F005C22EA /* LibraryView.swift */,
-				7AD6AB902AF82E66006C5BD7 /* Styling.swift */,
 				C4FEEA162B3EB57A000E7C3C /* CameraView.swift */,
 				C4FEEA182B3ECAF0000E7C3C /* CapturedImageView.swift */,
-				C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -132,6 +148,7 @@
 				C4FEEA142B3A2447000E7C3C /* CameraViewModel.swift */,
 				C4B184862B519137008EB167 /* LegoPieceViewModel.swift */,
 				C4B184882B519BA8008EB167 /* LegoSetViewModel.swift */,
+				C4A1F34B2B563C000017A1A3 /* CoreMLManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -152,6 +169,8 @@
 			dependencies = (
 			);
 			name = MobileOgelUI;
+			packageProductDependencies = (
+			);
 			productName = MobileOgelUI;
 			productReference = C4CF89512AF496AB00034239 /* MobileOgelUI.app */;
 			productType = "com.apple.product-type.application";
@@ -180,6 +199,8 @@
 				Base,
 			);
 			mainGroup = C4CF89482AF496AB00034239;
+			packageReferences = (
+			);
 			productRefGroup = C4CF89522AF496AB00034239 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -212,17 +233,20 @@
 				7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */,
 				C4B184872B519137008EB167 /* LegoPieceViewModel.swift in Sources */,
 				C4A1F33A2B55AF830017A1A3 /* LegoPiece.swift in Sources */,
-				C4B184832B4F3972008EB167 /* best.mlpackage in Sources */,
 				79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */,
 				C4FEEA172B3EB57A000E7C3C /* CameraView.swift in Sources */,
+				C4A1F33D2B55E2550017A1A3 /* NavButton.swift in Sources */,
 				C4CF89572AF496AB00034239 /* ContentView.swift in Sources */,
 				C4CF89692AF4985800034239 /* PieceInventoryView.swift in Sources */,
 				C4FEEA152B3A2447000E7C3C /* CameraViewModel.swift in Sources */,
 				C4CF89662AF497BB00034239 /* MainView.swift in Sources */,
 				79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */,
+				C4797B272B572E8C009B98A7 /* LegoDetectorNew.mlpackage in Sources */,
 				C4CF89552AF496AB00034239 /* MobileOgelUIApp.swift in Sources */,
 				C4A1F3382B55AEFD0017A1A3 /* LoaderView.swift in Sources */,
 				C4CF89642AF4978700034239 /* SplashView.swift in Sources */,
+				C4A1F34C2B563C000017A1A3 /* CoreMLManager.swift in Sources */,
+				C4A1F34A2B5624F90017A1A3 /* LegoDetector.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +303,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -333,7 +357,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

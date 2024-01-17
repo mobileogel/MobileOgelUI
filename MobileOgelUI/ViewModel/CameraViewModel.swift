@@ -15,7 +15,8 @@ import Observation
     var isImagePickerPresented = false
     var isImageSelected = false
     var loadCamera = false
-
+    private var coreMLManager = CoreMLManager()
+    
     // handle logic related to showing instructions
     func handleInstructions() {
         if !UserDefaults.standard.bool(forKey: "hasLaunchedBefore") {
@@ -26,11 +27,18 @@ import Observation
         }
     }
     
-    //Handle scan button logic
+    // handle scan button logic
     func launchCamera(){
         isImagePickerPresented = true
         loadCamera = false
         isShowingInstructions = false
     }
     
+    // send captured image to model for processing
+    func processCapturedImage() {
+            if let image = capturedImage {
+                print("in process captured image")
+                coreMLManager.classifyImage(image)
+            }
+        }
 }

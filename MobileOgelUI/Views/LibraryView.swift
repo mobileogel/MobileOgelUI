@@ -7,14 +7,9 @@
 
 import SwiftUI
 
-enum FilterCategory: String, CaseIterable {
-    case Perfect, Similar, All
-}
-
 struct LibraryView: View {
     @State private var viewModel = LegoSetViewModel()
-    
-    @State private var selectedItem: FilterCategory = .Perfect // Default
+    @State private var selectedItem: LegoSetViewModel.FilterCategory = .Perfect // Default
     
     var body: some View {
         NavigationStack{
@@ -26,18 +21,19 @@ struct LibraryView: View {
                     
                     VStack {
                         HStack() {
-                            ForEach(FilterCategory.allCases, id: \.self) { item in
+                            ForEach(LegoSetViewModel.FilterCategory.allCases, id: \.self) { item in
                                 FilterItem(filterCategory: item, selectedFilter: $selectedItem)
                             }
-                            
                         }
-                        switch selectedItem {
-                        case .All:
-                            SetsListView(setList: viewModel.allSets)
-                        case .Similar:
-                            SetsListView(setList: viewModel.fuzzySets)
-                        default:
-                            SetsListView(setList: viewModel.perfectSets)
+                        
+                        // check if filter array is empty
+                        if let filteredSets = viewModel.filterMap[selectedItem], filteredSets.isEmpty {
+                            Spacer()
+                            Text("No sets available for this filter.")
+                                .foregroundColor(.gray)
+                            Spacer()
+                        } else {
+                            SetsListView(setList: viewModel.filterMap[selectedItem] ?? [])
                         }
                     }
                 }
@@ -48,12 +44,16 @@ struct LibraryView: View {
 
 //TODO: very rough, need to refactor (also ideally we would would want to use VM for all data)
 struct FilterItem: View {
-    let filterCategory: FilterCategory
-    @Binding var selectedFilter: FilterCategory
+    let filterCategory: LegoSetViewModel.FilterCategory
+    @Binding var selectedFilter: LegoSetViewModel.FilterCategory
+    
+    private let selectedColor = Color(red: 0.859, green: 0.929, blue: 0.702)
+    private let defaultColor = Color(red: 0.902, green: 0.906, blue: 0.91)
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 30)
-                .fill(selectedFilter == filterCategory ? Color(red: 0.859, green: 0.929, blue: 0.702) : Color(red: 0.902, green: 0.906, blue: 0.91))
+                .fill(selectedFilter == filterCategory ? selectedColor : defaultColor)
                 .frame(width: 80, height: 50)
             
             Text(filterCategory.rawValue)
@@ -91,7 +91,7 @@ struct LegoSetView: View {
             Image("\(set.setId)_thumbnail")
                 .resizable()
                 .frame(width: 80, height:80)
-
+            
             
             VStack(alignment: .leading) {
                 Text(set.setName)
@@ -115,7 +115,7 @@ struct MissingPiecesView: View {
     @State var visible: Bool
     var missingPieces: [LegoPiece]
     var body: some View {
-        VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
+        VStack(alignment: .center) {
             HStack {
                 Button("Missing Pieces") {
                     visible.toggle()
