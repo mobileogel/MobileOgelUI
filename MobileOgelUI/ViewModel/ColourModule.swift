@@ -87,7 +87,7 @@ class ColourModule {
     func determineIdealSampleSize(population: Int, marginOfError: CGFloat = 0.01) -> Int {
         return Int(Double(population) / (1 + Double(population) * pow(Double(marginOfError), 2))) + 1
     }
-    
+    //REMEMBER THE COORD SYSTEM IS FLIPPED, DOUBLE CHECK THE CROP VALUES
     func buildProbabilityGradient(img: CGImage, observation: VNRecognizedObjectObservation, gradientInterval: CGFloat = 0.10) -> [UIColor] {
         
         
@@ -117,7 +117,7 @@ class ColourModule {
             print("down boundary \(downBoundary)")
             
             
-            let leftBox = CGRect(x: Int(leftBoundary), y: Int(upBoundary), width: Int(widthInterval ), height: Int(pixelHeightOfBox))
+            let leftBox = CGRect(x: Int(leftBoundary), y: Int(downBoundary), width: Int(widthInterval ), height: Int(pixelHeightOfBox))
             print("lb \(leftBox)")
             if let leftCroppedImage = img.cropping(to: leftBox) {
                 print("LEFT CROPPED \(leftCroppedImage)")
@@ -126,7 +126,7 @@ class ColourModule {
                 pixelList += repeatedValues
             }
 
-            let rightBox = CGRect(x: Int(rightBoundary - widthInterval), y: Int(upBoundary), width: Int(widthInterval), height: Int(pixelHeightOfBox))
+            let rightBox = CGRect(x: Int(rightBoundary - widthInterval), y: Int(downBoundary), width: Int(widthInterval), height: Int(pixelHeightOfBox))
             print("rb \(rightBox)")
             if let rightCroppedImage = img.cropping(to: rightBox) {
                 let pixelValues = extractColors(from: rightCroppedImage)
@@ -136,7 +136,7 @@ class ColourModule {
             }
 
             
-            let upperBox = CGRect(x: Int(leftBoundary + widthInterval), y: Int(upBoundary), width: Int((pixelWidthOfBox - (2 * widthInterval))), height: Int(heightInterval))
+            let upperBox = CGRect(x: Int(leftBoundary + widthInterval), y: Int(upBoundary + heightInterval), width: Int((pixelWidthOfBox - (2 * widthInterval))), height: Int(heightInterval))
             print("ub \(upperBox)")
             if let upperCroppedImage = img.cropping(to: upperBox) {
                 let pixelValues = extractColors(from: upperCroppedImage)
@@ -146,7 +146,7 @@ class ColourModule {
             }
             
             
-            let lowerBox = CGRect(x: Int((leftBoundary + widthInterval)), y: Int((downBoundary - heightInterval)), width: Int((pixelWidthOfBox - (2 * widthInterval))), height: Int(heightInterval))
+            let lowerBox = CGRect(x: Int((leftBoundary + widthInterval)), y: Int((downBoundary)), width: Int((pixelWidthOfBox - (2 * widthInterval))), height: Int(heightInterval))
             print("lowb \(lowerBox)")
             if let lowerCroppedImage = img.cropping(to: lowerBox) {
                 let pixelValues = extractColors(from: lowerCroppedImage)
@@ -199,7 +199,8 @@ class ColourModule {
                 let randomIndex = Int.random(in: 0..<allColoursWithProbabilityGradient.count)
                 let rgba = allColoursWithProbabilityGradient[randomIndex]
                 if let colour = findClosestColor(inputColor: rgba) {
-                    print("colour \(colour)")
+                    print("rgba \(rgba)")
+
                     closestColourList.append(colour)
                 }
             }
@@ -238,7 +239,7 @@ class ColourModule {
                 let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
                 let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
                 let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
-                let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
+                let a = 1.0
 
                 pixelColours.append(UIColor(red: r, green: g, blue: b, alpha: a))
             }
