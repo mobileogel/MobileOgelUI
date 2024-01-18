@@ -14,7 +14,7 @@ class ColourModule {
     var rgbDict: [String: UIColor] = [:]
 
     init() {
-        if let url = Bundle.main.url(forResource: "../res/colors", withExtension: "csv") {
+        if let url = Bundle.main.url(forResource: "colors", withExtension: "csv") {
             if let data = try? String(contentsOf: url) {
                 let rows = data.components(separatedBy: "\n")
                 for row in rows.dropFirst(2) {
@@ -34,6 +34,7 @@ class ColourModule {
                 }
             }
         }
+        print(rgbDict)
     }
 
     func euclideanDistance(color1: UIColor, color2: UIColor) -> CGFloat {
@@ -93,28 +94,40 @@ class ColourModule {
         var leftBoundary = CGFloat(observation.boundingBox.origin.x) * CGFloat(img.width)
         var rightBoundary = CGFloat(observation.boundingBox.origin.x + observation.boundingBox.size.width) * CGFloat(img.width)
 
-        var upBoundary = CGFloat(observation.boundingBox.origin.y) * CGFloat(img.width)
-        var downBoundary = CGFloat(observation.boundingBox.origin.y + observation.boundingBox.size.height) * CGFloat(img.width)
+        var upBoundary = CGFloat(observation.boundingBox.origin.y) * CGFloat(img.height)
+        var downBoundary = CGFloat(observation.boundingBox.origin.y + observation.boundingBox.size.height) * CGFloat(img.height)
 
-        let heightInterval = CGFloat((downBoundary - upBoundary) * (gradientInterval / 2)) 
-        let widthInterval = CGFloat((rightBoundary - leftBoundary) * (gradientInterval / 2))
+        let heightInterval = CGFloat((observation.boundingBox.size.height * CGFloat(img.height)) * (gradientInterval / 2))
+        let widthInterval = CGFloat((observation.boundingBox.size.width * CGFloat(img.width)) * (gradientInterval / 2))
+        
+        let pixelWidthOfBox = CGFloat(observation.boundingBox.size.width * CGFloat(img.width))
+        let pixelHeightOfBox = CGFloat(observation.boundingBox.size.height * CGFloat(img.height))
 
+        print("height interval \(heightInterval)")
+        print("width interval \(widthInterval)")
         var pixelList: [UIColor] = []
+        
+        print("the IMAGE \(img)")
 
         for i in 0..<Int(1/gradientInterval) {
             
-            let leftBox = CGRect(x: leftBoundary, y: upBoundary, width: widthInterval, height: observation.boundingBox.size.height)
+            print("left boundary \(leftBoundary)")
+            print("right boundary \(rightBoundary)")
+            print("up boundary \(upBoundary)")
+            print("down boundary \(downBoundary)")
             
+            
+            let leftBox = CGRect(x: Int(leftBoundary), y: Int(upBoundary), width: Int(widthInterval ), height: Int(pixelHeightOfBox))
+            print("lb \(leftBox)")
             if let leftCroppedImage = img.cropping(to: leftBox) {
+                print("LEFT CROPPED \(leftCroppedImage)")
                 let pixelValues = extractColors(from: leftCroppedImage)
                 let repeatedValues = [[UIColor]](repeating: pixelValues, count: i+1).flatMap{$0}
                 pixelList += repeatedValues
             }
-           
-            
 
-            
-            let rightBox = CGRect(x: rightBoundary - widthInterval, y: upBoundary, width: widthInterval, height: observation.boundingBox.size.height)
+            let rightBox = CGRect(x: Int(rightBoundary - widthInterval), y: Int(upBoundary), width: Int(widthInterval), height: Int(pixelHeightOfBox))
+            print("rb \(rightBox)")
             if let rightCroppedImage = img.cropping(to: rightBox) {
                 let pixelValues = extractColors(from: rightCroppedImage)
                 
@@ -123,7 +136,8 @@ class ColourModule {
             }
 
             
-            let upperBox = CGRect(x: leftBoundary + widthInterval, y: upBoundary, width: observation.boundingBox.size.width - (2 * widthInterval), height: heightInterval)
+            let upperBox = CGRect(x: Int(leftBoundary + widthInterval), y: Int(upBoundary), width: Int((pixelWidthOfBox - (2 * widthInterval))), height: Int(heightInterval))
+            print("ub \(upperBox)")
             if let upperCroppedImage = img.cropping(to: upperBox) {
                 let pixelValues = extractColors(from: upperCroppedImage)
                 
@@ -132,7 +146,8 @@ class ColourModule {
             }
             
             
-            let lowerBox = CGRect(x: leftBoundary + widthInterval, y: downBoundary - heightInterval, width: observation.boundingBox.size.width - (2 * widthInterval), height: heightInterval)
+            let lowerBox = CGRect(x: Int((leftBoundary + widthInterval)), y: Int((downBoundary - heightInterval)), width: Int((pixelWidthOfBox - (2 * widthInterval))), height: Int(heightInterval))
+            print("lowb \(lowerBox)")
             if let lowerCroppedImage = img.cropping(to: lowerBox) {
                 let pixelValues = extractColors(from: lowerCroppedImage)
                 
@@ -164,6 +179,8 @@ class ColourModule {
         print(boxWidth)
         print(boxHeight)
         
+        print("------\(observation.labels[0])-------")
+        
 
         
         let numPixelsToSample = determineIdealSampleSize(population: Int(boxWidth * boxHeight))
@@ -173,7 +190,7 @@ class ColourModule {
        
         
         if let blurredImage = blurImage(img, blurRadius: 5.0) {
-            
+            print("blurred")
             let allColoursWithProbabilityGradient = buildProbabilityGradient(img: blurredImage, observation: observation)
             print("Gradient size: \(allColoursWithProbabilityGradient.count)")
             var closestColourList: [String] = []
@@ -182,14 +199,17 @@ class ColourModule {
                 let randomIndex = Int.random(in: 0..<allColoursWithProbabilityGradient.count)
                 let rgba = allColoursWithProbabilityGradient[randomIndex]
                 if let colour = findClosestColor(inputColor: rgba) {
+                    print("colour \(colour)")
                     closestColourList.append(colour)
                 }
             }
             
             return findMode(colours: closestColourList).first
+        } else {
+            print("did not blur properly")
+            return nil
         }
-        
-        return nil
+    
     }
     
     
@@ -206,64 +226,36 @@ class ColourModule {
     }
     
     func extractColors(from cgImage: CGImage) -> [UIColor] {
-        var colors: [UIColor] = []
+        var pixelColours: [UIColor] = []
+        for x in 0..<cgImage.width {
+            for y in 0..<cgImage.height {
+                let pixelData = cgImage.dataProvider!.data
+                let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
 
-        let width = cgImage.width
-        let height = cgImage.height
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bytesPerPixel = 4
-        let bytesPerRow = bytesPerPixel * width
-        let bitsPerComponent = 8
-        let rawData = UnsafeMutablePointer<UInt8>.allocate(capacity: width * height * bytesPerPixel)
+                let pixelInfo: Int = ((cgImage.width * y) + x) * 4
+                
 
-        defer {
-            rawData.deallocate()
-        }
+                let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
+                let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
+                let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
+                let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
 
-        let context = CGContext(
-            data: rawData,
-            width: width,
-            height: height,
-            bitsPerComponent: bitsPerComponent,
-            bytesPerRow: bytesPerRow,
-            space: colorSpace,
-            bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue
-        )
-
-        guard let cgContext = context else {
-            // Handle the case where CGContext cannot be created
-            return colors
-        }
-
-        for y in 0..<height {
-            for x in 0..<width {
-                let byteIndex = (bytesPerRow * y) + x * bytesPerPixel
-                let red = CGFloat(rawData[byteIndex]) / 255.0
-                let green = CGFloat(rawData[byteIndex + 1]) / 255.0
-                let blue = CGFloat(rawData[byteIndex + 2]) / 255.0
-                let alpha = CGFloat(rawData[byteIndex + 3]) / 255.0
-
-                let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
-                colors.append(color)
+                pixelColours.append(UIColor(red: r, green: g, blue: b, alpha: a))
             }
         }
 
-        return colors
+        return pixelColours
     }
     
     func convertCIImageToCGImage(inputImage: CIImage) -> CGImage? {
         let context = CIContext(options: nil)
         if let cgImage = context.createCGImage(inputImage, from: inputImage.extent) {
             return cgImage
+        } else {
+            print("did not convert properly")
+            return nil
         }
-        return nil
+        
     }
 }
-
-
-
-
-
-
-
 

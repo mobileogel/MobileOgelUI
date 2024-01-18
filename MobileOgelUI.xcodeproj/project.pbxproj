@@ -86,7 +86,6 @@
 		7A1FA6E52B5884FD00D4C2D9 /* res */ = {
 			isa = PBXGroup;
 			children = (
-				7A1FA6E32B58735700D4C2D9 /* colors.csv */,
 			);
 			path = res;
 			sourceTree = "<group>";
@@ -120,7 +119,6 @@
 		C4CF89532AF496AB00034239 /* MobileOgelUI */ = {
 			isa = PBXGroup;
 			children = (
-				7A1FA6E52B5884FD00D4C2D9 /* res */,
 				7A1FA6D82B4F0A9300D4C2D9 /* Models */,
 				C4FEEA0D2B3A1AA4000E7C3C /* ViewModel */,
 				C4CF89622AF4976B00034239 /* Views */,
@@ -158,11 +156,13 @@
 		C4FEEA0D2B3A1AA4000E7C3C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7A1FA6E52B5884FD00D4C2D9 /* res */,
 				C4FEEA142B3A2447000E7C3C /* CameraViewModel.swift */,
 				C4B184862B519137008EB167 /* LegoPieceViewModel.swift */,
 				C4B184882B519BA8008EB167 /* LegoSetViewModel.swift */,
 				C4A1F34B2B563C000017A1A3 /* CoreMLManager.swift */,
 				7A1FA6DD2B583F4500D4C2D9 /* ColourModule.swift */,
+				7A1FA6E32B58735700D4C2D9 /* colors.csv */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
