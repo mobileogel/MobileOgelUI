@@ -11,7 +11,6 @@ struct LegoPiece: Identifiable, Hashable {
     let id = UUID()
     var imageName: String
     var pieceName: String
-    var colour: String
     var quantity: Int
     var officialColour: LegoColour
 }

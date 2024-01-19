@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PieceInventoryView: View {
-    @State private var viewModel = LegoPieceViewModel()
+    @Environment(LegoPieceViewModel.self) private var viewModel
     
     var body: some View {
         NavigationStack {

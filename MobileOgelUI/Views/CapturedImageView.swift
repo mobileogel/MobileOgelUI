@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CapturedImageView: View {
     var cameraViewModel: CameraViewModel
+    var legoPieceViewModel: LegoPieceViewModel = LegoPieceViewModel()
     @State private var isProcessing = false
     
     var body: some View {
@@ -32,17 +33,18 @@ struct CapturedImageView: View {
                                 .padding(20)
                         }
                         
-                        NavButton(destination: PieceInventoryView(), title: "Detect Pieces", width: 200, cornerRadius: 10)
+                        NavButton(destination: PieceInventoryView().environment(legoPieceViewModel), title: "Detect Pieces", width: 200, cornerRadius: 10)
                             .simultaneousGesture(TapGesture().onEnded{
                                 isProcessing = true
                                 print("detect pieces button tapped")
                                 
                                 // Perform the processing asynchronously
                                 DispatchQueue.global().async {
-                                    cameraViewModel.processCapturedImage()
+                                    legoPieceViewModel.legoPieces = cameraViewModel.processCapturedImage()
                                     // Update the UI on the main thread
                                     DispatchQueue.main.async {
                                         isProcessing = false
+                                    
                                         // Navigate to PieceInventoryView here if needed
                                     }
                                 }})

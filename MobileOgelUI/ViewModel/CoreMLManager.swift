@@ -29,7 +29,7 @@ class CoreMLManager {
         
     }
     
-    func classifyImage(_ image: UIImage) {
+    func classifyImage(_ image: UIImage) -> [LegoPiece] {
         var legoPieces: [LegoPiece] = []
         let request = VNCoreMLRequest(model: model) { (request, error) in
             // handle completion of request
@@ -64,11 +64,13 @@ class CoreMLManager {
         
         do {
             try handler.perform([request])
-            print(legoPieces)
+
     
         } catch {
             print("Error performing image request: \(error)")
         }
+        
+        return legoPieces
     }
     
     func infer_colours(img: CGImage, detection: VNRecognizedObjectObservation) -> String {
