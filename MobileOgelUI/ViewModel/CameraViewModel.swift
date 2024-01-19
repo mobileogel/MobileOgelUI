@@ -35,7 +35,7 @@ import Observation
     }
     
     // send captured image to model for processing
-    func processCapturedImage() {
+    func processCapturedImage() -> [LegoPiece] {
             if let image = capturedImage {
                 print("in process captured image")
                 coreMLManager.classifyImage(image)

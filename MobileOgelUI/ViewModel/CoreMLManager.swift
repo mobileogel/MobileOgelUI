@@ -30,7 +30,7 @@ class CoreMLManager {
     }
     
     func classifyImage(_ image: UIImage) {
-        
+        var legoPieces: [LegoPiece] = []
         let request = VNCoreMLRequest(model: model) { (request, error) in
             // handle completion of request
             if let error = error {
@@ -51,8 +51,8 @@ class CoreMLManager {
             }
             
             print("Predicted pieces: \(predictedPieces)")
-            self.infer_colours(img: image, results: results)
             
+            legoPieces = self.buildLegoPieceList(image: image, results: results)
             
         }
         
@@ -64,25 +64,60 @@ class CoreMLManager {
         
         do {
             try handler.perform([request])
+            print(legoPieces)
+    
         } catch {
             print("Error performing image request: \(error)")
         }
     }
     
-    func infer_colours(img: UIImage, results: [VNRecognizedObjectObservation]) {
+    func infer_colours(img: CGImage, detection: VNRecognizedObjectObservation) -> String {
         let cm = ColourModule()
+        
+        return cm.determineColourByRandomSample(img: img, observation: detection)!
+        
+    }
+    
+    func buildLegoPieceList(image: UIImage, results: [VNRecognizedObjectObservation]) -> [LegoPiece] {
+        
+        struct BrickKey: Hashable {
+            let label: String
+            let color: LegoColour
+        }
+        
+        // Initialize an empty dictionary to store the count of each Lego piece
+        var bricksDetected: [BrickKey: Int] = [:]
+        
+        var bricksDetectedObjects: [LegoPiece] = []
+        
         for detectedPiece in results {
-            // Access individual observation properties here
             
-            if let cgImg = img.cgImage {
-                print(cm.determineColourByRandomSample(img: cgImg, observation: detectedPiece))
-            } else {
-                print("error converting img to cgimg")
+            guard let cgImg = image.cgImage else {
+                print("Error converting image to CGImage")
+                continue
             }
             
+            let pieceColour = self.infer_colours(img: cgImg, detection: detectedPiece)
             
-            
-            
+            if let label = detectedPiece.labels.first?.identifier as? String,
+               let legoColor = LegoColour(rawValue: pieceColour) {
+                
+                let potentialKey = BrickKey(label: label, color: legoColor)
+                
+                bricksDetected[potentialKey, default: 0] += 1
+            }
         }
+        
+        // Convert the detected pieces into LegoPiece objects
+        for (piece, quantity) in bricksDetected {
+            let legoPiece = LegoPiece(
+                imageName: piece.label,
+                pieceName: ClassToNameMap.getMappedValue(forKey: piece.label),
+                quantity: quantity,
+                officialColour: piece.color
+            )
+            bricksDetectedObjects.append(legoPiece)
+        }
+        return bricksDetectedObjects
     }
 }

@@ -197,7 +197,6 @@ class ColourModule {
                 let randomIndex = Int.random(in: 0..<allColoursWithProbabilityGradient.count)
                 let rgba = allColoursWithProbabilityGradient[randomIndex]
                 if let colour = findClosestColor(inputColor: rgba) {
-                    print("rgba \(colour)")
 
                     closestColourList.append(colour)
                 }

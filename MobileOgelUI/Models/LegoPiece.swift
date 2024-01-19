@@ -12,6 +12,7 @@ struct LegoPiece: Identifiable, Hashable {
     var imageName: String
     var pieceName: String
     var quantity: Int
+    var officialColour: LegoColour
 }
 
 struct LegoPieceMockData {
@@ -19,17 +20,21 @@ struct LegoPieceMockData {
     
     static let piece1 = LegoPiece(imageName: "2x4_black",
                                   pieceName: "Brick 2x4",
-                                  quantity: 4)
+                                  quantity: 4,
+                                  officialColour: .black)
     
     static let piece2 = LegoPiece(imageName: "2x4_black",
                                   pieceName: "Brick 2x2",
-                                  quantity: 2)
+                                  quantity: 2,
+                                  officialColour: .red)
     
     static let piece3 = LegoPiece(imageName: "2x4_black",
                                   pieceName: "Brick 1x2",
-                                  quantity: 1)
+                                  quantity: 1,
+                                  officialColour: .blue)
     
     static let piece4 = LegoPiece(imageName: "2x4_black",
                                   pieceName: "Brick 1x4",
-                                  quantity: 3)
+                                  quantity: 3,
+                                  officialColour: .green)
 }
