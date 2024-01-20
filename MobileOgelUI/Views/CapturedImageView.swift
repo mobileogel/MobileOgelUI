@@ -19,35 +19,43 @@ struct CapturedImageView: View {
                 if isProcessing {
                     LoaderView()
                 } else {
-                    VStack{
+                    VStack(spacing: 20) {
+                        
                         Text("Captured Image")
                             .font(.largeTitle)
                             .foregroundStyle(.black)
                             .bold()
+                            .padding(.top, 20)
                         
-                        if let image = cameraViewModel.capturedImage {
-                            Image(uiImage: image)
+                        // display image based on screen size
+                        GeometryReader { geometry in
+                            Image(uiImage: UIImage(named: "sample_image")!)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 400, height: 600)
+                                .frame(
+                                    width: max(geometry.size.width - 40, 0),
+                                    height: max(geometry.size.height - 40, 0)
+                                )
                                 .padding(20)
                         }
                         
                         NavButton(destination: PieceInventoryView().environment(legoPieceViewModel), title: "Detect Pieces", width: 200, cornerRadius: 10)
-                            .simultaneousGesture(TapGesture().onEnded{
+                            .simultaneousGesture(TapGesture().onEnded {
                                 isProcessing = true
                                 print("detect pieces button tapped")
                                 
-                                // Perform the processing asynchronously
+                                // perform the processing asynchronously
                                 DispatchQueue.global().async {
                                     legoPieceViewModel.legoPieces = cameraViewModel.processCapturedImage()
-                                    // Update the UI on the main thread
+                                    // update the UI on the main thread
                                     DispatchQueue.main.async {
                                         isProcessing = false
-                                    
-                                        // Navigate to PieceInventoryView here if needed
+                                        
+                                        // later - navigate to PieceInventoryView here if needed
                                     }
-                                }})
+                                }
+                            })
+                            .padding(.bottom, 20)
                     }
                 }
             }
