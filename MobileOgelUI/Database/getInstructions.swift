@@ -1,9 +1,44 @@
-import MongoSwiftSync
-/*
+//
+//  getInstructions.swift
+//  MobileOgelUI
+//
+//  Created by Harsimran Kanwar on 2024-01-20.
+//
+import MongoKitten
+
+//rn this function connects to mongo and returns all sets in the db
+func connectDbAndFetchAll() async -> [Document]?{
+    do {
+        //using the test db bc there's an item in it but otherwise our official db is named 'db'
+        let connectionString = "mongodb+srv://aarongabor4:test1234@aaroncluster.htzvngg.mongodb.net/test"
+        
+        // Asynchronous call to connect to MongoDB
+        let db = try await MongoDatabase.connect(to: connectionString)
+        
+        
+        // Access the "instructions" collection
+        let collection = db["instructions"]
+        print("Connected to MongoDB")
+
+        // Fetch the count of documents asynchronously
+        let count = try await collection.count()
+        print("Collection Size: \(count)")
+        
+        let sets = try await collection.find().drain()
+        return sets
+        
+    } catch {
+        print("ERROR CONNECTING TO SERVER: \(error)")
+        return []
+    }
+}
+
+/*import MongoSwiftSync
+
 defer {
     cleanupMongoSwift()
 }
- */
+
 
 //Global variable to allow the connection to be closed elsewhere
 private let client: MongoClient?
@@ -96,4 +131,4 @@ public func getInstructionsHave(queryType: Int) -> [LegoSet]
 
     return output
 }
-
+ */

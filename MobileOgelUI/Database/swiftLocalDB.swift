@@ -1,4 +1,4 @@
-import Foundation
+/*import Foundation
 import SQLite3
 
 func connectDatabase() -> OpaquePointer? 
@@ -138,3 +138,4 @@ public func getPieces() -> [LegoPiece]
     sqlite3_close(db)
     return pieces
 }
+*/
