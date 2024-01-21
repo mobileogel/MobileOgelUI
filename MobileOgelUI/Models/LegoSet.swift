@@ -27,11 +27,11 @@ struct LegoSet: Identifiable, Hashable, Equatable {
 
 struct LegoSetMockData {
     //this is data that should come from an endpoint (not necessarily formated to be an object)
-    static let allSampleData: [LegoSet] = [LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328, setUrl: "https://www.lego.com"), LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328, piecesMissing: [LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4, officialColour: .blue), LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 2, officialColour: .blue)], setUrl: "https://www.lego.com"), LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328, piecesMissing: [LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 1, officialColour: .blue)], setUrl: "https://www.lego.com")]
+    static let allSampleData: [LegoSet] = [LegoSet(setId: 1, setName: "Apple", pieceCount: 8, setUrl: "https://drive.google.com/file/d/1sjQtH2KMxZfr3F6KUIVQ6aPAZbQ4UeeW/view?usp=sharing"), LegoSet(setId: 2, setName: "House", pieceCount:13, piecesMissing: [LegoPiece(imageName: "2x4_black", pieceName: "1 by 2 by 1 Block", quantity: 2, officialColour: .transClear), LegoPiece(imageName: "2x4_black", pieceName: "2 by 2 by 2 Fillet Block", quantity: 2, officialColour: .mediumLavender)], setUrl: "https://drive.google.com/file/d/1CNiT5Ucsq-kgkMVC5ukQZpGyMBiKbpih/view?usp=sharing")]
     
-    static let fuzzySampleData: [LegoSet] = [LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328, piecesMissing: [LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4, officialColour: .blue), LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 2, officialColour: .blue)], setUrl: "https://www.lego.com"), LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328, piecesMissing: [LegoPiece(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 1, officialColour: .blue)], setUrl: "https://www.lego.com")]
+    static let fuzzySampleData: [LegoSet] = [LegoSet(setId: 2, setName: "House", pieceCount:13, piecesMissing: [LegoPiece(imageName: "2x4_black", pieceName: "1 by 2 by 1 Block", quantity: 2, officialColour: .transClear), LegoPiece(imageName: "2x4_black", pieceName: "2 by 2 by 2 Fillet Block", quantity: 2, officialColour: .mediumLavender)], setUrl: "https://drive.google.com/file/d/1CNiT5Ucsq-kgkMVC5ukQZpGyMBiKbpih/view?usp=sharing")]
 
     
-    static let perfectSampleData: [LegoSet] = [LegoSet(setId: 40570, setName: "Halloween Cat & Mouse", pieceCount: 328, setUrl: "https://www.lego.com")]
+    static let perfectSampleData: [LegoSet] = [LegoSet(setId: 1, setName: "Apple", pieceCount: 8, setUrl: "https://drive.google.com/file/d/1sjQtH2KMxZfr3F6KUIVQ6aPAZbQ4UeeW/view?usp=sharing")]
     
 }
