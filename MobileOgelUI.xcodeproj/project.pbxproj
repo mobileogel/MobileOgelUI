@@ -13,6 +13,7 @@
 		7A1FA6E42B58735700D4C2D9 /* colors.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A1FA6E32B58735700D4C2D9 /* colors.csv */; };
 		7ABB01672B59FB4B005211F3 /* OfficialLegoColourEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB01662B59FB4B005211F3 /* OfficialLegoColourEnum.swift */; };
 		7ABB01692B59FFCD005211F3 /* ClassToNameMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB01682B59FFCD005211F3 /* ClassToNameMap.swift */; };
+		7ABB016B2B5AD477005211F3 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB016A2B5AD477005211F3 /* utils.swift */; };
 		7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6AB902AF82E66006C5BD7 /* Styling.swift */; };
 		C4797B272B572E8C009B98A7 /* LegoDetectorNew.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */; };
 		C4A1F3382B55AEFD0017A1A3 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */; };
@@ -42,6 +43,7 @@
 		7A1FA6E32B58735700D4C2D9 /* colors.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colors.csv; sourceTree = "<group>"; };
 		7ABB01662B59FB4B005211F3 /* OfficialLegoColourEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OfficialLegoColourEnum.swift; path = MobileOgelUI/models/OfficialLegoColourEnum.swift; sourceTree = SOURCE_ROOT; };
 		7ABB01682B59FFCD005211F3 /* ClassToNameMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClassToNameMap.swift; path = MobileOgelUI/models/ClassToNameMap.swift; sourceTree = SOURCE_ROOT; };
+		7ABB016A2B5AD477005211F3 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = utils.swift; path = MobileOgelUI/models/utils.swift; sourceTree = SOURCE_ROOT; };
 		7AD6AB902AF82E66006C5BD7 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
 		C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LegoDetectorNew.mlpackage; sourceTree = "<group>"; };
 		C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				C4A1F3392B55AF830017A1A3 /* LegoPiece.swift */,
 				7ABB01662B59FB4B005211F3 /* OfficialLegoColourEnum.swift */,
 				7ABB01682B59FFCD005211F3 /* ClassToNameMap.swift */,
+				7ABB016A2B5AD477005211F3 /* utils.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				C4CF89692AF4985800034239 /* PieceInventoryView.swift in Sources */,
 				7ABB01672B59FB4B005211F3 /* OfficialLegoColourEnum.swift in Sources */,
 				C4FEEA152B3A2447000E7C3C /* CameraViewModel.swift in Sources */,
+				7ABB016B2B5AD477005211F3 /* utils.swift in Sources */,
 				C4CF89662AF497BB00034239 /* MainView.swift in Sources */,
 				79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */,
 				C4797B272B572E8C009B98A7 /* LegoDetectorNew.mlpackage in Sources */,

@@ -52,7 +52,7 @@ struct CameraView: UIViewControllerRepresentable {
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                //viewModel.capturedImage = image
+                
 
                
                 let boundingBoxRect = CGRect(
@@ -61,7 +61,8 @@ struct CameraView: UIViewControllerRepresentable {
                     width: 55.41435473412275,
                     height:43.57593084288374
                 )
-                viewModel.capturedImage = UIImage(named: "sample_image")
+                
+                viewModel.capturedImage = Util.resizeImageToModelStandard(image: image)!
             }
 
             viewModel.isImagePickerPresented = false

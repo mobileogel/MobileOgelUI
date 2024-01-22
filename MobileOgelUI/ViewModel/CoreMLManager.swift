@@ -112,8 +112,11 @@ class CoreMLManager {
         
         // Convert the detected pieces into LegoPiece objects
         for (piece, quantity) in bricksDetected {
+        
+            print(piece.label)
             let legoPiece = LegoPiece(
-                imageName: piece.label,
+//                imageName: Util.getRandomImage(withX: piece.label)!,
+                imageName: Util.getImageNameOrPlaceHolder(withX: piece.label),
                 pieceName: ClassToNameMap.getMappedValue(forKey: piece.label),
                 quantity: quantity,
                 officialColour: piece.color
