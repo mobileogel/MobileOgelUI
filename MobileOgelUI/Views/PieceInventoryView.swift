@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PieceInventoryView: View {
-    @State private var viewModel = LegoPieceViewModel()
+    @Environment(LegoPieceViewModel.self) private var viewModel
     
     var body: some View {
         NavigationStack {
@@ -63,6 +63,8 @@ struct PieceTileView: View {
                     .foregroundStyle(.black)
                     .font(.headline)
                 Text("Quantity: \(piece.quantity)")
+                    .foregroundStyle(.black)
+                Text("Colour: \(piece.officialColour.rawValue)")
                     .foregroundStyle(.black)
             }
             

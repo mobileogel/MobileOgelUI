@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CapturedImageView: View {
     var cameraViewModel: CameraViewModel
-    @State private var isProcessing = false //TODO: refactor to be in a VM
+    var legoPieceViewModel: LegoPieceViewModel = LegoPieceViewModel()
+    @State private var isProcessing = false
     
     var body: some View {
         NavigationStack{
@@ -18,34 +19,43 @@ struct CapturedImageView: View {
                 if isProcessing {
                     LoaderView()
                 } else {
-                    VStack{
+                    VStack(spacing: 20) {
+                        
                         Text("Captured Image")
                             .font(.largeTitle)
                             .foregroundStyle(.black)
                             .bold()
+                            .padding(.top, 20)
                         
-                        if let image = cameraViewModel.capturedImage {
-                            Image(uiImage: image)
+                        // display image based on screen size
+                        GeometryReader { geometry in
+                            Image(uiImage: cameraViewModel.capturedImage!)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 400, height: 600)
+                                .frame(
+                                    width: max(geometry.size.width - 40, 0),
+                                    height: max(geometry.size.height - 40, 0)
+                                )
                                 .padding(20)
                         }
                         
-                        NavButton(destination: PieceInventoryView(), title: "Detect Pieces", width: 200, cornerRadius: 10)
-                            .simultaneousGesture(TapGesture().onEnded{
+                        NavButton(destination: PieceInventoryView().environment(legoPieceViewModel), title: "Detect Pieces", width: 200, cornerRadius: 10)
+                            .simultaneousGesture(TapGesture().onEnded {
                                 isProcessing = true
                                 print("detect pieces button tapped")
                                 
-                                // Perform the processing asynchronously
+                                // perform the processing asynchronously
                                 DispatchQueue.global().async {
-                                    cameraViewModel.processCapturedImage()
-                                    // Update the UI on the main thread
+//                                    legoPieceViewModel.legoPieces = cameraViewModel.processCapturedImage()
+                                    // update the UI on the main thread
                                     DispatchQueue.main.async {
                                         isProcessing = false
-                                        // Navigate to PieceInventoryView here if needed
+                                        
+                                        // later - navigate to PieceInventoryView here if needed
                                     }
-                                }})
+                                }
+                            })
+                            .padding(.bottom, 20)
                     }
                 }
             }

@@ -99,7 +99,8 @@ struct LegoSetView: View {
                     .font(.headline)
                 Text("\(set.pieceCount) Pieces")
                     .foregroundStyle(.black)
-                Link("Instructions", destination: URL(string: "https://www.lego.com/en-ca/service/buildinginstructions/\(set.setId)")!)
+                //Link("Instructions", destination: URL(string: "https://www.lego.com/en-ca/service/buildinginstructions/\(set.setId)")!)
+                Link("Instructions", destination: URL(string: set.setUrl)!)
                 if set.piecesMissing != nil {
                     MissingPiecesView(visible: false, missingPieces: set.piecesMissing!)
                 }
