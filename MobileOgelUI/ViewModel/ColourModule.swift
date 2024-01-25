@@ -34,7 +34,6 @@ class ColourModule {
                 }
             }
         }
-        print(rgbDict)
     }
 
     func euclideanDistance(color1: UIColor, color2: UIColor) -> CGFloat {
@@ -88,12 +87,10 @@ class ColourModule {
         return Int(Double(population) / (1 + Double(population) * pow(Double(marginOfError), 2))) + 1
     }
     //REMEMBER THE COORD SYSTEM IS FLIPPED, DOUBLE CHECK THE CROP VALUES
-    func buildProbabilityGradient(img: CGImage, observation: VNRecognizedObjectObservation, gradientInterval: CGFloat = 0.10) -> [UIColor] {
+    func buildProbabilityGradient(img: CGImage, observation: VNRecognizedObjectObservation, gradientInterval: CGFloat = 0.25) -> [UIColor] {
         
                 
         var pixelList: [UIColor] = []
-        
-        print("the IMAGE \(img)")
         
         var xStart = observation.boundingBox.origin.x * CGFloat(img.width)
         var yStart =  (1 - observation.boundingBox.origin.y - observation.boundingBox.height) * CGFloat(img.height)
@@ -109,25 +106,23 @@ class ColourModule {
             width: boundingBoxWidth,
             height: boundingBoxHeight
         )
-
+        
+        print(observation.boundingBox)
         print(boundBoxRect)
 
 
         for i in 0..<Int(1/gradientInterval) {
             
-            
-            
             let leftBox = CGRect(x: Int(xStart), y: Int(yStart), width: Int(widthInterval), height: Int(boundingBoxHeight))
-            print("lb \(leftBox)")
             if let leftCroppedImage = img.cropping(to: leftBox) {
-                print("LEFT CROPPED \(leftCroppedImage)")
+//                print("LEFT CROPPED \(leftCroppedImage)")
                 let pixelValues = extractColors(from: leftCroppedImage)
                 let repeatedValues = [[UIColor]](repeating: pixelValues, count: i+1).flatMap{$0}
                 pixelList += repeatedValues
             }
 
             let rightBox = CGRect(x: Int(xStart + boundingBoxWidth - widthInterval), y: Int(yStart), width: Int(widthInterval), height: Int(boundingBoxHeight))
-            print("rb \(rightBox)")
+//            print("rb \(rightBox)")
             if let rightCroppedImage = img.cropping(to: rightBox) {
                 let pixelValues = extractColors(from: rightCroppedImage)
                 
@@ -137,7 +132,7 @@ class ColourModule {
 
             
             let upperBox = CGRect(x: Int(xStart + widthInterval), y: Int(yStart + boundingBoxHeight - heightInterval), width: Int((boundingBoxWidth - (2 * widthInterval))), height: Int(heightInterval))
-            print("ub \(upperBox)")
+//            print("ub \(upperBox)")
             if let upperCroppedImage = img.cropping(to: upperBox) {
                 let pixelValues = extractColors(from: upperCroppedImage)
                 
@@ -147,7 +142,7 @@ class ColourModule {
             
             
             let lowerBox = CGRect(x: Int((xStart + widthInterval)), y: Int(yStart), width: Int((boundingBoxWidth - (2 * widthInterval))), height: Int(heightInterval))
-            print("lowb \(lowerBox)")
+//            print("lowb \(lowerBox)")
             if let lowerCroppedImage = img.cropping(to: lowerBox) {
                 let pixelValues = extractColors(from: lowerCroppedImage)
                 
@@ -171,16 +166,7 @@ class ColourModule {
     
         let boxHeight = Int(boundingBox.size.height * CGFloat(img.height))
         let boxWidth =  Int(boundingBox.size.width * CGFloat(img.width))
-        
-        
-        print(boundingBox)
-        print(boxWidth)
-        print(boxHeight)
-        
-        print("------\(observation.labels[0])-------")
-        
 
-        
         let numPixelsToSample = determineIdealSampleSize(population: Int(boxWidth * boxHeight))
         print("Box size \(boxWidth * boxHeight) pixels ")
         print("Sampling \(numPixelsToSample) pixels")
@@ -192,14 +178,16 @@ class ColourModule {
             let allColoursWithProbabilityGradient = buildProbabilityGradient(img: blurredImage, observation: observation)
             print("Gradient size: \(allColoursWithProbabilityGradient.count)")
             var closestColourList: [String] = []
-            
-            for _ in 0..<numPixelsToSample {
-                let randomIndex = Int.random(in: 0..<allColoursWithProbabilityGradient.count)
-                let rgba = allColoursWithProbabilityGradient[randomIndex]
-                if let colour = findClosestColor(inputColor: rgba) {
-
-                    closestColourList.append(colour)
+            if (allColoursWithProbabilityGradient.count > 0) {
+                for _ in 0..<numPixelsToSample {
+                    let randomIndex = Int.random(in: 0..<allColoursWithProbabilityGradient.count)
+                    let rgba = allColoursWithProbabilityGradient[randomIndex]
+                    if let colour = findClosestColor(inputColor: rgba) {
+                        
+                        closestColourList.append(colour)
+                    }
                 }
+
             }
             
             return findMode(colours: closestColourList).first

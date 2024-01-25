@@ -52,7 +52,8 @@ class CoreMLManager {
             
             print("Predicted pieces: \(predictedPieces)")
             
-            legoPieces = self.buildLegoPieceList(image: image, results: results)
+            //legoPieces = self.buildLegoPieceList(image: image, results: results)
+            legoPieces = LegoPieceMockData.pieces
             
         }
         
@@ -105,6 +106,7 @@ class CoreMLManager {
                let legoColor = LegoColour(rawValue: pieceColour) {
                 
                 let potentialKey = BrickKey(label: label, color: legoColor)
+
                 
                 bricksDetected[potentialKey, default: 0] += 1
             }
@@ -112,12 +114,18 @@ class CoreMLManager {
         
         // Convert the detected pieces into LegoPiece objects
         for (piece, quantity) in bricksDetected {
+        
             let legoPiece = LegoPiece(
-                imageName: piece.label,
+//                imageName: Util.getRandomImage(withX: piece.label)!,
+                imageName: Util.getImageNameOrPlaceHolder(withX: piece.label),
                 pieceName: ClassToNameMap.getMappedValue(forKey: piece.label),
                 quantity: quantity,
                 officialColour: piece.color
             )
+            
+            print(piece.label)
+            print(legoPiece.imageName)
+            print(legoPiece.officialColour)
             bricksDetectedObjects.append(legoPiece)
         }
         return bricksDetectedObjects
