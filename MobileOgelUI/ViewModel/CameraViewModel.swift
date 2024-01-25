@@ -21,11 +21,10 @@ import Observation
     func handleInstructions() {
         if !UserDefaults.standard.bool(forKey: "hasLaunchedBefore") {
             isShowingInstructions = true
-//            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
         } else {
             isShowingInstructions = false
         }
-        isShowingInstructions = true
     }
     
     // handle scan button logic

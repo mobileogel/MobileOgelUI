@@ -44,8 +44,9 @@ struct CameraView: UIViewControllerRepresentable {
         
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             viewModel.capturedImage = nil
-
-            viewModel.isShowingInstructions = true
+            if !UserDefaults.standard.bool(forKey: "hasLaunchedBefore") { //only show if first launch
+                viewModel.isShowingInstructions = true
+            }
             
         }
         
