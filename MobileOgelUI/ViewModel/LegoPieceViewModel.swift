@@ -10,7 +10,7 @@ import Observation
 
 @Observable class LegoPieceViewModel {
     // once we have the call setup
-    var legoPieces: [LegoPiece] = []
+    var legoPieces: [LegoPiece] = LegoPieceMockData.pieces
     var isLoading = false
     
     init() {

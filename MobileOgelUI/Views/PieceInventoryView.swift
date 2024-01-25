@@ -55,6 +55,8 @@ struct PieceTileView: View {
                     .font(.headline)
                 Text("Quantity: \(piece.quantity)")
                     .foregroundStyle(.black)
+                Text("Colour: \(piece.officialColour.rawValue)")
+                    .foregroundStyle(.black)
             }
             
             Spacer()

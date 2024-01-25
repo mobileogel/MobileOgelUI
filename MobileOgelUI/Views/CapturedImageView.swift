@@ -29,7 +29,7 @@ struct CapturedImageView: View {
                         
                         // display image based on screen size
                         GeometryReader { geometry in
-                            Image(uiImage: UIImage(named: "sample_image")!)
+                            Image(uiImage: cameraViewModel.capturedImage!)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(
@@ -46,7 +46,7 @@ struct CapturedImageView: View {
                                 
                                 // perform the processing asynchronously
                                 DispatchQueue.global().async {
-                                    legoPieceViewModel.legoPieces = cameraViewModel.processCapturedImage()
+//                                    legoPieceViewModel.legoPieces = cameraViewModel.processCapturedImage()
                                     // update the UI on the main thread
                                     DispatchQueue.main.async {
                                         isProcessing = false

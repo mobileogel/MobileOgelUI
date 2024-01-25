@@ -140,5 +140,8 @@ enum LegoColour: String {
     case transFireYellow = "Trans Fire Yellow"
     case transLightRoyalBlue = "Trans Light Royal Blue"
     case reddishLilac = "Reddish Lilac"
+    case brightYellowishGreen = "Bright Yellowish Green"
+    case coolYellow = "Cool Yellow"
+    
 }
 

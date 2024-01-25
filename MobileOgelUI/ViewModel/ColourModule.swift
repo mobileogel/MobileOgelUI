@@ -87,7 +87,7 @@ class ColourModule {
         return Int(Double(population) / (1 + Double(population) * pow(Double(marginOfError), 2))) + 1
     }
     //REMEMBER THE COORD SYSTEM IS FLIPPED, DOUBLE CHECK THE CROP VALUES
-    func buildProbabilityGradient(img: CGImage, observation: VNRecognizedObjectObservation, gradientInterval: CGFloat = 0.10) -> [UIColor] {
+    func buildProbabilityGradient(img: CGImage, observation: VNRecognizedObjectObservation, gradientInterval: CGFloat = 0.25) -> [UIColor] {
         
                 
         var pixelList: [UIColor] = []
@@ -106,7 +106,8 @@ class ColourModule {
             width: boundingBoxWidth,
             height: boundingBoxHeight
         )
-
+        
+        print(observation.boundingBox)
         print(boundBoxRect)
 
 
@@ -186,6 +187,7 @@ class ColourModule {
                         closestColourList.append(colour)
                     }
                 }
+
             }
             
             return findMode(colours: closestColourList).first
