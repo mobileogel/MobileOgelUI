@@ -61,6 +61,7 @@ struct InstructionsOverlay: View {
         ZStack {
             // For now, instructions overlay does not overlay live camera
             Color.black.opacity(0.85)
+                .edgesIgnoringSafeArea(.all)
             
             VStack {
                 TitleView()
