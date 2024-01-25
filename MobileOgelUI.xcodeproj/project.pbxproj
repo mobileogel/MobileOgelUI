@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		795062C42B585CDE006B5E9A /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 795062C32B585CDE006B5E9A /* db.sqlite */; };
-		795062C62B585CEB006B5E9A /* swiftLocalDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795062C52B585CEB006B5E9A /* swiftLocalDB.swift */; };
-		795062C82B585CF5006B5E9A /* getInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795062C72B585CF5006B5E9A /* getInstructions.swift */; };
+		795062C62B585CEB006B5E9A /* LegoPieceDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795062C52B585CEB006B5E9A /* LegoPieceDBManager.swift */; };
+		795062C82B585CF5006B5E9A /* LegoSetDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795062C72B585CF5006B5E9A /* LegoSetDBManager.swift */; };
 		79BC47902B5CB31A00FA485A /* Meow in Frameworks */ = {isa = PBXBuildFile; productRef = 79BC478F2B5CB31A00FA485A /* Meow */; };
 		79BC47922B5CB31A00FA485A /* MongoClient in Frameworks */ = {isa = PBXBuildFile; productRef = 79BC47912B5CB31A00FA485A /* MongoClient */; };
 		79BC47942B5CB31A00FA485A /* MongoCore in Frameworks */ = {isa = PBXBuildFile; productRef = 79BC47932B5CB31A00FA485A /* MongoCore */; };
@@ -17,6 +16,7 @@
 		79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */; };
 		79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABC02AF4B29F005C22EA /* LibraryView.swift */; };
 		7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6AB902AF82E66006C5BD7 /* Styling.swift */; };
+		C41AF4982B62BF880008F6B5 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = C41AF4972B62BF880008F6B5 /* SQLite */; };
 		C4797B272B572E8C009B98A7 /* LegoDetectorNew.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */; };
 		C4A1F3382B55AEFD0017A1A3 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */; };
 		C4A1F33A2B55AF830017A1A3 /* LegoPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1F3392B55AF830017A1A3 /* LegoPiece.swift */; };
@@ -39,9 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		795062C32B585CDE006B5E9A /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
-		795062C52B585CEB006B5E9A /* swiftLocalDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = swiftLocalDB.swift; sourceTree = "<group>"; };
-		795062C72B585CF5006B5E9A /* getInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getInstructions.swift; sourceTree = "<group>"; };
+		795062C52B585CEB006B5E9A /* LegoPieceDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegoPieceDBManager.swift; sourceTree = "<group>"; };
+		795062C72B585CF5006B5E9A /* LegoSetDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegoSetDBManager.swift; sourceTree = "<group>"; };
 		79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		79E1ABC02AF4B29F005C22EA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		7AD6AB902AF82E66006C5BD7 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
@@ -72,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C41AF4982B62BF880008F6B5 /* SQLite in Frameworks */,
 				79BC47942B5CB31A00FA485A /* MongoCore in Frameworks */,
 				79BC47922B5CB31A00FA485A /* MongoClient in Frameworks */,
 				79BC47962B5CB31A00FA485A /* MongoKitten in Frameworks */,
@@ -85,9 +85,8 @@
 		795062C22B585CC6006B5E9A /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				795062C72B585CF5006B5E9A /* getInstructions.swift */,
-				795062C52B585CEB006B5E9A /* swiftLocalDB.swift */,
-				795062C32B585CDE006B5E9A /* db.sqlite */,
+				795062C72B585CF5006B5E9A /* LegoSetDBManager.swift */,
+				795062C52B585CEB006B5E9A /* LegoPieceDBManager.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -199,6 +198,7 @@
 				79BC47912B5CB31A00FA485A /* MongoClient */,
 				79BC47932B5CB31A00FA485A /* MongoCore */,
 				79BC47952B5CB31A00FA485A /* MongoKitten */,
+				C41AF4972B62BF880008F6B5 /* SQLite */,
 			);
 			productName = MobileOgelUI;
 			productReference = C4CF89512AF496AB00034239 /* MobileOgelUI.app */;
@@ -230,6 +230,7 @@
 			mainGroup = C4CF89482AF496AB00034239;
 			packageReferences = (
 				79BC478E2B5CB31A00FA485A /* XCRemoteSwiftPackageReference "MongoKitten" */,
+				C41AF4962B62BF880008F6B5 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 			);
 			productRefGroup = C4CF89522AF496AB00034239 /* Products */;
 			projectDirPath = "";
@@ -246,7 +247,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4CF895C2AF496AD00034239 /* Preview Assets.xcassets in Resources */,
-				795062C42B585CDE006B5E9A /* db.sqlite in Resources */,
 				C4CF89592AF496AD00034239 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,7 +264,7 @@
 				7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */,
 				C4B184872B519137008EB167 /* LegoPieceViewModel.swift in Sources */,
 				C4A1F33A2B55AF830017A1A3 /* LegoPiece.swift in Sources */,
-				795062C62B585CEB006B5E9A /* swiftLocalDB.swift in Sources */,
+				795062C62B585CEB006B5E9A /* LegoPieceDBManager.swift in Sources */,
 				79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */,
 				C4FEEA172B3EB57A000E7C3C /* CameraView.swift in Sources */,
 				C4A1F33D2B55E2550017A1A3 /* NavButton.swift in Sources */,
@@ -279,7 +279,7 @@
 				C4CF89642AF4978700034239 /* SplashView.swift in Sources */,
 				C4A1F34C2B563C000017A1A3 /* CoreMLManager.swift in Sources */,
 				C4A1F34A2B5624F90017A1A3 /* LegoDetector.mlpackage in Sources */,
-				795062C82B585CF5006B5E9A /* getInstructions.swift in Sources */,
+				795062C82B585CF5006B5E9A /* LegoSetDBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +408,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 6T8ZXPAS5V;
+				DEVELOPMENT_TEAM = 4RPYL3R62A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
@@ -439,7 +439,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 6T8ZXPAS5V;
+				DEVELOPMENT_TEAM = 4RPYL3R62A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
@@ -494,6 +494,14 @@
 				minimumVersion = 7.8.0;
 			};
 		};
+		C41AF4962B62BF880008F6B5 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -516,6 +524,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 79BC478E2B5CB31A00FA485A /* XCRemoteSwiftPackageReference "MongoKitten" */;
 			productName = MongoKitten;
+		};
+		C41AF4972B62BF880008F6B5 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C41AF4962B62BF880008F6B5 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

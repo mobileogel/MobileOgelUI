@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CapturedImageView: View {
     var cameraViewModel: CameraViewModel
-    @State private var isProcessing = false
+    @State private var isProcessing = false //TODO: refactor to be in a VM
     
     var body: some View {
         NavigationStack{

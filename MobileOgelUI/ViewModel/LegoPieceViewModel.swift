@@ -10,17 +10,31 @@ import Observation
 
 @Observable class LegoPieceViewModel {
     // once we have the call setup
-    //var legoPieces: [LegoPiece] = []
-    var legoPieces: [LegoPiece] = LegoPieceMockData.pieces
+    private var legoPieces: [LegoPiece] = []
+    //private var legoPieces: [LegoPiece] = LegoPieceMockData.pieces
     var isLoading = false
     
     init() {
-        // get data and set to legoPieces array
     }
     
     func getInventoryPieces() {
         isLoading = true
         
-        // TODO: invoke function in manager to retrieve data and populate legoPieces array
+        let piecesFromDatabase = LegoPieceDBManager.shared.getAllPieces()
+        
+        // update existing pieces or add new ones
+        for databasePiece in piecesFromDatabase {
+            if let index = legoPieces.firstIndex(where: { $0.id == databasePiece.id }) {
+                legoPieces[index] = databasePiece
+            } else {
+                legoPieces.append(databasePiece)
+            }
+        }
+        
+        isLoading = false
+    }
+    
+    func getAllPieces() -> [LegoPiece] {
+        return legoPieces
     }
 }
