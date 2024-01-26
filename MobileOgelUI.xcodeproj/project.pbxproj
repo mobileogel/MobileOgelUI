@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		795062C42B585CDE006B5E9A /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 795062C32B585CDE006B5E9A /* db.sqlite */; };
+		795062C62B585CEB006B5E9A /* swiftLocalDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795062C52B585CEB006B5E9A /* swiftLocalDB.swift */; };
+		795062C82B585CF5006B5E9A /* getInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795062C72B585CF5006B5E9A /* getInstructions.swift */; };
+		79BC47902B5CB31A00FA485A /* Meow in Frameworks */ = {isa = PBXBuildFile; productRef = 79BC478F2B5CB31A00FA485A /* Meow */; };
+		79BC47922B5CB31A00FA485A /* MongoClient in Frameworks */ = {isa = PBXBuildFile; productRef = 79BC47912B5CB31A00FA485A /* MongoClient */; };
+		79BC47942B5CB31A00FA485A /* MongoCore in Frameworks */ = {isa = PBXBuildFile; productRef = 79BC47932B5CB31A00FA485A /* MongoCore */; };
+		79BC47962B5CB31A00FA485A /* MongoKitten in Frameworks */ = {isa = PBXBuildFile; productRef = 79BC47952B5CB31A00FA485A /* MongoKitten */; };
 		79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */; };
 		79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABC02AF4B29F005C22EA /* LibraryView.swift */; };
 		7A1FA6DE2B583F4500D4C2D9 /* ColourModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FA6DD2B583F4500D4C2D9 /* ColourModule.swift */; };
@@ -37,6 +44,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		795062C32B585CDE006B5E9A /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
+		795062C52B585CEB006B5E9A /* swiftLocalDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = swiftLocalDB.swift; sourceTree = "<group>"; };
+		795062C72B585CF5006B5E9A /* getInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getInstructions.swift; sourceTree = "<group>"; };
 		79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		79E1ABC02AF4B29F005C22EA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		7A1FA6DD2B583F4500D4C2D9 /* ColourModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourModule.swift; sourceTree = "<group>"; };
@@ -72,12 +82,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79BC47942B5CB31A00FA485A /* MongoCore in Frameworks */,
+				79BC47922B5CB31A00FA485A /* MongoClient in Frameworks */,
+				79BC47962B5CB31A00FA485A /* MongoKitten in Frameworks */,
+				79BC47902B5CB31A00FA485A /* Meow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		795062C22B585CC6006B5E9A /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				795062C72B585CF5006B5E9A /* getInstructions.swift */,
+				795062C52B585CEB006B5E9A /* swiftLocalDB.swift */,
+				795062C32B585CDE006B5E9A /* db.sqlite */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		7A1FA6D82B4F0A9300D4C2D9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +152,7 @@
 		C4CF89532AF496AB00034239 /* MobileOgelUI */ = {
 			isa = PBXGroup;
 			children = (
+				795062C22B585CC6006B5E9A /* Database */,
 				7A1FA6D82B4F0A9300D4C2D9 /* Models */,
 				C4FEEA0D2B3A1AA4000E7C3C /* ViewModel */,
 				C4CF89622AF4976B00034239 /* Views */,
@@ -193,6 +218,10 @@
 			);
 			name = MobileOgelUI;
 			packageProductDependencies = (
+				79BC478F2B5CB31A00FA485A /* Meow */,
+				79BC47912B5CB31A00FA485A /* MongoClient */,
+				79BC47932B5CB31A00FA485A /* MongoCore */,
+				79BC47952B5CB31A00FA485A /* MongoKitten */,
 			);
 			productName = MobileOgelUI;
 			productReference = C4CF89512AF496AB00034239 /* MobileOgelUI.app */;
@@ -223,6 +252,7 @@
 			);
 			mainGroup = C4CF89482AF496AB00034239;
 			packageReferences = (
+				79BC478E2B5CB31A00FA485A /* XCRemoteSwiftPackageReference "MongoKitten" */,
 			);
 			productRefGroup = C4CF89522AF496AB00034239 /* Products */;
 			projectDirPath = "";
@@ -240,6 +270,7 @@
 			files = (
 				7A1FA6E42B58735700D4C2D9 /* colors.csv in Resources */,
 				C4CF895C2AF496AD00034239 /* Preview Assets.xcassets in Resources */,
+				795062C42B585CDE006B5E9A /* db.sqlite in Resources */,
 				C4CF89592AF496AD00034239 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +288,7 @@
 				7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */,
 				C4B184872B519137008EB167 /* LegoPieceViewModel.swift in Sources */,
 				C4A1F33A2B55AF830017A1A3 /* LegoPiece.swift in Sources */,
+				795062C62B585CEB006B5E9A /* swiftLocalDB.swift in Sources */,
 				79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */,
 				C4FEEA172B3EB57A000E7C3C /* CameraView.swift in Sources */,
 				C4A1F33D2B55E2550017A1A3 /* NavButton.swift in Sources */,
@@ -275,6 +307,7 @@
 				C4CF89642AF4978700034239 /* SplashView.swift in Sources */,
 				C4A1F34C2B563C000017A1A3 /* CoreMLManager.swift in Sources */,
 				C4A1F34A2B5624F90017A1A3 /* LegoDetector.mlpackage in Sources */,
+				795062C82B585CF5006B5E9A /* getInstructions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +437,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
 				DEVELOPMENT_TEAM = 354D93C92Q;
+
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
@@ -434,7 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 354D93C92Q;
+				DEVELOPMENT_TEAM = 6T8ZXPAS5V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
@@ -479,6 +513,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		79BC478E2B5CB31A00FA485A /* XCRemoteSwiftPackageReference "MongoKitten" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/orlandos-nl/MongoKitten.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		79BC478F2B5CB31A00FA485A /* Meow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79BC478E2B5CB31A00FA485A /* XCRemoteSwiftPackageReference "MongoKitten" */;
+			productName = Meow;
+		};
+		79BC47912B5CB31A00FA485A /* MongoClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79BC478E2B5CB31A00FA485A /* XCRemoteSwiftPackageReference "MongoKitten" */;
+			productName = MongoClient;
+		};
+		79BC47932B5CB31A00FA485A /* MongoCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79BC478E2B5CB31A00FA485A /* XCRemoteSwiftPackageReference "MongoKitten" */;
+			productName = MongoCore;
+		};
+		79BC47952B5CB31A00FA485A /* MongoKitten */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79BC478E2B5CB31A00FA485A /* XCRemoteSwiftPackageReference "MongoKitten" */;
+			productName = MongoKitten;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C4CF89492AF496AB00034239 /* Project object */;
 }
