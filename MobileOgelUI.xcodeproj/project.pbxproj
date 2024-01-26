@@ -274,6 +274,7 @@
 			files = (
 				7A1FA6E42B58735700D4C2D9 /* colors.csv in Resources */,
 				C4CF895C2AF496AD00034239 /* Preview Assets.xcassets in Resources */,
+				795062C42B585CDE006B5E9A /* db.sqlite in Resources */,
 				C4CF89592AF496AD00034239 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,7 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 4RPYL3R62A;
+				DEVELOPMENT_TEAM = 354D93C92Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
@@ -471,7 +472,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 4RPYL3R62A;
+				DEVELOPMENT_TEAM = 6T8ZXPAS5V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
