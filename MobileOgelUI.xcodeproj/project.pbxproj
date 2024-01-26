@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		795062C42B585CDE006B5E9A /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 795062C32B585CDE006B5E9A /* db.sqlite */; };
-		795062C62B585CEB006B5E9A /* swiftLocalDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795062C52B585CEB006B5E9A /* swiftLocalDB.swift */; };
-		795062C82B585CF5006B5E9A /* getInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795062C72B585CF5006B5E9A /* getInstructions.swift */; };
+		795062C62B585CEB006B5E9A /* LegoPieceDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795062C52B585CEB006B5E9A /* LegoPieceDBManager.swift */; };
+		795062C82B585CF5006B5E9A /* LegoSetDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795062C72B585CF5006B5E9A /* LegoSetDBManager.swift */; };
 		79BC47902B5CB31A00FA485A /* Meow in Frameworks */ = {isa = PBXBuildFile; productRef = 79BC478F2B5CB31A00FA485A /* Meow */; };
 		79BC47922B5CB31A00FA485A /* MongoClient in Frameworks */ = {isa = PBXBuildFile; productRef = 79BC47912B5CB31A00FA485A /* MongoClient */; };
 		79BC47942B5CB31A00FA485A /* MongoCore in Frameworks */ = {isa = PBXBuildFile; productRef = 79BC47932B5CB31A00FA485A /* MongoCore */; };
@@ -22,6 +21,8 @@
 		7ABB01692B59FFCD005211F3 /* ClassToNameMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB01682B59FFCD005211F3 /* ClassToNameMap.swift */; };
 		7ABB016B2B5AD477005211F3 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB016A2B5AD477005211F3 /* utils.swift */; };
 		7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6AB902AF82E66006C5BD7 /* Styling.swift */; };
+		C41AF4982B62BF880008F6B5 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = C41AF4972B62BF880008F6B5 /* SQLite */; };
+		C41AF49A2B630CB90008F6B5 /* CapturedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41AF4992B630CB90008F6B5 /* CapturedImageViewModel.swift */; };
 		C4797B272B572E8C009B98A7 /* LegoDetectorNew.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */; };
 		C4A1F3382B55AEFD0017A1A3 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */; };
 		C4A1F33A2B55AF830017A1A3 /* LegoPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1F3392B55AF830017A1A3 /* LegoPiece.swift */; };
@@ -44,9 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		795062C32B585CDE006B5E9A /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
-		795062C52B585CEB006B5E9A /* swiftLocalDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = swiftLocalDB.swift; sourceTree = "<group>"; };
-		795062C72B585CF5006B5E9A /* getInstructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getInstructions.swift; sourceTree = "<group>"; };
+		795062C52B585CEB006B5E9A /* LegoPieceDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegoPieceDBManager.swift; sourceTree = "<group>"; };
+		795062C72B585CF5006B5E9A /* LegoSetDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegoSetDBManager.swift; sourceTree = "<group>"; };
 		79E1ABBE2AF4A8C3005C22EA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		79E1ABC02AF4B29F005C22EA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		7A1FA6DD2B583F4500D4C2D9 /* ColourModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourModule.swift; sourceTree = "<group>"; };
@@ -55,6 +55,7 @@
 		7ABB01682B59FFCD005211F3 /* ClassToNameMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClassToNameMap.swift; path = MobileOgelUI/models/ClassToNameMap.swift; sourceTree = SOURCE_ROOT; };
 		7ABB016A2B5AD477005211F3 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = utils.swift; path = MobileOgelUI/models/utils.swift; sourceTree = SOURCE_ROOT; };
 		7AD6AB902AF82E66006C5BD7 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
+		C41AF4992B630CB90008F6B5 /* CapturedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedImageViewModel.swift; sourceTree = "<group>"; };
 		C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LegoDetectorNew.mlpackage; sourceTree = "<group>"; };
 		C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		C4A1F3392B55AF830017A1A3 /* LegoPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoPiece.swift; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C41AF4982B62BF880008F6B5 /* SQLite in Frameworks */,
 				79BC47942B5CB31A00FA485A /* MongoCore in Frameworks */,
 				79BC47922B5CB31A00FA485A /* MongoClient in Frameworks */,
 				79BC47962B5CB31A00FA485A /* MongoKitten in Frameworks */,
@@ -95,9 +97,8 @@
 		795062C22B585CC6006B5E9A /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				795062C72B585CF5006B5E9A /* getInstructions.swift */,
-				795062C52B585CEB006B5E9A /* swiftLocalDB.swift */,
-				795062C32B585CDE006B5E9A /* db.sqlite */,
+				795062C72B585CF5006B5E9A /* LegoSetDBManager.swift */,
+				795062C52B585CEB006B5E9A /* LegoPieceDBManager.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -192,6 +193,7 @@
 			children = (
 				7A1FA6E52B5884FD00D4C2D9 /* res */,
 				C4FEEA142B3A2447000E7C3C /* CameraViewModel.swift */,
+				C41AF4992B630CB90008F6B5 /* CapturedImageViewModel.swift */,
 				C4B184862B519137008EB167 /* LegoPieceViewModel.swift */,
 				C4B184882B519BA8008EB167 /* LegoSetViewModel.swift */,
 				C4A1F34B2B563C000017A1A3 /* CoreMLManager.swift */,
@@ -222,6 +224,7 @@
 				79BC47912B5CB31A00FA485A /* MongoClient */,
 				79BC47932B5CB31A00FA485A /* MongoCore */,
 				79BC47952B5CB31A00FA485A /* MongoKitten */,
+				C41AF4972B62BF880008F6B5 /* SQLite */,
 			);
 			productName = MobileOgelUI;
 			productReference = C4CF89512AF496AB00034239 /* MobileOgelUI.app */;
@@ -253,6 +256,7 @@
 			mainGroup = C4CF89482AF496AB00034239;
 			packageReferences = (
 				79BC478E2B5CB31A00FA485A /* XCRemoteSwiftPackageReference "MongoKitten" */,
+				C41AF4962B62BF880008F6B5 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 			);
 			productRefGroup = C4CF89522AF496AB00034239 /* Products */;
 			projectDirPath = "";
@@ -288,7 +292,7 @@
 				7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */,
 				C4B184872B519137008EB167 /* LegoPieceViewModel.swift in Sources */,
 				C4A1F33A2B55AF830017A1A3 /* LegoPiece.swift in Sources */,
-				795062C62B585CEB006B5E9A /* swiftLocalDB.swift in Sources */,
+				795062C62B585CEB006B5E9A /* LegoPieceDBManager.swift in Sources */,
 				79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */,
 				C4FEEA172B3EB57A000E7C3C /* CameraView.swift in Sources */,
 				C4A1F33D2B55E2550017A1A3 /* NavButton.swift in Sources */,
@@ -299,6 +303,7 @@
 				7ABB01672B59FB4B005211F3 /* OfficialLegoColourEnum.swift in Sources */,
 				C4FEEA152B3A2447000E7C3C /* CameraViewModel.swift in Sources */,
 				7ABB016B2B5AD477005211F3 /* utils.swift in Sources */,
+				C41AF49A2B630CB90008F6B5 /* CapturedImageViewModel.swift in Sources */,
 				C4CF89662AF497BB00034239 /* MainView.swift in Sources */,
 				79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */,
 				C4797B272B572E8C009B98A7 /* LegoDetectorNew.mlpackage in Sources */,
@@ -307,7 +312,7 @@
 				C4CF89642AF4978700034239 /* SplashView.swift in Sources */,
 				C4A1F34C2B563C000017A1A3 /* CoreMLManager.swift in Sources */,
 				C4A1F34A2B5624F90017A1A3 /* LegoDetector.mlpackage in Sources */,
-				795062C82B585CF5006B5E9A /* getInstructions.swift in Sources */,
+				795062C82B585CF5006B5E9A /* LegoSetDBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +442,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
 				DEVELOPMENT_TEAM = 354D93C92Q;
-
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
@@ -452,7 +456,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = group44.MobileOgelUI2;
+				PRODUCT_BUNDLE_IDENTIFIER = group44.MobileOgelUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -483,7 +487,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = group44.MobileOgelUI2;
+				PRODUCT_BUNDLE_IDENTIFIER = group44.MobileOgelUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -523,6 +527,14 @@
 				minimumVersion = 7.8.0;
 			};
 		};
+		C41AF4962B62BF880008F6B5 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -545,6 +557,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 79BC478E2B5CB31A00FA485A /* XCRemoteSwiftPackageReference "MongoKitten" */;
 			productName = MongoKitten;
+		};
+		C41AF4972B62BF880008F6B5 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C41AF4962B62BF880008F6B5 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -10,6 +10,7 @@ import AVFoundation
 
 struct MainView: View {
     @Environment(CameraViewModel.self) private var cameraViewModel
+    @Environment(LegoPieceViewModel.self) private var legoPieceViewModel
 
     var body: some View {
         NavigationStack{
@@ -34,7 +35,7 @@ struct MainView: View {
                 
                 // display captured image if one is taken
                 if cameraViewModel.isImageSelected {
-                    CapturedImageView(cameraViewModel: cameraViewModel)
+                    CapturedImageView(viewModel: CapturedImageViewModel(capturedImage: cameraViewModel.capturedImage ?? nil), legoPieceViewModel: legoPieceViewModel)
                 }
                 
                 if cameraViewModel.loadCamera{

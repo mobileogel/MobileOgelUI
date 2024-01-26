@@ -10,12 +10,14 @@ import SwiftUI
 struct SplashView: View {
     @State var isActive: Bool = false
     @State private var cameraViewModel = CameraViewModel()
+    @State private var legoPieceViewModel = LegoPieceViewModel()
     
     var body: some View {
         ZStack {
             if self.isActive {
                 MainView()
                     .environment(cameraViewModel)
+                    .environment(legoPieceViewModel)
                 //HomeView()
             } else {
                 Color.white.edgesIgnoringSafeArea(.all)
@@ -30,6 +32,7 @@ struct SplashView: View {
                 // could do animation here
                 self.isActive = true
             }
+
             Task{
                 let t = await connectDbAndFetchAll()
                 print(t as Any)

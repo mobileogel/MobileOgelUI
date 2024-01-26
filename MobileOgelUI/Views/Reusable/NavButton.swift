@@ -18,14 +18,20 @@ struct NavButton<Destination: View>: View {
             destination: destination.navigationBarBackButtonHidden(true),
             label: {
                 Text(title)
+                /*
                     .bold()
                     .foregroundColor(.black)
                     .font(.title3)
                     .padding(EdgeInsets(top: 24, leading: 12, bottom: 24, trailing: 12))
                     .frame(maxWidth: width)
+                 */
+                    .modifier(ButtonTextModifier(width: width))
             })
+        /*
         .background(Color(red: 0.859, green: 0.929, blue: 0.702))
         .cornerRadius(cornerRadius)
+         */
+        .modifier(ButtonModifier(cornerRadius: cornerRadius))
     }
 }
 
