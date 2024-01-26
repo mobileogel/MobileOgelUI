@@ -52,8 +52,8 @@ class CoreMLManager {
             
             print("Predicted pieces: \(predictedPieces)")
             
-            //legoPieces = self.buildLegoPieceList(image: image, results: results)
-            legoPieces = LegoPieceMockData.pieces
+            legoPieces = self.buildLegoPieceList(image: image, results: results)
+            //legoPieces = LegoPieceMockData.pieces
             
         }
         

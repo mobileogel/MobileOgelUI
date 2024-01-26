@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct CapturedImageView: View {
-    var cameraViewModel: CameraViewModel
-    var legoPieceViewModel: LegoPieceViewModel = LegoPieceViewModel()
-    @State private var isProcessing = false
+    var viewModel: CapturedImageViewModel
+    var legoPieceViewModel: LegoPieceViewModel
+    @State var isReadyToNav = false
     
     var body: some View {
         NavigationStack{
             ZStack {
                 Color.white // need some background color here to separate pages
-                if isProcessing {
+                if viewModel.isProcessing {
                     LoaderView()
                 } else {
                     VStack(spacing: 20) {
@@ -29,7 +29,7 @@ struct CapturedImageView: View {
                         
                         // display image based on screen size
                         GeometryReader { geometry in
-                            Image(uiImage: cameraViewModel.capturedImage!)
+                            Image(uiImage: viewModel.capturedImage!)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(
@@ -39,23 +39,25 @@ struct CapturedImageView: View {
                                 .padding(20)
                         }
                         
-                        NavButton(destination: PieceInventoryView().environment(legoPieceViewModel), title: "Detect Pieces", width: 200, cornerRadius: 10)
-                            .simultaneousGesture(TapGesture().onEnded {
-                                isProcessing = true
-                                print("detect pieces button tapped")
-                                
-                                // perform the processing asynchronously
-                                DispatchQueue.global().async {
-//                                    legoPieceViewModel.legoPieces = cameraViewModel.processCapturedImage()
-                                    // update the UI on the main thread
-                                    DispatchQueue.main.async {
-                                        isProcessing = false
-                                        
-                                        // later - navigate to PieceInventoryView here if needed
-                                    }
-                                }
-                            })
-                            .padding(.bottom, 20)
+                        Button{
+                            print("Detect pieces button tapped")
+                            viewModel.processCapturedImage {
+                                isReadyToNav = true
+                                print("\nwe ready to nav\n")
+                            }
+                        } label: {
+                            {
+                                Text("Detect pieces")
+                                    .modifier(ButtonTextModifier(width: 200))
+                            }()
+                                .modifier(ButtonModifier(cornerRadius: 10))
+                            .padding(20)
+                        }
+                        .navigationDestination(isPresented: $isReadyToNav){
+                            PieceInventoryView()
+                                .navigationBarBackButtonHidden(true)
+                            
+                        }
                     }
                 }
             }

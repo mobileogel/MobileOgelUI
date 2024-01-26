@@ -6,7 +6,7 @@ class LegoPieceDBManager {
     static let shared = LegoPieceDBManager()
     private let db: Connection?
     private let piecesTable = Table("pieces")
-    private let id = Expression<String>("id")
+    private let id = Expression<Int>("id")
     private let imageName = Expression<String>("imageName")
     private let pieceName = Expression<String>("pieceName")
     private let colour = Expression<String>("colour")
@@ -28,7 +28,7 @@ class LegoPieceDBManager {
         guard let db = db else { return }
         do {
             try db.run(piecesTable.create { table in
-                table.column(id, primaryKey: true)
+                table.column(id, primaryKey: .autoincrement)
                 table.column(imageName)
                 table.column(pieceName)
                 table.column(colour)
@@ -48,7 +48,11 @@ class LegoPieceDBManager {
                 updatePiece(name: piece.pieceName, newQuantity: piece.quantity)
             } else {
                 // piece doesn't exist, add new entry
-                let insertPiece = piecesTable.insert(self.imageName <- piece.imageName, self.pieceName <- piece.pieceName, self.colour <- piece.colour, self.quantity <- piece.quantity)
+                let insertPiece = piecesTable.insert(
+                    self.imageName <- piece.imageName,
+                    self.pieceName <- piece.pieceName,
+                    self.colour <- piece.officialColour.rawValue,
+                    self.quantity <- piece.quantity)
                 try db.run(insertPiece)
             }
         } catch {
@@ -90,13 +94,28 @@ class LegoPieceDBManager {
                 let colour = try pieceRow.get(self.colour)
                 let quantity = try pieceRow.get(self.quantity)
                 
-                let piece = LegoPiece(imageName: imageName, pieceName: pieceName, colour: colour, quantity: quantity)
+                let piece = LegoPiece(
+                    imageName: imageName,
+                    pieceName: pieceName,
+                    quantity: quantity,
+                    officialColour: LegoColour(rawValue: colour) ?? .black
+                )
                 allPieces.append(piece)
             }
         } catch {
             print("Error retrieving pieces: \(error)")
         }
         return allPieces
+    }
+    
+    func deleteAllPieces() {
+        guard let db = db else { return }
+        let deleteAll = piecesTable.delete()
+        do {
+            try db.run(deleteAll)
+        } catch {
+            print("Error deleting all pieces: \(error)")
+        }
     }
 }
 

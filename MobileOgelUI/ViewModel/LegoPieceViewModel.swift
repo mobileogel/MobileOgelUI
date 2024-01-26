@@ -24,7 +24,7 @@ import Observation
         
         // update existing pieces or add new ones
         for databasePiece in piecesFromDatabase {
-            if let index = legoPieces.firstIndex(where: { $0.id == databasePiece.id }) {
+            if let index = legoPieces.firstIndex(where: { $0.pieceName == databasePiece.pieceName }) {
                 legoPieces[index] = databasePiece
             } else {
                 legoPieces.append(databasePiece)

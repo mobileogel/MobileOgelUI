@@ -15,7 +15,6 @@ import Observation
     var isImagePickerPresented = false
     var isImageSelected = false
     var loadCamera = false
-    private var coreMLManager = CoreMLManager()
     
     // handle logic related to showing instructions
     func handleInstructions() {
@@ -33,14 +32,4 @@ import Observation
         loadCamera = false
         isShowingInstructions = false
     }
-    
-    // send captured image to model for processing
-    func processCapturedImage() -> [LegoPiece] {
-            if let image = capturedImage {
-                print("in process captured image")
-                return coreMLManager.classifyImage(image)
-            }
-        
-        return []
-        }
 }
