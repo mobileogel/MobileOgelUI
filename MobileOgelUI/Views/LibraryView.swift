@@ -125,13 +125,13 @@ struct MissingPiecesView: View {
             }
             if visible {
                 ForEach(missingPieces, id: \.self) { piece in
-                    PieceTileView(piece: piece).scaleEffect(1)
+                    PieceTileView(piece: piece, isEditMode: nil, onDelete: nil)
+                        .scaleEffect(1)
                         .padding(.bottom, 10)
                 }
             }
         }
     }
-    
 }
 
 struct LibraryView_Previews: PreviewProvider {

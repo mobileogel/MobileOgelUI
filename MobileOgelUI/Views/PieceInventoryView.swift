@@ -9,92 +9,90 @@ import SwiftUI
 
 struct PieceInventoryView: View {
     @Environment(LegoPieceViewModel.self) private var viewModel
+    @State private var isEditMode = false
+    @State private var showPopup = false
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                HeaderView(title: "My Pieces")
-                
-                if viewModel.isLoading {
-                    LoaderView()
-                } else {
+        ZStack {
+            NavigationStack {
+                VStack {
+                    HeaderView(title: "My Pieces")
                     
-                    if viewModel.getAllPieces().isEmpty {
-                        Spacer()
-                        Text("Nothing here! Please scan your pieces to start.")
-                            .foregroundStyle(Color.gray)
-                        Spacer()
+                    if viewModel.isLoading {
+                        LoaderView()
                     } else {
-                        ScrollView {
-                            LazyVStack(spacing: 20) {
-                                ForEach(viewModel.getAllPieces(), id: \.id) { piece in
-                                    PieceTileView(piece: piece)
+                        if viewModel.getAllPieces().isEmpty {
+                            Spacer()
+                            Text("Nothing here! Please scan your pieces to start.")
+                                .foregroundStyle(Color.gray)
+                            Spacer()
+                        } else {
+                            HStack {
+                                if isEditMode {
+                                    ActionButton(title: "Add Piece", buttonColour: Color.green, action: {
+                                        showPopup.toggle()
+                                    })
+                                    .disabled(showPopup)
+                                    .padding(EdgeInsets(top: 20, leading: 30, bottom: 0, trailing: 0))
                                 }
+                                
+                                Spacer()
+                                
+                                ActionButton(title: isEditMode ? "Done" : "Edit", buttonColour: Color.blue, action: {
+                                    isEditMode.toggle()
+                                })
+                                .disabled(showPopup)
+                                .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 30))
                             }
-                            .padding(5)
+                            
+                            ScrollView {
+                                LazyVStack(spacing: 20) {
+                                    ForEach(viewModel.getAllPieces(), id: \.id) { piece in
+                                        PieceTileView(piece: piece, isEditMode: isEditMode, showPopup: showPopup, onDelete: {
+                                            // delete action
+                                            viewModel.deletePiece(piece)
+                                        })
+                                    }
+                                }
+                                .padding(5)
+                            }
+                            .padding(20)
+                            
+                            NavButton(destination: LibraryView(), title:"See Build Options" , width: 200, cornerRadius: 25)
+                                .disabled(isEditMode)
                         }
-                        .padding(20)
-                        
-                        NavButton(destination: LibraryView(), title:"See Build Options" , width: 200, cornerRadius: 25)
                     }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color(red: 0.89, green: 0.937, blue: 1.0))
+                .onAppear {
+                    // retrieve and update Lego pieces when the view appears
+                    viewModel.getInventoryPieces()
+                }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(red: 0.89, green: 0.937, blue: 1.0))
-            .onAppear {
-                // retrieve and update Lego pieces when the view appears
-                viewModel.getInventoryPieces()
+            if showPopup {
+                AddPiecePopup(vm: viewModel, showPopup: $showPopup)
+                    .zIndex(1) // place above navstack if i understand hierarchy correctly
             }
         }
     }
 }
 
-struct PieceTileView: View {
-    var piece: LegoPiece
+struct ActionButton: View {
+    let title: String
+    let buttonColour: Color
+    let action: () -> Void
     
     var body: some View {
-        HStack {
-            Image(piece.imageName)
-                .resizable()
-                .frame(width: 80, height:80)
-            
-            VStack(alignment: .leading) {
-                Text(piece.pieceName)
-                    .foregroundStyle(.black)
-                    .font(.headline)
-                Text("Quantity: \(piece.quantity)")
-                    .foregroundStyle(.black)
-                Text("Colour: \(piece.officialColour.rawValue)")
-                    .foregroundStyle(.black)
-            }
-            
-            Spacer()
-        }
-        .modifier(TileViewModifier())
-    }
-}
-
-
-struct HeaderView: View {
-    let title: LocalizedStringResource
-    
-    var body: some View {
-        HStack{
+        Button(action: action) {
             Text(title)
-                .font(.largeTitle)
-                .bold()
-                .foregroundStyle(.black)
-                .padding(.leading)
-            Spacer()
-            
-            NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true)) {
-                Image(systemName: "house.fill")
-                    .font(.largeTitle)
-                    .padding(.trailing)
-                    .foregroundColor(.black)
-            }
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding(10)
+                .background(buttonColour)
+                .cornerRadius(8)
         }
-        .padding(.top)
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -103,4 +101,3 @@ struct PieceInventoryView_Previews: PreviewProvider {
         PieceInventoryView()
     }
 }
-
