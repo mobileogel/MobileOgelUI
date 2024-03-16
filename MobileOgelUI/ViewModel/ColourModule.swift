@@ -17,25 +17,30 @@ class ColourModule {
         if let url = Bundle.main.url(forResource: "colors2", withExtension: "csv") {
             if let data = try? String(contentsOf: url) {
                 let rows = data.components(separatedBy: "\n")
-                for row in rows.dropFirst(1) {
+                for row in rows.dropFirst(1) { // Drop the header row
                     let columns = row.components(separatedBy: ",")
                     if columns.count >= 4 {
                         let name = columns[0]
-                        let rgbValues = columns.suffix(0).compactMap({ Int($0) })
+                        let red = Int(columns[1]) ?? 0
+                        let green = Int(columns[2]) ?? 0
+                        let blue = Int(columns[3]) ?? 0
+                        
                         let color = UIColor(
-                            red: CGFloat(rgbValues[0]) / 255.0,
-                            green: CGFloat(rgbValues[1]) / 255.0,
-                            blue: CGFloat(rgbValues[2]) / 255.0,
+                            red: CGFloat(red) / 255.0,
+                            green: CGFloat(green) / 255.0,
+                            blue: CGFloat(blue) / 255.0,
                             alpha: 1.0
                         )
-                    
+                        
                         rgbDict[name] = color
-            
                     }
                 }
             }
         }
+        print("ge")
+        print(rgbDict)
     }
+
 
     func euclideanDistance(color1: UIColor, color2: UIColor) -> CGFloat {
         let components1 = color1.cgColor.components!
