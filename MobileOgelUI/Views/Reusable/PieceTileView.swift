@@ -35,10 +35,10 @@ struct PieceTileView: View {
                 Button(action: {
                     onDelete?() // call onDelete closure when button is clicked
                 }) {
-                    Image(systemName: "trash")
+                    Image(systemName: "chevron.down")
                         .font(.system(size: 24))
                         .bold()
-                        .foregroundColor(.red)
+                        .foregroundColor(.black)
                 }
                 .disabled(showPopup!)
             }
