@@ -15,6 +15,7 @@ import UIKit
     
     init(capturedImage: UIImage?) {
         self.capturedImage = capturedImage
+        
     }
     
     func processCapturedImage(completion: @escaping () -> Void) {
@@ -30,7 +31,8 @@ import UIKit
         DispatchQueue.global().async { [self] in
             LegoPieceDBManager.shared.deleteAllPieces()
             
-            let detectedPieces = coreMLManager.classifyImage(image)
+            let detectionResults = coreMLManager.classifyImage(image)
+            let detectedPieces = detectionResults.legoPieces
             
             // persist detected pieces
             if !detectedPieces.isEmpty {
@@ -39,11 +41,14 @@ import UIKit
                 }
             }
             
+            DetectionDataManager.shared.updateData(with: ["capturedImage": image])
+            
             // update UI on main thread
             DispatchQueue.main.async {
                 self.isProcessing = false
                 completion()
             }
         }
+        
     }
 }

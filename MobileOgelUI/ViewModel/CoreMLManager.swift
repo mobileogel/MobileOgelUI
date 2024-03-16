@@ -12,6 +12,7 @@ import Vision
 
 class CoreMLManager {
     private let model: VNCoreMLModel
+    private let cm = ColourModule()
     
     init() {
         
@@ -29,8 +30,9 @@ class CoreMLManager {
         
     }
     
-    func classifyImage(_ image: UIImage) -> [LegoPiece] {
+    func classifyImage(_ image: UIImage) -> CVClassificationResult {
         var legoPieces: [LegoPiece] = []
+        var cvResults: [VNRecognizedObjectObservation] = []
         let request = VNCoreMLRequest(model: model) { (request, error) in
             // handle completion of request
             if let error = error {
@@ -44,6 +46,8 @@ class CoreMLManager {
                 return
             }
             
+            DetectionDataManager.shared.updateData(with: ["modelResults": results])
+            
             print(results)
             
             let predictedPieces = results.map { observation in
@@ -53,6 +57,7 @@ class CoreMLManager {
             print("Predicted pieces: \(predictedPieces)")
             
             legoPieces = self.buildLegoPieceList(image: image, results: results)
+            cvResults = results
             //legoPieces = LegoPieceMockData.pieces
             
         }
@@ -71,11 +76,11 @@ class CoreMLManager {
             print("Error performing image request: \(error)")
         }
         
-        return legoPieces
+        return CVClassificationResult(legoPieces: legoPieces, detectionInfo: cvResults)
     }
     
     func infer_colours(img: CGImage, detection: VNRecognizedObjectObservation) -> String {
-        let cm = ColourModule()
+
         
         return cm.determineColourByRandomSample(img: img, observation: detection)!
         
@@ -130,4 +135,9 @@ class CoreMLManager {
         }
         return bricksDetectedObjects
     }
+}
+
+struct CVClassificationResult {
+    let legoPieces: [LegoPiece]
+    let detectionInfo: [VNRecognizedObjectObservation]
 }

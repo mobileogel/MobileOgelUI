@@ -14,20 +14,21 @@ class ColourModule {
     var rgbDict: [String: UIColor] = [:]
 
     init() {
-        if let url = Bundle.main.url(forResource: "colors", withExtension: "csv") {
+        if let url = Bundle.main.url(forResource: "colors2", withExtension: "csv") {
             if let data = try? String(contentsOf: url) {
                 let rows = data.components(separatedBy: "\n")
-                for row in rows.dropFirst(2) {
+                for row in rows.dropFirst(1) {
                     let columns = row.components(separatedBy: ",")
-                    if columns.count >= 5 {
-                        let name = columns[1]
-                        let rgbValues = columns.suffix(3).compactMap({ Int($0) })
+                    if columns.count >= 4 {
+                        let name = columns[0]
+                        let rgbValues = columns.suffix(0).compactMap({ Int($0) })
                         let color = UIColor(
                             red: CGFloat(rgbValues[0]) / 255.0,
                             green: CGFloat(rgbValues[1]) / 255.0,
                             blue: CGFloat(rgbValues[2]) / 255.0,
                             alpha: 1.0
                         )
+                    
                         rgbDict[name] = color
             
                     }
@@ -55,7 +56,8 @@ class ColourModule {
                 closestColor = color
             }
         }
-
+        
+        print(rgbDict.first(where: { $0.value == closestColor })?.key)
         return rgbDict.first(where: { $0.value == closestColor })?.key
     }
 
@@ -88,77 +90,48 @@ class ColourModule {
     }
     //REMEMBER THE COORD SYSTEM IS FLIPPED, DOUBLE CHECK THE CROP VALUES
     func buildProbabilityGradient(img: CGImage, observation: VNRecognizedObjectObservation, gradientInterval: CGFloat = 0.25) -> [UIColor] {
-        
-                
         var pixelList: [UIColor] = []
-        
+
         var xStart = observation.boundingBox.origin.x * CGFloat(img.width)
         var yStart =  (1 - observation.boundingBox.origin.y - observation.boundingBox.height) * CGFloat(img.height)
         let boundingBoxWidth = observation.boundingBox.width * CGFloat(img.width)
         let boundingBoxHeight = observation.boundingBox.height * CGFloat(img.height)
-        
-        let widthInterval = boundingBoxWidth * (gradientInterval / 2)
-        let heightInterval = boundingBoxWidth * (gradientInterval / 2)
-        
-        let boundBoxRect = CGRect(
-            x: xStart,
-            y: yStart,
-            width: boundingBoxWidth,
-            height: boundingBoxHeight
-        )
-        
-        print(observation.boundingBox)
-        print(boundBoxRect)
 
+        let widthInterval = boundingBoxWidth * (gradientInterval / 2)
+        let heightInterval = boundingBoxHeight * (gradientInterval / 2)
 
         for i in 0..<Int(1/gradientInterval) {
-            
             let leftBox = CGRect(x: Int(xStart), y: Int(yStart), width: Int(widthInterval), height: Int(boundingBoxHeight))
             if let leftCroppedImage = img.cropping(to: leftBox) {
-//                print("LEFT CROPPED \(leftCroppedImage)")
                 let pixelValues = extractColors(from: leftCroppedImage)
-                let repeatedValues = [[UIColor]](repeating: pixelValues, count: i+1).flatMap{$0}
-                pixelList += repeatedValues
+                pixelList += pixelValues
             }
 
             let rightBox = CGRect(x: Int(xStart + boundingBoxWidth - widthInterval), y: Int(yStart), width: Int(widthInterval), height: Int(boundingBoxHeight))
-//            print("rb \(rightBox)")
             if let rightCroppedImage = img.cropping(to: rightBox) {
                 let pixelValues = extractColors(from: rightCroppedImage)
-                
-                let repeatedValues = [[UIColor]](repeating: pixelValues, count: i+1).flatMap{$0}
-                pixelList += repeatedValues
+                pixelList += pixelValues
             }
 
-            
-            let upperBox = CGRect(x: Int(xStart + widthInterval), y: Int(yStart + boundingBoxHeight - heightInterval), width: Int((boundingBoxWidth - (2 * widthInterval))), height: Int(heightInterval))
-//            print("ub \(upperBox)")
+            let upperBox = CGRect(x: Int(xStart + widthInterval), y: Int(yStart + boundingBoxHeight - heightInterval), width: Int(boundingBoxWidth - (2 * widthInterval)), height: Int(heightInterval))
             if let upperCroppedImage = img.cropping(to: upperBox) {
                 let pixelValues = extractColors(from: upperCroppedImage)
-                
-                let repeatedValues = [[UIColor]](repeating: pixelValues, count: i+1).flatMap{$0}
-                pixelList += repeatedValues
-            }
-            
-            
-            let lowerBox = CGRect(x: Int((xStart + widthInterval)), y: Int(yStart), width: Int((boundingBoxWidth - (2 * widthInterval))), height: Int(heightInterval))
-//            print("lowb \(lowerBox)")
-            if let lowerCroppedImage = img.cropping(to: lowerBox) {
-                let pixelValues = extractColors(from: lowerCroppedImage)
-                
-                let repeatedValues = [[UIColor]](repeating: pixelValues, count: i+1).flatMap{$0}
-                pixelList += repeatedValues
+                pixelList += pixelValues
             }
 
-            
+            let lowerBox = CGRect(x: Int(xStart + widthInterval), y: Int(yStart), width: Int(boundingBoxWidth - (2 * widthInterval)), height: Int(heightInterval))
+            if let lowerCroppedImage = img.cropping(to: lowerBox) {
+                let pixelValues = extractColors(from: lowerCroppedImage)
+                pixelList += pixelValues
+            }
+
             xStart += widthInterval
-            
             yStart += heightInterval
-            
         }
-        
+
         return pixelList
     }
+
     
     
     public func determineColourByRandomSample(img: CGImage, observation: VNRecognizedObjectObservation, sampleRate: CGFloat = 0.05) -> String? {
@@ -227,9 +200,9 @@ class ColourModule {
                 let a = 1.0
 
                 pixelColours.append(UIColor(red: r, green: g, blue: b, alpha: a))
+
             }
         }
-
         return pixelColours
     }
     

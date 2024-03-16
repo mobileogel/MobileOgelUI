@@ -44,6 +44,7 @@ struct CapturedImageView: View {
                             viewModel.processCapturedImage {
                                 isReadyToNav = true
                                 print("\nwe ready to nav\n")
+                                print(DetectionDataManager.shared.getSharedData())
                             }
                         } label: {
                             {
