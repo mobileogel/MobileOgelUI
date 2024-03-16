@@ -13,7 +13,18 @@ struct PieceTileView: View {
     var showPopup: Bool?
     var onDelete: (() -> Void)? // closure to handle delete action, optional
     
+    @State var editedQuantity: Int
+    
+    init(piece: LegoPiece, isEditMode: Bool? = nil, showPopup: Bool? = nil, onDelete: (() -> Void)? = nil) {
+        self.piece = piece
+        self.isEditMode = isEditMode
+        self.showPopup = showPopup
+        self.onDelete = onDelete
+        self._editedQuantity = State(initialValue: piece.quantity)
+    }
+    
     var body: some View {
+
         VStack{ // Added VStack to allow for vertical expansion
             HStack {
                 Image(piece.imageName)
@@ -24,7 +35,7 @@ struct PieceTileView: View {
                     Text(piece.pieceName)
                         .foregroundStyle(.black)
                         .font(.headline)
-                    Text("Quantity: \(piece.quantity)")
+                    Text("Quantity: \(editedQuantity)")
                         .foregroundStyle(.black)
                     Text("Colour: \(piece.officialColour.rawValue)")
                         .foregroundStyle(.black)
@@ -35,33 +46,25 @@ struct PieceTileView: View {
                 if let isEditMode = isEditMode, isEditMode {
                     VStack {
                         HStack {
-                            Stepper(value: $piece.quantity, in: 0...Int.max, label: {
-                                Text("Quantity: \(piece.quantity)")
+                            Stepper(value: $editedQuantity, in: 0...50) {
+                                Text("\(editedQuantity)")
                                     .foregroundStyle(.black)
-                            })
+                            }
+
+                            Button(action: {
+                                onDelete?() // call onDelete closure when button is clicked
+                            }) {
+                                Image(systemName: "trash") // Reverted to display the trash icon
+                                    .font(.system(size: 24))
+                                    .bold()
+                                    .foregroundColor(.red)
+                            }
+                            .disabled(showPopup!)
                         }
-                        
-                        Button(action: {
-                            onDelete?() // call onDelete closure when button is clicked
-                        }) {
-                            Image(systemName: "trash") // Reverted to display the trash icon
-                                .font(.system(size: 24))
-                                .bold()
-                                .foregroundColor(.red)
-                        }
-                        .disabled(showPopup!)
                     }
-                } else {
-                    VStack(alignment: .leading) {
-                        Text(piece.pieceName)
-                            .foregroundStyle(.black)
-                            .font(.headline)
-                        Text("Quantity: \(piece.quantity)")
-                            .foregroundStyle(.black)
-                        Text("Colour: \(piece.officialColour.rawValue)")
-                            .foregroundStyle(.black)
-                    }
-                }.modifier(TileViewModifier())
+                }
+            }
+            .modifier(TileViewModifier())
         }
     }
 }

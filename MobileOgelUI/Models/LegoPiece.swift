@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct LegoPiece: Identifiable, Hashable {
     let id = UUID()
