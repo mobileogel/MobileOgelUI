@@ -14,43 +14,12 @@ struct PieceTileView: View {
     var onDelete: (() -> Void)? // closure to handle delete action, optional
     
     var body: some View {
-        HStack {
-            Image(piece.imageName)
-                .resizable()
-                .frame(width: 80, height:80)
-            
-            VStack(alignment: .leading) {
-                Text(piece.pieceName)
-                    .foregroundStyle(.black)
-                    .font(.headline)
-                Text("Quantity: \(piece.quantity)")
-                    .foregroundStyle(.black)
-                Text("Colour: \(piece.officialColour.rawValue)")
-                    .foregroundStyle(.black)
-            }
-            
-            Spacer()
-            
-            if let isEditMode = isEditMode, isEditMode {
-                VStack {
-                    HStack {
-                        Stepper(value: $piece.quantity, in: 0...Int.max, label: {
-                            Text("Quantity: \(piece.quantity)")
-                                .foregroundStyle(.black)
-                        })
-                    }
-                    
-                    Button(action: {
-                        onDelete?() // call onDelete closure when button is clicked
-                    }) {
-                        Image(systemName: "trash") // Reverted to display the trash icon
-                            .font(.system(size: 24))
-                            .bold()
-                            .foregroundColor(.red)
-                    }
-                    .disabled(showPopup!)
-                }
-            } else {
+        VStack{ // Added VStack to allow for vertical expansion
+            HStack {
+                Image(piece.imageName)
+                    .resizable()
+                    .frame(width: 80, height:80)
+                
                 VStack(alignment: .leading) {
                     Text(piece.pieceName)
                         .foregroundStyle(.black)
@@ -60,6 +29,39 @@ struct PieceTileView: View {
                     Text("Colour: \(piece.officialColour.rawValue)")
                         .foregroundStyle(.black)
                 }
-            }.modifier(TileViewModifier())
+                
+                Spacer()
+                
+                if let isEditMode = isEditMode, isEditMode {
+                    VStack {
+                        HStack {
+                            Stepper(value: $piece.quantity, in: 0...Int.max, label: {
+                                Text("Quantity: \(piece.quantity)")
+                                    .foregroundStyle(.black)
+                            })
+                        }
+                        
+                        Button(action: {
+                            onDelete?() // call onDelete closure when button is clicked
+                        }) {
+                            Image(systemName: "trash") // Reverted to display the trash icon
+                                .font(.system(size: 24))
+                                .bold()
+                                .foregroundColor(.red)
+                        }
+                        .disabled(showPopup!)
+                    }
+                } else {
+                    VStack(alignment: .leading) {
+                        Text(piece.pieceName)
+                            .foregroundStyle(.black)
+                            .font(.headline)
+                        Text("Quantity: \(piece.quantity)")
+                            .foregroundStyle(.black)
+                        Text("Colour: \(piece.officialColour.rawValue)")
+                            .foregroundStyle(.black)
+                    }
+                }.modifier(TileViewModifier())
+        }
     }
 }
