@@ -32,17 +32,34 @@ struct PieceTileView: View {
             Spacer()
             
             if let isEditMode = isEditMode, isEditMode {
-                Button(action: {
-                    onDelete?() // call onDelete closure when button is clicked
-                }) {
-                    Image(systemName: "chevron.down")
-                        .font(.system(size: 24))
-                        .bold()
-                        .foregroundColor(.black)
+                VStack {
+                    HStack {
+                        Stepper(value: $piece.quantity, in: 0...Int.max, label: {
+                            Text("Quantity: \(piece.quantity)")
+                                .foregroundStyle(.black)
+                        })
+                    }
+                    
+                    Button(action: {
+                        onDelete?() // call onDelete closure when button is clicked
+                    }) {
+                        Image(systemName: "trash") // Reverted to display the trash icon
+                            .font(.system(size: 24))
+                            .bold()
+                            .foregroundColor(.red)
+                    }
+                    .disabled(showPopup!)
                 }
-                .disabled(showPopup!)
-            }
-        }
-        .modifier(TileViewModifier())
+            } else {
+                VStack(alignment: .leading) {
+                    Text(piece.pieceName)
+                        .foregroundStyle(.black)
+                        .font(.headline)
+                    Text("Quantity: \(piece.quantity)")
+                        .foregroundStyle(.black)
+                    Text("Colour: \(piece.officialColour.rawValue)")
+                        .foregroundStyle(.black)
+                }
+            }.modifier(TileViewModifier())
     }
 }
