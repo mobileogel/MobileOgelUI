@@ -19,12 +19,15 @@ class ColourModule {
                 let rows = data.components(separatedBy: "\n")
                 for row in rows.dropFirst(1) { // Drop the header row
                     let columns = row.components(separatedBy: ",")
+                    //print(columns)
                     if columns.count >= 4 {
                         let name = columns[0]
                         let red = Int(columns[1]) ?? 0
                         let green = Int(columns[2]) ?? 0
                         let blue = Int(columns[3]) ?? 0
                         
+//                        print("pes")
+//                        print(red, blue, green)
                         let color = UIColor(
                             red: CGFloat(red) / 255.0,
                             green: CGFloat(green) / 255.0,
@@ -37,8 +40,8 @@ class ColourModule {
                 }
             }
         }
-        print("ge")
-        print(rgbDict)
+//        print("ge")
+//        print(rgbDict)
     }
 
 
@@ -53,19 +56,21 @@ class ColourModule {
     func findClosestColor(inputColor: UIColor) -> String? {
         var minDistance = CGFloat.infinity
         var closestColor: UIColor?
+        var closestColorName: String?
 
         for (colorName, color) in rgbDict {
             let distance = euclideanDistance(color1: inputColor, color2: color)
             if distance < minDistance {
                 minDistance = distance
                 closestColor = color
+                closestColorName = colorName
             }
         }
         
-        print(rgbDict.first(where: { $0.value == closestColor })?.key)
+        print(inputColor, closestColor, rgbDict.first(where: { $0.value == closestColor })?.key, closestColorName)
+        //print(rgbDict.first(where: { $0.value == closestColor })?.key)
         return rgbDict.first(where: { $0.value == closestColor })?.key
     }
-
     func printColourRGBPair() {
         for (name, color) in rgbDict {
             print("Name: \(name), RGB: \(color.cgColor.components!)")
@@ -86,7 +91,9 @@ class ColourModule {
                 modeList = [item as! String]
             }
         }
-
+        
+        print("colour list", colours)
+        print("mode list: ", modeList)
         return modeList
     }
 
@@ -96,6 +103,7 @@ class ColourModule {
     //REMEMBER THE COORD SYSTEM IS FLIPPED, DOUBLE CHECK THE CROP VALUES
     func buildProbabilityGradient(img: CGImage, observation: VNRecognizedObjectObservation, gradientInterval: CGFloat = 0.25) -> [UIColor] {
         var pixelList: [UIColor] = []
+        
 
         var xStart = observation.boundingBox.origin.x * CGFloat(img.width)
         var yStart =  (1 - observation.boundingBox.origin.y - observation.boundingBox.height) * CGFloat(img.height)
@@ -108,25 +116,25 @@ class ColourModule {
         for i in 0..<Int(1/gradientInterval) {
             let leftBox = CGRect(x: Int(xStart), y: Int(yStart), width: Int(widthInterval), height: Int(boundingBoxHeight))
             if let leftCroppedImage = img.cropping(to: leftBox) {
-                let pixelValues = extractColors(from: leftCroppedImage)
+                let pixelValues = extractColors(image: leftCroppedImage)
                 pixelList += pixelValues
             }
 
             let rightBox = CGRect(x: Int(xStart + boundingBoxWidth - widthInterval), y: Int(yStart), width: Int(widthInterval), height: Int(boundingBoxHeight))
             if let rightCroppedImage = img.cropping(to: rightBox) {
-                let pixelValues = extractColors(from: rightCroppedImage)
+                let pixelValues = extractColors(image: rightCroppedImage)
                 pixelList += pixelValues
             }
 
             let upperBox = CGRect(x: Int(xStart + widthInterval), y: Int(yStart + boundingBoxHeight - heightInterval), width: Int(boundingBoxWidth - (2 * widthInterval)), height: Int(heightInterval))
             if let upperCroppedImage = img.cropping(to: upperBox) {
-                let pixelValues = extractColors(from: upperCroppedImage)
+                let pixelValues = extractColors(image: upperCroppedImage)
                 pixelList += pixelValues
             }
 
             let lowerBox = CGRect(x: Int(xStart + widthInterval), y: Int(yStart), width: Int(boundingBoxWidth - (2 * widthInterval)), height: Int(heightInterval))
             if let lowerCroppedImage = img.cropping(to: lowerBox) {
-                let pixelValues = extractColors(from: lowerCroppedImage)
+                let pixelValues = extractColors(image: lowerCroppedImage)
                 pixelList += pixelValues
             }
 
@@ -145,6 +153,7 @@ class ColourModule {
         let boxHeight = Int(boundingBox.size.height * CGFloat(img.height))
         let boxWidth =  Int(boundingBox.size.width * CGFloat(img.width))
 
+        DetectionDataManager.shared.updateData(with: ["capturedImage": UIImage(cgImage: img)])
         let numPixelsToSample = determineIdealSampleSize(population: Int(boxWidth * boxHeight))
         print("Box size \(boxWidth * boxHeight) pixels ")
         print("Sampling \(numPixelsToSample) pixels")
@@ -178,38 +187,63 @@ class ColourModule {
     
     
     func blurImage(_ image: CGImage, blurRadius: CGFloat) -> CGImage? {
-        let ciImg = CIImage(cgImage: image)
-        let blur = CIFilter(name: "CIGaussianBlur")
-        blur?.setValue(ciImg, forKey: kCIInputImageKey)
-        blur?.setValue(blurRadius, forKey: kCIInputRadiusKey)
-        if let outputImg = blur?.outputImage {
-            return convertCIImageToCGImage(inputImage: outputImg)
-            
-        }
-        return nil
+//        let ciImg = CIImage(cgImage: image)
+//        let blur = CIFilter(name: "CIGaussianBlur")
+//        blur?.setValue(ciImg, forKey: kCIInputImageKey)
+//        blur?.setValue(blurRadius, forKey: kCIInputRadiusKey)
+//        if let outputImg = blur?.outputImage {
+//            return convertCIImageToCGImage(inputImage: outputImg)
+//            
+//        }
+//        return nil
+        
+        return image
     }
-    
-    func extractColors(from cgImage: CGImage) -> [UIColor] {
-        var pixelColours: [UIColor] = []
-        for x in 0..<cgImage.width {
-            for y in 0..<cgImage.height {
-                let pixelData = cgImage.dataProvider!.data
-                let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
 
-                let pixelInfo: Int = ((cgImage.width * y) + x) * 4
+
+    func extractColors(image: CGImage) -> [UIColor] {
+        var colors: [UIColor] = []
+
+        // Get image dimensions
+        let width = image.width
+        let height = image.height
+
+        // Create a bitmap context to draw the image
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bytesPerPixel = 4
+        let bytesPerRow = bytesPerPixel * width
+        let bitsPerComponent = 8
+        let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue)
+
+        guard let context = context else {
+            return colors
+        }
+
+        // Draw the image into the context
+        context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+
+        // Get pixel data from the context
+        if let data = context.data {
+            let buffer = data.bindMemory(to: UInt32.self, capacity: width * height)
+            for y in 0..<height {
+                for x in 0..<width {
+                    let offset = y * width + x
+                    let color = buffer[offset]
+                    let blue = CGFloat((color >> 16) & 0xFF) / 255.0
+                    let green = CGFloat((color >> 8) & 0xFF) / 255.0
+                    let red = CGFloat(color & 0xFF) / 255.0
+                    let alpha = CGFloat((color >> 24) & 0xFF) / 255.0
                 
+                    let pixelColor = UIColor(red: red, green: green, blue: blue, alpha: alpha)
 
-                let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
-                let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
-                let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
-                let a = 1.0
-
-                pixelColours.append(UIColor(red: r, green: g, blue: b, alpha: a))
-
+                    colors.append(pixelColor)
+                }
             }
         }
-        return pixelColours
+
+        return colors
     }
+
     
     func convertCIImageToCGImage(inputImage: CIImage) -> CGImage? {
         let context = CIContext(options: nil)

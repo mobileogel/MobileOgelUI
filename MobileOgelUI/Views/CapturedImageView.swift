@@ -43,8 +43,8 @@ struct CapturedImageView: View {
                             print("Detect pieces button tapped")
                             viewModel.processCapturedImage {
                                 isReadyToNav = true
-                                print("\nwe ready to nav\n")
-                                print(DetectionDataManager.shared.getSharedData())
+//                                print("\nwe ready to nav\n")
+//                                print(DetectionDataManager.shared.getSharedData())
                             }
                         } label: {
                             {

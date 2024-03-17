@@ -9,11 +9,10 @@ import SwiftUI
 import Vision
 
 struct DetectionView: View {
-    @State var viewModel = DetectionViewModel()
+    @ObservedObject var viewModel = DetectionViewModel()
 
     var body: some View {
         VStack {
-            
             if let capturedImage = viewModel.capturedImage {
                 Image(uiImage: capturedImage)
                     .resizable()
@@ -23,6 +22,10 @@ struct DetectionView: View {
                 Text("No image available")
             }
             NavButton(destination: PieceInventoryView(), title:"See Piece List" , width: 200, cornerRadius: 25)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("SharedDataDidChange"))) { _ in
+            // Handle data change
+            viewModel.handleDataChange()
         }
     }
 

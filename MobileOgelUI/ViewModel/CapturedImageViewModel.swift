@@ -41,7 +41,7 @@ import UIKit
                 }
             }
             
-            DetectionDataManager.shared.updateData(with: ["capturedImage": image])
+//            DetectionDataManager.shared.updateData(with: ["capturedImage": image])
             
             // update UI on main thread
             DispatchQueue.main.async {

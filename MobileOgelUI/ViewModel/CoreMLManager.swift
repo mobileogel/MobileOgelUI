@@ -54,7 +54,7 @@ class CoreMLManager {
                 observation.labels.first?.identifier
             }
             
-            print("Predicted pieces: \(predictedPieces)")
+            //print("Predicted pieces: \(predictedPieces)")
             
             legoPieces = self.buildLegoPieceList(image: image, results: results)
             cvResults = results
@@ -129,11 +129,11 @@ class CoreMLManager {
                 officialColour: piece.color
             )
             
-            print("poopy")
-            print(piece.label)
-            print(imageName)
-            print(legoPiece.imageName)
-            print(legoPiece.officialColour)
+//            print("poopy")
+//            print(piece.label)
+//            print(imageName)
+//            print(legoPiece.imageName)
+//            print(legoPiece.officialColour)
             bricksDetectedObjects.append(legoPiece)
         }
         return bricksDetectedObjects

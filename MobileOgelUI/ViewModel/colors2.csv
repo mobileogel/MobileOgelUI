@@ -1,30 +1,30 @@
 Color,R,G,B
-Black,27,42,52
-Brick Yellow,176,160,111
-Bright Blue,30,90,168
-Bright Green,88,171,65
-Bright Orange,214,121,35
-Bright Purple,211,53,157
-Bright Red,180,0,0
-Bright Yellow,250,200,10
-Bright Yellowish Green,165,202,24
-Cool Yellow,255,236,108
-Dark Azur,70,155,195
-Dark Green,0,133,43
-Dark Stone Grey,100,100,100
-Flame Yellowish Orange,252,172,0
-Light Purple,255,158,205
-Medium Azur,104,195,226
-Medium Blue,115,150,200
-Medium Lavender,160,110,185
-Medium Lilac,68,26,145
-Medium Nougat,170,125,85
-Medium Stone Grey,150,150,150
-New Dark Red,114,0,18
-Reddish Brown,95,49,9
-Sand Green,112,142,124
-Sand Yellow,137,125,98
-Spring Yellowish Green,226,249,154
-Transparent,238,238,238
-Transparent Yellow,250,241,93
-White,244,244,244
+Black,27,42,52,t
+Brick Yellow,176,160,111,t
+Bright Blue,30,90,168,t
+Bright Green,88,171,65,t
+Bright Orange,214,121,35,t
+Bright Purple,211,53,157,t
+Bright Red,180,0,0,t
+Bright Yellow,250,200,10,t
+Bright Yellowish Green,165,202,24,t
+Cool Yellow,255,236,108,t
+Dark Azur,70,155,195,t
+Dark Green,0,133,43,t
+Dark Stone Grey,100,100,100,t
+Flame Yellowish Orange,252,172,0,t
+Light Purple,255,158,205,t
+Medium Azur,104,195,226,t
+Medium Blue,115,150,200,t
+Medium Lavender,160,110,185,t
+Medium Lilac,68,26,145,t
+Medium Nougat,170,125,85,t
+Medium Stone Grey,150,150,150,t
+New Dark Red,114,0,18,t
+Reddish Brown,95,49,9,t
+Sand Green,112,142,124,t
+Sand Yellow,137,125,98,t
+Spring Yellowish Green,226,249,154,t
+Transparent,238,238,238,f
+Transparent Yellow,250,241,93,f
+White,244,244,244,t
