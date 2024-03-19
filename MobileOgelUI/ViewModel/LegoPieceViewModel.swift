@@ -37,4 +37,17 @@ import Observation
     func getAllPieces() -> [LegoPiece] {
         return legoPieces
     }
+    
+    func addNewPiece(imageName: String, pieceName: String, quantity: Int, color: LegoColour) {
+        //TODO: check if image name exists.. for now since there is no standard to the image names added we will use the missing icon
+        let newPiece = LegoPiece(imageName: "missing_pieces_icon", pieceName: pieceName, quantity: quantity, officialColour: color)
+        legoPieces.append(newPiece)
+        LegoPieceDBManager.shared.addPiece(piece: newPiece)
+    }
+    
+    func deletePiece(_ piece: LegoPiece) {
+        legoPieces.removeAll { $0.id == piece.id }
+        LegoPieceDBManager.shared.deletePiece(name: piece.pieceName)
+        
+    }
 }
