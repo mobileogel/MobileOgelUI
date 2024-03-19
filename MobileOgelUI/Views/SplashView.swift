@@ -32,12 +32,7 @@ struct SplashView: View {
                 // could do animation here
                 self.isActive = true
             }
-
-            Task{
-                //for testing
-                await findPerfectMatches(myPieces:LegoPieceAppleMockData.pieces)
-            }
-                
+    
         }
     }
 }
