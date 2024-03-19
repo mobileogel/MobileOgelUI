@@ -6,11 +6,13 @@
 //
 import MongoKitten
 
+
 //rn this function connects to mongo and returns all sets in the db
-func connectDbAndFetchAll() async -> [Document]?{
+//func connectDbAndFetchAll() async -> [Document]?{
+func connectDbAndFetchAll() async -> [[String:Any]]?{
     do {
-        //using the test db bc there's an item in it but otherwise our official db is named 'db'
-        let connectionString = "mongodb+srv://aarongabor4:test1234@aaroncluster.htzvngg.mongodb.net/test"
+        //currently we have 10 sets
+        let connectionString = "mongodb+srv://aarongabor4:test1234@aaroncluster.htzvngg.mongodb.net/db"
         
         // Asynchronous call to connect to MongoDB
         let db = try await MongoDatabase.connect(to: connectionString)
@@ -25,7 +27,20 @@ func connectDbAndFetchAll() async -> [Document]?{
         print("Collection Size: \(count)")
         
         let sets = try await collection.find().drain()
-        return sets
+
+        var formattedSets: [[String: Any]] = []
+
+        for set in sets {
+            // Convert Document to [String: Any]
+            var formattedSet: [String: Any] = [:]
+            for (key, value) in set {
+                formattedSet[key] = value
+            }
+            formattedSets.append(formattedSet)
+        }
+
+        return formattedSets
+        //return sets
         
     } catch {
         print("ERROR CONNECTING TO SERVER: \(error)")
@@ -33,102 +48,81 @@ func connectDbAndFetchAll() async -> [Document]?{
     }
 }
 
-/*import MongoSwiftSync
-
-defer {
-    cleanupMongoSwift()
-}
-
-
-//Global variable to allow the connection to be closed elsewhere
-private let client: MongoClient?
-
-//This method is used to connect to the server
-private func connectToServer() -> Collection?
-{
-    do {
-        let uri = "mongodb+srv://aarongabor4:<test1234>@aaroncluster.htzvngg.mongodb.net/"
-        client = try MongoClient(uri)
-        let database = client.db("db")
-        let collection = database.collection("instructions")
-        return collection
-    } catch error {
-        print("ERROR CONNECTING TO SERVER: \(error)")
+//helper method to convert Documents to LegoSet format
+func convertToLegoSet(from dict: [String: Any]) -> LegoSet? {
+    guard let setId = dict["setID"] as? Int32,
+          let setName = dict["setName"] as? String,
+          let pieceCount = dict["pieceCount"] as? Int32,
+          let setUrl = dict["setUrl"] as? String else {
+        print("Failed to extract required values from dictionary: \(dict)")
         return nil
     }
+
+    return LegoSet(setId: Int(setId),
+                   setName: setName,
+                   pieceCount: Int(pieceCount),
+                   piecesMissing: [], // Assuming this will be set later
+                   setUrl: setUrl)
+}
+
+func findPerfectMatches(myPieces: [LegoPiece]) async -> [LegoSet]? {
+    let allSets = await connectDbAndFetchAll()
+    var matchingSets: [LegoSet] = []
+    print("in perf matches")
+    
+    if let allSets = allSets {
+        for set in allSets {
+            guard let piecesDocument = set["pieces"] as? Document else {
+                print("Invalid or missing pieces data")
+                continue
+            }
+            
+            var setPieces: [[String:Any]] = []
+            for (_, piece) in piecesDocument {
+                var pieceDict: [String: Any] = [:]
+                if let piece = piece as? Document {
+                    for (key, value) in piece {
+                        pieceDict[key] = value
+                    }
+                }
+                setPieces.append(pieceDict)
+            }
+            //print(setPieces)
+            
+            var allPiecesMatch = true
+            
+            for setPiece in setPieces {
+                let quantity = Int((setPiece["quantity"] as? Int32)!)
+                
+                let perfMatchCriteria = myPieces.contains { $0.pieceName == ClassToNameMap.getMappedValue(forKey: ((setPiece["dimension"] as? String)!)) && $0.officialColour.rawValue == setPiece["colour"] as! String && $0.quantity >= quantity}
+                
+                if perfMatchCriteria{
+                    continue
+                }else{
+                    print("set piece not present moving onto next set")
+                    allPiecesMatch = false
+                    break
+                }
+                                                                                                       
+                
+                
+            }
+
+            if allPiecesMatch {
+                print("FOUND ONE")
+                let convertedSet = convertToLegoSet(from: set)
+                matchingSets.append(convertedSet!)
+            }
+            
+        }
+    }
+    print("matching")
+    print(matchingSets)
+    
+    return matchingSets.isEmpty ? nil : matchingSets
+    
     
 }
 
-//This method will retrieve the instructions stored on the server and 
-//returns the instructions to be displayed to the user for the pieces the user has
-public func getInstructionsHave(queryType: Int) -> [LegoSet]
-{
-    //Gets the scanned pieces from  the local database getPieces method from swiftLocalDB.swift
-    var pieces = getPieces()
+//TODO: fuzzy matches
 
-    var query: Document = [:]
-
-    //Creating the query for the server side database form the scanned pieces
-    //If queryType is 0 then the query will include dimension, colour, quantity
-    if queryType == 0
-    {
-        query["pieces"] = [
-            "$elemMatch": [
-                "$and": pieces.map {piece in
-                    [
-                        "dimension": piece["pieceName"] as! String,
-                        "colour": piece["colour"] as! String,
-                        "quantity": ["$lte": piece["quantity"] as! Int]
-                    ]
-                }
-            ]
-        ]
-    }
-    //If queryType is 1 then the query will include dimension, quantity
-    else if queryType == 1
-    {
-        query["pieces"] = [
-            "$elemMatch": [
-                "$and": pieces.map {piece in
-                    [
-                        "dimension": piece["pieceName"] as! String,
-                        "quantity": ["$lte": piece["quantity"] as! Int]
-                    ]
-                }
-            ]
-        ]
-    }
-
-    //Used to exclude pieces array from the query
-    var projection: Document = [
-        "_id": 0,
-        "pieces": 0
-    ]
-
-    //Runs method to connect to server
-    let collection = connectToServer()
-    //Runs the query on the server's database
-    let results = try connection.find(query, options: FindOptions(projecrion: projection))
-    //Ends the connection to the server
-    client.syncClose()
-
-    //Creates an empty return value
-    var output: [LegoSet] = []
-    //Runs through all documents that were returned from the query
-    for result in results 
-    {
-        //Decodes the imformation stored in the document from the server
-        //and assigns them there correct variable type
-        let setId = result["setId"] as? Int
-        let setName = result["setName"] as? String
-        let pieceCount = result["pieceCount"] as? Int
-        let url = result["url"] as? String
-        
-        //Creates the LegoSet structure will the documents values and
-        //stores them in the return value
-        output.append(LegoSet(setId: setId, setName: setName, pieceCount: pieceCount, piecesMissing: nil, url: url))
-    }
-
-    return output
-}
- */

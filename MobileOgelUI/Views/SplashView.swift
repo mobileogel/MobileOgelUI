@@ -34,8 +34,8 @@ struct SplashView: View {
             }
 
             Task{
-                let t = await connectDbAndFetchAll()
-                print(t as Any)
+                //for testing
+                await findPerfectMatches(myPieces:LegoPieceAppleMockData.pieces)
             }
                 
         }

@@ -68,3 +68,38 @@ struct LegoPieceMockData {
                                   quantity: 1,
                                   officialColour: .brightYellowishGreen)
 }
+
+struct LegoPieceAppleMockData {
+    static let pieces = [piece1, piece2, piece3, piece4, piece5, piece6]
+    
+    static let piece1 = LegoPiece(imageName: "X2-Y2-Z1_Bright_Yellowish_Green",
+                                  pieceName: "2x2x1 Block",
+                                  quantity: 1,
+                                  officialColour: .brightYellowishGreen)
+    
+    static let piece2 = LegoPiece(imageName: "X2-Y2-Z2-FILLET-INVERT_Bright_Yellowish_Green",
+                                  pieceName: "2x2x2 Fillet Invert Block",
+                                  quantity: 2,
+                                  officialColour: .brightYellowishGreen)
+    
+    static let piece3 = LegoPiece(imageName: "X1-Y2-Z2_Chrome_Gold1",
+                                  pieceName: "1x2x2 Block",
+                                  quantity: 1,
+                                  officialColour: .brightYellowishGreen)
+    
+    static let piece4 = LegoPiece(imageName: "X2-Y3-Z2_Bright_Red",
+                                  pieceName: "2x3x2 Block",
+                                  quantity: 1,
+                                  officialColour: .brightRed)
+    
+    static let piece5 = LegoPiece(imageName: "X2-Y2-Z2-Fillet_Bright_Red",
+                                  pieceName: "2x2x2 Fillet Block",
+                                  quantity: 2,
+                                  officialColour: .brightRed)
+    
+    static let piece6 = LegoPiece(imageName: "X1-Y2-Z2-FILLET_Dark_Green",
+                                  pieceName: "1x2x2 Fillet Block",
+                                  quantity: 1,
+                                  officialColour: .darkGreen)
+    
+}

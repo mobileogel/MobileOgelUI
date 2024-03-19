@@ -12,6 +12,7 @@ enum LegoColour: String {
     case green = "Green"
     case darkTurquoise = "Dark Turquoise"
     case red = "Red"
+    case brightRed = "Bright Red"
     case darkPink = "Dark Pink"
     case brown = "Brown"
     case lightGray = "Light Gray"
