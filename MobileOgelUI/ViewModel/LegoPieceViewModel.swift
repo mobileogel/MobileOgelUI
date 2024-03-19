@@ -9,10 +9,9 @@ import Foundation
 import Observation
 
 @Observable class LegoPieceViewModel {
-    // once we have the call setup
     private var legoPieces: [LegoPiece] = []
-    //private var legoPieces: [LegoPiece] = LegoPieceMockData.pieces
     var isLoading = false
+    private var isCacheValid = false
     
     init() {
     }
@@ -20,15 +19,9 @@ import Observation
     func getInventoryPieces() {
         isLoading = true
         
-        let piecesFromDatabase = LegoPieceDBManager.shared.getAllPieces()
-        
-        // update existing pieces or add new ones
-        for databasePiece in piecesFromDatabase {
-            if let index = legoPieces.firstIndex(where: { $0.pieceName == databasePiece.pieceName }) {
-                legoPieces[index] = databasePiece
-            } else {
-                legoPieces.append(databasePiece)
-            }
+        if !isCacheValid {
+            legoPieces = LegoPieceDBManager.shared.getAllPieces()
+            isCacheValid = true;
         }
         
         isLoading = false
@@ -48,6 +41,9 @@ import Observation
     func deletePiece(_ piece: LegoPiece) {
         legoPieces.removeAll { $0.id == piece.id }
         LegoPieceDBManager.shared.deletePiece(name: piece.pieceName)
-        
+    }
+    
+    func invalidateCache() {
+        isCacheValid = false
     }
 }
