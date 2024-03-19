@@ -27,6 +27,7 @@ import Observation
         ]
     }
     
+    //method to fetch perfect matches
     func perfectMatchingSets(scannedPieces: [LegoPiece]) async -> [LegoSet]{
         perfectSets = await findPerfectMatches(myPieces: scannedPieces)!
         return perfectSets
