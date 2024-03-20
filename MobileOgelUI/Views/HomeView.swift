@@ -16,24 +16,33 @@ struct HomeView: View {
                 Color.white
                     .ignoresSafeArea()
                 VStack(spacing:20) {
-                    Text("HOME")
-                        .font(.largeTitle)
+                    
+                    Text("Hi!")
+                        .font(.title)
                         .foregroundStyle(.black)
                         .bold()
-                        .padding(.top, 40)
+                        .padding(.top, 20)
                     
-                    Spacer()
+                    Image("mobile_ogel_logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 250, height: 300)
+                        .padding(.top, 60)
                     
-                    NavButton(destination: MainView().environment(cameraViewModel), title: "Scan", width: 300,cornerRadius: 10)
-                        .simultaneousGesture(TapGesture().onEnded{
-                            cameraViewModel.loadCamera = true
-                        })
-                    
-                    NavButton(destination: PieceInventoryView(), title: "My Pieces", width: 300, cornerRadius: 10)
-                    NavButton(destination: LibraryView(), title: "Library", width: 300, cornerRadius: 10)
-                    
-                    Spacer()
-                        .frame(height: 40)
+                    VStack(spacing:10) {
+
+                        NavButton(destination: MainView().environment(cameraViewModel), title: "Scan Lego", width: 250,cornerRadius: 10)
+                            .simultaneousGesture(TapGesture().onEnded{
+                                cameraViewModel.loadCamera = true
+                            })
+
+                        
+                        NavButton(destination: PieceInventoryView(), title: "My Pieces", width: 250, cornerRadius: 10)
+                        NavButton(destination: LibraryView(), title: "My Library", width: 250, cornerRadius: 10)
+                        Spacer()
+                        
+                    }
+
                 }
             }
         }

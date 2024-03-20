@@ -59,7 +59,7 @@ struct PieceInventoryView: View {
                                 .padding(5)
                                 
                                 if !isEditMode {
-                                    NavButton(destination: DetectionView(), title:"Detection Summary" , width: 200, cornerRadius: 25)
+                                    NavButton(destination: DetectionView(), title:"Scan Summary" , width: 200, cornerRadius: 25)
                                         .disabled(isEditMode)
                                     
                                 }
@@ -67,14 +67,16 @@ struct PieceInventoryView: View {
                             }
                             .padding(20)
                             
-                            NavButton(destination: LibraryView(), title:"See Build Options" , width: 200, cornerRadius: 25)
-                                .disabled(isEditMode)
+                            if !isEditMode {
+                                NavButton(destination: LibraryView(), title:"See Build Options" , width: 200, cornerRadius: 25)
+                                    .disabled(isEditMode)
+                            }
                             
                         }
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color(red: 0.89, green: 0.937, blue: 1.0))
+                .background(Color(red: 0.961, green: 0.961, blue: 0.961))
                 .onAppear {
                     // retrieve and update Lego pieces when the view appears
                     viewModel.getInventoryPieces()

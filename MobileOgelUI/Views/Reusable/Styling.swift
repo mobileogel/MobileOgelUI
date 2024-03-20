@@ -26,7 +26,7 @@ struct ButtonTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .bold()
-            .foregroundColor(.black)
+            .foregroundColor(Color(red: 0.961, green: 0.961, blue: 0.961))
             .font(.title3)
             .padding(EdgeInsets(top: 24, leading: 12, bottom: 24, trailing: 12))
             .frame(maxWidth: width)
@@ -38,7 +38,7 @@ struct ButtonModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .background(Color(red: 0.859, green: 0.929, blue: 0.702))
+            .background(Color(red: 0.322, green: 0.443, blue: 1))
             .cornerRadius(cornerRadius)
     }
 }

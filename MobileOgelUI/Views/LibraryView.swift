@@ -47,7 +47,7 @@ struct FilterItem: View {
     let filterCategory: LegoSetViewModel.FilterCategory
     @Binding var selectedFilter: LegoSetViewModel.FilterCategory
     
-    private let selectedColor = Color(red: 0.859, green: 0.929, blue: 0.702)
+    private let selectedColor = Color(red: 0.322, green: 0.443, blue: 1)
     private let defaultColor = Color(red: 0.902, green: 0.906, blue: 0.91)
     
     var body: some View {
@@ -58,7 +58,7 @@ struct FilterItem: View {
             
             Text(filterCategory.rawValue)
                 .font(.subheadline)
-                .foregroundColor(.black)
+                .foregroundColor(selectedFilter == filterCategory ? Color(red: 0.961, green: 0.961, blue: 0.961) : Color.black)
                 .padding(.horizontal, 16)
         }
         .onTapGesture {

@@ -102,47 +102,52 @@ class ColourModule {
     }
     //REMEMBER THE COORD SYSTEM IS FLIPPED, DOUBLE CHECK THE CROP VALUES
     func buildProbabilityGradient(img: CGImage, observation: VNRecognizedObjectObservation, gradientInterval: CGFloat = 0.25) -> [UIColor] {
-        var pixelList: [UIColor] = []
-        
-
+//        var pixelList: [UIColor] = []
+//        
         var xStart = observation.boundingBox.origin.x * CGFloat(img.width)
         var yStart =  (1 - observation.boundingBox.origin.y - observation.boundingBox.height) * CGFloat(img.height)
         let boundingBoxWidth = observation.boundingBox.width * CGFloat(img.width)
         let boundingBoxHeight = observation.boundingBox.height * CGFloat(img.height)
-
-        let widthInterval = boundingBoxWidth * (gradientInterval / 2)
-        let heightInterval = boundingBoxHeight * (gradientInterval / 2)
-
-        for i in 0..<Int(1/gradientInterval) {
-            let leftBox = CGRect(x: Int(xStart), y: Int(yStart), width: Int(widthInterval), height: Int(boundingBoxHeight))
-            if let leftCroppedImage = img.cropping(to: leftBox) {
-                let pixelValues = extractColors(image: leftCroppedImage)
-                pixelList += pixelValues
-            }
-
-            let rightBox = CGRect(x: Int(xStart + boundingBoxWidth - widthInterval), y: Int(yStart), width: Int(widthInterval), height: Int(boundingBoxHeight))
-            if let rightCroppedImage = img.cropping(to: rightBox) {
-                let pixelValues = extractColors(image: rightCroppedImage)
-                pixelList += pixelValues
-            }
-
-            let upperBox = CGRect(x: Int(xStart + widthInterval), y: Int(yStart + boundingBoxHeight - heightInterval), width: Int(boundingBoxWidth - (2 * widthInterval)), height: Int(heightInterval))
-            if let upperCroppedImage = img.cropping(to: upperBox) {
-                let pixelValues = extractColors(image: upperCroppedImage)
-                pixelList += pixelValues
-            }
-
-            let lowerBox = CGRect(x: Int(xStart + widthInterval), y: Int(yStart), width: Int(boundingBoxWidth - (2 * widthInterval)), height: Int(heightInterval))
-            if let lowerCroppedImage = img.cropping(to: lowerBox) {
-                let pixelValues = extractColors(image: lowerCroppedImage)
-                pixelList += pixelValues
-            }
-
-            xStart += widthInterval
-            yStart += heightInterval
+//
+//        let widthInterval = boundingBoxWidth * (gradientInterval / 2)
+//        let heightInterval = boundingBoxHeight * (gradientInterval / 2)
+//
+//        for i in 0..<Int(1/gradientInterval) {
+//            let leftBox = CGRect(x: Int(xStart), y: Int(yStart), width: Int(widthInterval), height: Int(boundingBoxHeight))
+//            if let leftCroppedImage = img.cropping(to: leftBox) {
+//                let pixelValues = extractColors(image: leftCroppedImage)
+//                pixelList += pixelValues
+//            }
+//
+//            let rightBox = CGRect(x: Int(xStart + boundingBoxWidth - widthInterval), y: Int(yStart), width: Int(widthInterval), height: Int(boundingBoxHeight))
+//            if let rightCroppedImage = img.cropping(to: rightBox) {
+//                let pixelValues = extractColors(image: rightCroppedImage)
+//                pixelList += pixelValues
+//            }
+//
+//            let upperBox = CGRect(x: Int(xStart + widthInterval), y: Int(yStart + boundingBoxHeight - heightInterval), width: Int(boundingBoxWidth - (2 * widthInterval)), height: Int(heightInterval))
+//            if let upperCroppedImage = img.cropping(to: upperBox) {
+//                let pixelValues = extractColors(image: upperCroppedImage)
+//                pixelList += pixelValues
+//            }
+//
+//            let lowerBox = CGRect(x: Int(xStart + widthInterval), y: Int(yStart), width: Int(boundingBoxWidth - (2 * widthInterval)), height: Int(heightInterval))
+//            if let lowerCroppedImage = img.cropping(to: lowerBox) {
+//                let pixelValues = extractColors(image: lowerCroppedImage)
+//                pixelList += pixelValues
+//            }
+//
+//            xStart += widthInterval
+//            yStart += heightInterval
+//        }
+        
+        let box = CGRect(x: xStart, y: yStart, width: boundingBoxWidth, height: boundingBoxHeight)
+        if let croppedImage = img.cropping(to: box) {
+            let pixelValues = extractColors(image: croppedImage)
+            return pixelValues
         }
 
-        return pixelList
+        return []
     }
 
     

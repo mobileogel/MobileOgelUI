@@ -12,21 +12,33 @@ struct DetectionView: View {
     @ObservedObject var viewModel = DetectionViewModel()
 
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
+            
+            Text("Captured Image")
+                .font(.largeTitle)
+                .foregroundStyle(.black)
+                .bold()
+                .padding(.top, 20)
+            
+            // display image based on screen size
             if let capturedImage = viewModel.capturedImage {
-                Image(uiImage: capturedImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .overlay(drawingView)
+                GeometryReader { geometry in
+                    Image(uiImage: capturedImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .overlay(drawingView)
+                }
             } else {
                 Text("No image available")
             }
-            NavButton(destination: PieceInventoryView(), title:"See Piece List" , width: 200, cornerRadius: 25)
-        }
-        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("SharedDataDidChange"))) { _ in
+            
+            NavButton(destination: PieceInventoryView(), title:"My Pieces" , width: 200, cornerRadius: 25)
+            
+            
+        }.onReceive(NotificationCenter.default.publisher(for: Notification.Name("SharedDataDidChange"))) { _ in
             // Handle data change
             viewModel.handleDataChange()
-        }
+        }.background(Color(red: 0.961, green: 0.961, blue: 0.961))
     }
 
     var drawingView: some View {
