@@ -43,9 +43,11 @@ struct PieceInventoryView: View {
                                 })
                                 .disabled(showPopup)
                                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 30))
+                                
                             }
                             
                             ScrollView {
+                
                                 LazyVStack(spacing: 20) {
                                     ForEach(viewModel.getAllPieces(), id: \.id) { piece in
                                         PieceTileView(piece: piece, isEditMode: isEditMode, showPopup: showPopup, onDelete: {
@@ -55,11 +57,19 @@ struct PieceInventoryView: View {
                                     }
                                 }
                                 .padding(5)
+                                
+                                if !isEditMode {
+                                    NavButton(destination: DetectionView(), title:"Detection Summary" , width: 200, cornerRadius: 25)
+                                        .disabled(isEditMode)
+                                    
+                                }
+
                             }
                             .padding(20)
                             
                             NavButton(destination: LibraryView(), title:"See Build Options" , width: 200, cornerRadius: 25)
                                 .disabled(isEditMode)
+                            
                         }
                     }
                 }
