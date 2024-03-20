@@ -32,12 +32,7 @@ struct SplashView: View {
                 // could do animation here
                 self.isActive = true
             }
-
-            Task{
-                let t = await connectDbAndFetchAll()
-                print(t as Any)
-            }
-                
+    
         }
     }
 }

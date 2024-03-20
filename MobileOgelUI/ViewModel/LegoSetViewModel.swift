@@ -2,7 +2,7 @@
 //  LegoSetViewModel.swift
 //  MobileOgelUI
 //
-//  Created by Shuvaethy Neill on 2024-01-12.
+//  Contributors: Shuvaethy Neill and Harsimran Kanwar
 //
 
 import Foundation
@@ -27,6 +27,21 @@ import Observation
         ]
     }
     
-    // TODO: invoke function in manager to retrieve data and populate set arrays
+    //method to fetch perfect matches
+    func perfectMatchingSets(scannedPieces: [LegoPiece]) async -> [LegoSet]{
+        perfectSets = await findPerfectMatches(myPieces: scannedPieces)!
+        return perfectSets
+    }
+    
+    func combineSets() -> [LegoSet]{
+        allSets += perfectSets
+        allSets += fuzzySets
+        return allSets
+
+    }
+    
+    // TODO: Fuzzy matches
+    
+    
     
 }
