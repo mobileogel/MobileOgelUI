@@ -30,6 +30,7 @@ import UIKit
         // asynchronous image classification
         DispatchQueue.global().async { [self] in
             LegoPieceDBManager.shared.deleteAllPieces()
+            LegoSetDBManager.initializer.createLocalTable() //this should drop and create new
             
             let detectionResults = coreMLManager.classifyImage(image)
             let detectedPieces = detectionResults.legoPieces

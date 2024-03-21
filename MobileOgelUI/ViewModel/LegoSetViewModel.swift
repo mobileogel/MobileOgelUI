@@ -2,7 +2,7 @@
 //  LegoSetViewModel.swift
 //  MobileOgelUI
 //
-//  Created by Shuvaethy Neill on 2024-01-12.
+//  Contributors: Shuvaethy Neill and Harsimran Kanwar
 //
 
 import Foundation
@@ -14,10 +14,12 @@ import Observation
         case Perfect, Fuzzy, All
     }
     
-    var perfectSets: [LegoSet] = LegoSetMockData.perfectSampleData
+    //var perfectSets: [LegoSet] = LegoSetMockData.perfectSampleData
+    var perfectSets: [LegoSet] = []
     var fuzzySets: [LegoSet] = LegoSetMockData.fuzzySampleData
     var allSets: [LegoSet] = LegoSetMockData.allSampleData
     var isLoading = false
+    var manager = LegoSetDBManager.initializer
     
     var filterMap: [FilterCategory: [LegoSet]] {
         return [
@@ -27,6 +29,39 @@ import Observation
         ]
     }
     
-    // TODO: invoke function in manager to retrieve data and populate set arrays
+    func tableStatus() -> Bool{
+        var isEmpty = false
+        if manager.getLocalTableCount() == 0{
+            isEmpty = true
+        }
+        return isEmpty
+    }
+    
+    func combineSets(){
+        allSets += perfectSets
+        allSets += fuzzySets
+    }
+    
+    func populateSets(sets: [[String:Any]],myPieces: [LegoPiece]){
+        if tableStatus() { //table is empty
+            perfectSets = []
+            fuzzySets = []
+            //this will find perf matches and store it to the server db
+            manager.findPerfectMatches(allSets: sets, myPieces: myPieces)
+            
+        }
+        
+        let sets = manager.fetchSetsFromLocal()
+        perfectSets = sets.0
+        fuzzySets = sets.1
+        //call combine here for ALL
+        combineSets()
+        
+    }
+    
+    
+    // TODO: Fuzzy matches
+    
+    
     
 }

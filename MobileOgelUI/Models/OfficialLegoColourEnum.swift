@@ -2,10 +2,12 @@
 //  OfficialLegoColourEnum.swift
 //  MobileOgelUI
 //
-//  Created by Guy Morgenshtern on 2024-01-18.
+//  Contributors:Guy Morgenshtern and Harsimran Kanwar
 //
 
-enum LegoColour: String, CaseIterable {
+
+enum LegoColour: String, CaseIterable, Codable {
+    case unknown = "Unknown"
     case black = "Black"
     case brickYellow = "Brick Yellow"
     case brightBlue = "Bright Blue"

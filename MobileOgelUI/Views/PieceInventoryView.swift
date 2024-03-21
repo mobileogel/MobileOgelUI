@@ -60,7 +60,6 @@ struct PieceInventoryView: View {
                                 
                                 if !isEditMode {
                                     NavButton(destination: DetectionView(), title:"Scan Summary" , width: 200, cornerRadius: 25)
-                                        .disabled(isEditMode)
                                     
                                 }
 
@@ -69,7 +68,6 @@ struct PieceInventoryView: View {
                             
                             if !isEditMode {
                                 NavButton(destination: LibraryView(), title:"See Build Options" , width: 200, cornerRadius: 25)
-                                    .disabled(isEditMode)
                             }
                             
                         }

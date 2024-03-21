@@ -42,6 +42,7 @@ struct CapturedImageView: View {
                         Button{
                             print("Detect pieces button tapped")
                             viewModel.processCapturedImage {
+                                legoPieceViewModel.invalidateCache()
                                 isReadyToNav = true
 //                                print("\nwe ready to nav\n")
 //                                print(DetectionDataManager.shared.getSharedData())

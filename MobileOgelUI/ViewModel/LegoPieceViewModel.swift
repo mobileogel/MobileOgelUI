@@ -9,10 +9,9 @@ import Foundation
 import Observation
 
 @Observable class LegoPieceViewModel {
-    // once we have the call setup
     private var legoPieces: [LegoPiece] = []
-    //private var legoPieces: [LegoPiece] = LegoPieceMockData.pieces
     var isLoading = false
+    private var isCacheValid = false
     
     init() {
     }
@@ -22,7 +21,6 @@ import Observation
         
         let piecesFromDatabase = LegoPieceDBManager.shared.getAllPieces()
         
-        print("hhh", piecesFromDatabase)
         
         // update existing pieces or add new ones
         for databasePiece in piecesFromDatabase {
@@ -32,6 +30,10 @@ import Observation
             } else {
                 legoPieces.append(databasePiece)
             }
+
+        if !isCacheValid {
+            legoPieces = LegoPieceDBManager.shared.getAllPieces()
+            isCacheValid = true;
         }
         
         isLoading = false
@@ -41,16 +43,35 @@ import Observation
         return legoPieces
     }
     
-    func addNewPiece(imageName: String, pieceName: String, quantity: Int, color: LegoColour) {
-        //TODO: check if image name exists.. for now since there is no standard to the image names added we will use the missing icon
-        let newPiece = LegoPiece(imageName: "missing_pieces_icon", pieceName: pieceName, quantity: quantity, officialColour: color)
-        legoPieces.append(newPiece)
-        LegoPieceDBManager.shared.addPiece(piece: newPiece)
+    func addNewPiece(imageName: String, pieceName: String, quantity: Int, colour: LegoColour) {
+        
+        // to prevent duplicate pieces showing separatley
+        if let existingPieceIndex = legoPieces.firstIndex(where: { $0.pieceName == pieceName && $0.officialColour == colour }) {
+            legoPieces[existingPieceIndex].quantity += quantity
+            
+            LegoPieceDBManager.shared.updatePiece(name: pieceName, newQuantity: quantity)
+        } else {
+            let storedImage = imageName + "_" + String(describing: colour)
+            
+            let newPiece = LegoPiece(
+                imageName: Util.getImageNameOrPlaceHolder(withX: storedImage),
+                pieceName: pieceName,
+                quantity: quantity,
+                officialColour: colour
+            )
+            
+            legoPieces.append(newPiece)
+            LegoPieceDBManager.shared.addPiece(piece: newPiece)
+            
+        }
     }
     
     func deletePiece(_ piece: LegoPiece) {
         legoPieces.removeAll { $0.id == piece.id }
         LegoPieceDBManager.shared.deletePiece(name: piece.pieceName)
-        
+    }
+    
+    func invalidateCache() {
+        isCacheValid = false
     }
 }
