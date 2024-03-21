@@ -62,7 +62,7 @@ struct AddPiecePopup: View {
             
             Button(action: {
                 // create LegoPiece object and add it to the VM's legoPieces array
-                vm.addNewPiece(imageName: selectedPieceType, pieceName: ClassToNameMap.labelMapping[selectedPieceType] ?? "Unknown", quantity: quantity, color: selectedColor)
+                vm.addNewPiece(imageName: selectedPieceType, pieceName: ClassToNameMap.labelMapping[selectedPieceType] ?? "Unknown", quantity: quantity, colour: selectedColor)
                 
                 // close the popup
                 showPopup.toggle()

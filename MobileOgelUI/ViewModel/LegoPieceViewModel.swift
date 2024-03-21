@@ -31,11 +31,27 @@ import Observation
         return legoPieces
     }
     
-    func addNewPiece(imageName: String, pieceName: String, quantity: Int, color: LegoColour) {
-        //TODO: check if image name exists.. for now since there is no standard to the image names added we will use the missing icon
-        let newPiece = LegoPiece(imageName: "missing_pieces_icon", pieceName: pieceName, quantity: quantity, officialColour: color)
-        legoPieces.append(newPiece)
-        LegoPieceDBManager.shared.addPiece(piece: newPiece)
+    func addNewPiece(imageName: String, pieceName: String, quantity: Int, colour: LegoColour) {
+        
+        // to prevent duplicate pieces showing separatley
+        if let existingPieceIndex = legoPieces.firstIndex(where: { $0.pieceName == pieceName && $0.officialColour == colour }) {
+            legoPieces[existingPieceIndex].quantity += quantity
+            
+            LegoPieceDBManager.shared.updatePiece(name: pieceName, newQuantity: quantity)
+        } else {
+            let storedImage = imageName + "_" + String(describing: colour)
+            
+            let newPiece = LegoPiece(
+                imageName: Util.getImageNameOrPlaceHolder(withX: storedImage),
+                pieceName: pieceName,
+                quantity: quantity,
+                officialColour: colour
+            )
+            
+            legoPieces.append(newPiece)
+            LegoPieceDBManager.shared.addPiece(piece: newPiece)
+            
+        }
     }
     
     func deletePiece(_ piece: LegoPiece) {
