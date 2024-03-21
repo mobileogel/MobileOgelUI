@@ -20,16 +20,6 @@ import Observation
         isLoading = true
         
         let piecesFromDatabase = LegoPieceDBManager.shared.getAllPieces()
-        
-        
-        // update existing pieces or add new ones
-        for databasePiece in piecesFromDatabase {
-            print(databasePiece)
-            if let index = legoPieces.firstIndex(where: { $0.pieceName == databasePiece.pieceName && $0.officialColour == databasePiece.officialColour}) {
-                legoPieces[index] = databasePiece
-            } else {
-                legoPieces.append(databasePiece)
-            }
 
         if !isCacheValid {
             legoPieces = LegoPieceDBManager.shared.getAllPieces()
