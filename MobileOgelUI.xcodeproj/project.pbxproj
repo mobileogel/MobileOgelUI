@@ -21,6 +21,10 @@
 		7ABB01692B59FFCD005211F3 /* ClassToNameMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB01682B59FFCD005211F3 /* ClassToNameMap.swift */; };
 		7ABB016B2B5AD477005211F3 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB016A2B5AD477005211F3 /* utils.swift */; };
 		7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6AB902AF82E66006C5BD7 /* Styling.swift */; };
+		7AEE2F2F2BA38295006B4845 /* DetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE2F2E2BA38295006B4845 /* DetectionView.swift */; };
+		7AEE2F312BA382D3006B4845 /* DetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE2F302BA382D3006B4845 /* DetectionViewModel.swift */; };
+		7AEE2F332BA3CBEA006B4845 /* DetectionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE2F322BA3CBEA006B4845 /* DetectionDataManager.swift */; };
+		7AEE2F352BA61CAA006B4845 /* colors2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AEE2F342BA61CAA006B4845 /* colors2.csv */; };
 		C41AF4982B62BF880008F6B5 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = C41AF4972B62BF880008F6B5 /* SQLite */; };
 		C41AF49A2B630CB90008F6B5 /* CapturedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41AF4992B630CB90008F6B5 /* CapturedImageViewModel.swift */; };
 		C4797B272B572E8C009B98A7 /* LegoDetectorNew.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */; };
@@ -58,6 +62,10 @@
 		7ABB01682B59FFCD005211F3 /* ClassToNameMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClassToNameMap.swift; path = MobileOgelUI/models/ClassToNameMap.swift; sourceTree = SOURCE_ROOT; };
 		7ABB016A2B5AD477005211F3 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = utils.swift; path = MobileOgelUI/models/utils.swift; sourceTree = SOURCE_ROOT; };
 		7AD6AB902AF82E66006C5BD7 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
+		7AEE2F2E2BA38295006B4845 /* DetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionView.swift; sourceTree = "<group>"; };
+		7AEE2F302BA382D3006B4845 /* DetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionViewModel.swift; sourceTree = "<group>"; };
+		7AEE2F322BA3CBEA006B4845 /* DetectionDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetectionDataManager.swift; path = MobileOgelUI/models/DetectionDataManager.swift; sourceTree = SOURCE_ROOT; };
+		7AEE2F342BA61CAA006B4845 /* colors2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colors2.csv; sourceTree = "<group>"; };
 		C41AF4992B630CB90008F6B5 /* CapturedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedImageViewModel.swift; sourceTree = "<group>"; };
 		C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LegoDetectorNew.mlpackage; sourceTree = "<group>"; };
 		C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
@@ -119,6 +127,7 @@
 				7ABB01662B59FB4B005211F3 /* OfficialLegoColourEnum.swift */,
 				7ABB01682B59FFCD005211F3 /* ClassToNameMap.swift */,
 				7ABB016A2B5AD477005211F3 /* utils.swift */,
+				7AEE2F322BA3CBEA006B4845 /* DetectionDataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,6 +202,7 @@
 				C4FEEA162B3EB57A000E7C3C /* CameraView.swift */,
 				C4FEEA182B3ECAF0000E7C3C /* CapturedImageView.swift */,
 				C4B01F3D2BA2443000A5E113 /* AddPiecePopup.swift */,
+				7AEE2F2E2BA38295006B4845 /* DetectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,7 +217,9 @@
 				C4B184882B519BA8008EB167 /* LegoSetViewModel.swift */,
 				C4A1F34B2B563C000017A1A3 /* CoreMLManager.swift */,
 				7A1FA6DD2B583F4500D4C2D9 /* ColourModule.swift */,
+				7AEE2F342BA61CAA006B4845 /* colors2.csv */,
 				7A1FA6E32B58735700D4C2D9 /* colors.csv */,
+				7AEE2F302BA382D3006B4845 /* DetectionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -282,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A1FA6E42B58735700D4C2D9 /* colors.csv in Resources */,
+				7AEE2F352BA61CAA006B4845 /* colors2.csv in Resources */,
 				C4CF895C2AF496AD00034239 /* Preview Assets.xcassets in Resources */,
 				C4CF89592AF496AD00034239 /* Assets.xcassets in Resources */,
 			);
@@ -306,6 +319,7 @@
 				C4FEEA172B3EB57A000E7C3C /* CameraView.swift in Sources */,
 				C4A1F33D2B55E2550017A1A3 /* NavButton.swift in Sources */,
 				C4CF89572AF496AB00034239 /* ContentView.swift in Sources */,
+				7AEE2F2F2BA38295006B4845 /* DetectionView.swift in Sources */,
 				7ABB01692B59FFCD005211F3 /* ClassToNameMap.swift in Sources */,
 				7A1FA6DE2B583F4500D4C2D9 /* ColourModule.swift in Sources */,
 				C4CF89692AF4985800034239 /* PieceInventoryView.swift in Sources */,
@@ -314,6 +328,7 @@
 				7ABB016B2B5AD477005211F3 /* utils.swift in Sources */,
 				C41AF49A2B630CB90008F6B5 /* CapturedImageViewModel.swift in Sources */,
 				C4B01F3E2BA2443000A5E113 /* AddPiecePopup.swift in Sources */,
+				7AEE2F332BA3CBEA006B4845 /* DetectionDataManager.swift in Sources */,
 				C4CF89662AF497BB00034239 /* MainView.swift in Sources */,
 				79E1ABBF2AF4A8C3005C22EA /* HomeView.swift in Sources */,
 				C4797B272B572E8C009B98A7 /* LegoDetectorNew.mlpackage in Sources */,
@@ -323,6 +338,7 @@
 				C4A1F34C2B563C000017A1A3 /* CoreMLManager.swift in Sources */,
 				C4A1F34A2B5624F90017A1A3 /* LegoDetector.mlpackage in Sources */,
 				795062C82B585CF5006B5E9A /* LegoSetDBManager.swift in Sources */,
+				7AEE2F312BA382D3006B4845 /* DetectionViewModel.swift in Sources */,
 				C4B01F3A2BA2436F00A5E113 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,7 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 4RPYL3R62A;
+				DEVELOPMENT_TEAM = 354D93C92Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
@@ -483,7 +499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 4RPYL3R62A;
+				DEVELOPMENT_TEAM = 354D93C92Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
