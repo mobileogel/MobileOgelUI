@@ -19,6 +19,8 @@ import Observation
     func getInventoryPieces() {
         isLoading = true
         
+        let piecesFromDatabase = LegoPieceDBManager.shared.getAllPieces()
+
         if !isCacheValid {
             legoPieces = LegoPieceDBManager.shared.getAllPieces()
             isCacheValid = true;

@@ -37,6 +37,7 @@ import UIKit
             
             // persist detected pieces
             if !detectedPieces.isEmpty {
+                print(detectedPieces, "great")
                 for piece in detectedPieces {
                     LegoPieceDBManager.shared.addPiece(piece: piece)
                 }

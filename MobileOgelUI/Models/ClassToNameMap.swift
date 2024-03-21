@@ -38,7 +38,7 @@ class ClassToNameMap {
         "X1-Y6-Z2": "1x6x2 Block",
         "X2-Y2-Z1": "2x2x1 Block",
         "X2-Y2-Z2": "2x2x2 Block",
-        "X2-Y2-Z2-AXLE": "2x2x2 Axle Block",
+        "X2-Y2-Z2-AXLE": "2x2x1 Axle Block",
         "X2-Y2-Z2-CIRCLE": "2x2x2 Circle Block",
         "X2-Y2-Z2-DOME": "2x2x2 Dome Block",
         "X2-Y2-Z2-FILLET": "2x2x2 Fillet Block",

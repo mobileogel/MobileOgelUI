@@ -17,7 +17,7 @@ class CoreMLManager {
     init() {
         
         // load converted coreML model
-        guard let loadedModel = try? LegoDetectorNew(configuration: MLModelConfiguration()) else {
+        guard let loadedModel = try?  mar20(configuration: MLModelConfiguration()) else {
             fatalError("Failed to load custom vision model")
         }
         
@@ -33,6 +33,7 @@ class CoreMLManager {
     func classifyImage(_ image: UIImage) -> CVClassificationResult {
         var legoPieces: [LegoPiece] = []
         var cvResults: [VNRecognizedObjectObservation] = []
+        let grayscaleImage = image.noir
         let request = VNCoreMLRequest(model: model) { (request, error) in
             // handle completion of request
             if let error = error {
@@ -55,6 +56,7 @@ class CoreMLManager {
             }
             
             //print("Predicted pieces: \(predictedPieces)")
+        
             
             legoPieces = self.buildLegoPieceList(image: image, results: results)
             cvResults = results
@@ -76,6 +78,7 @@ class CoreMLManager {
             print("Error performing image request: \(error)")
         }
         
+        print("AHHHHH", legoPieces)
         return CVClassificationResult(legoPieces: legoPieces, detectionInfo: cvResults)
     }
     
@@ -107,16 +110,19 @@ class CoreMLManager {
             
             let pieceColour = self.infer_colours(img: cgImg, detection: detectedPiece)
             
+            print("besgsgesg", pieceColour, detectedPiece)
+            
             if let label = detectedPiece.labels.first?.identifier as? String,
                let legoColor = LegoColour(rawValue: pieceColour) {
                 
                 let potentialKey = BrickKey(label: label, color: legoColor)
+                print(potentialKey, "bleh")
 
                 
                 bricksDetected[potentialKey, default: 0] += 1
             }
         }
-        
+        print(bricksDetected, "bloh")
         // Convert the detected pieces into LegoPiece objects
         for (piece, quantity) in bricksDetected {
             
@@ -128,14 +134,11 @@ class CoreMLManager {
                 quantity: quantity,
                 officialColour: piece.color
             )
-            
-//            print("poopy")
-//            print(piece.label)
-//            print(imageName)
-//            print(legoPiece.imageName)
-//            print(legoPiece.officialColour)
+
             bricksDetectedObjects.append(legoPiece)
         }
+        
+        print(bricksDetectedObjects, "oooga")
         return bricksDetectedObjects
     }
 }
