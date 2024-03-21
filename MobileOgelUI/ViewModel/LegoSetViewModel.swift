@@ -46,8 +46,10 @@ import Observation
         if tableStatus() { //table is empty
             perfectSets = []
             fuzzySets = []
+            allSets = []
             //this will find perf matches and store it to the server db
             manager.findPerfectMatches(allSets: sets, myPieces: myPieces)
+            manager.findFuzzyMatches(allSets: sets, myPieces: myPieces)
             
         }
         
@@ -57,6 +59,11 @@ import Observation
         //call combine here for ALL
         combineSets()
         
+    }
+    
+    func reset() {
+        manager.dropSetsTable()
+        manager.createLocalTable()
     }
     
     

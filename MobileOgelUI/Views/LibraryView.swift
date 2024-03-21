@@ -51,6 +51,7 @@ struct LibraryView: View {
             .onAppear(perform: {
                 var allSets: [[String:Any]] = []
                 Task {
+                    viewModel.reset()
                     if viewModel.tableStatus(){
                         print("table empty")
                         guard let sets = await LegoSetDBManager.initializer.connectDbAndFetchAll()
@@ -61,17 +62,20 @@ struct LibraryView: View {
                         allSets = sets
                     }
                     
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        isLoading = false
+                        Task {
+                            viewModel.populateSets(sets: allSets, myPieces: LegoPieceDBManager.shared.getAllPieces())
+                            //viewModel.populateSets(sets: allSets, myPieces: LegoPieceMockData.pieces)
+                        }
+                    }
                     
-                    //viewModel.populateSets(sets: allSets, myPieces: LegoPieceDBManager.shared.getAllPieces())
-                    //viewModel.populateSets(sets: allSets, myPieces: LegoPieceAppleMockData.pieces)
+                    
+                    
+                    
                 }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    isLoading = false
-                    Task {
-                        viewModel.populateSets(sets: allSets, myPieces: LegoPieceAppleMockData.pieces)
-                    }
-                }
+                
                 
             })
         }
@@ -137,9 +141,18 @@ struct LegoSetView: View {
                     .foregroundStyle(.black)
                 //Link("Instructions", destination: URL(string: "https://www.lego.com/en-ca/service/buildinginstructions/\(set.setId)")!)
                 Link("Instructions", destination: URL(string: set.setUrl)!)
-                if set.piecesMissing != nil {
+                if !set.piecesMissing!.isEmpty {
                     MissingPiecesView(visible: false, missingPieces: set.piecesMissing!)
+                }else if set.matchType == "Fuzzy" {
+                    HStack {
+                        Image(systemName: "info.circle")
+                            .foregroundColor(.gray)
+                        Text("Buildable but incorrect colours")
+                            .foregroundColor(.gray)
+                            .font(.caption)
+                    }
                 }
+
             }
             
             Spacer()
