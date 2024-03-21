@@ -22,9 +22,12 @@ import Observation
         
         let piecesFromDatabase = LegoPieceDBManager.shared.getAllPieces()
         
+        print("hhh", piecesFromDatabase)
+        
         // update existing pieces or add new ones
         for databasePiece in piecesFromDatabase {
-            if let index = legoPieces.firstIndex(where: { $0.pieceName == databasePiece.pieceName }) {
+            print(databasePiece)
+            if let index = legoPieces.firstIndex(where: { $0.pieceName == databasePiece.pieceName && $0.officialColour == databasePiece.officialColour}) {
                 legoPieces[index] = databasePiece
             } else {
                 legoPieces.append(databasePiece)

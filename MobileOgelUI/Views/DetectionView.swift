@@ -27,6 +27,7 @@ struct DetectionView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .overlay(drawingView)
+                        .coordinateSpace(name: "image")
                 }
             } else {
                 Text("No image available")
@@ -53,6 +54,7 @@ struct DetectionView: View {
 struct BoundingBoxView: View {
     let observation: VNRecognizedObjectObservation
     let imageSize: CGSize
+    @State private var showText = false
 
     var body: some View {
         let boundingBox = observation.boundingBox
@@ -63,9 +65,23 @@ struct BoundingBoxView: View {
             height: boundingBox.height * imageSize.height
         )
 
-        return RoundedRectangle(cornerRadius: 5)
-            .stroke(Color.red, lineWidth: 2)
-            .frame(width: scaledBoundingBox.width, height: scaledBoundingBox.height)
-            .position(x: scaledBoundingBox.midX, y: scaledBoundingBox.midY)
+        return ZStack {
+            RoundedRectangle(cornerRadius: 5)
+                .stroke(Color.red, lineWidth: 2)
+                .frame(width: scaledBoundingBox.width, height: scaledBoundingBox.height)
+                .position(x: scaledBoundingBox.midX, y: scaledBoundingBox.midY)
+                .onTapGesture {
+                    self.showText.toggle()
+                }
+
+            if showText {
+                Text(observation.labels.first?.identifier ?? "unknown piece")
+                    .foregroundColor(.white)
+                    .background(Color.black)
+                    .padding(5)
+                    .offset(y: -30)
+                    .position(x: scaledBoundingBox.midX, y: scaledBoundingBox.minY - 15)
+            }
+        }
     }
 }

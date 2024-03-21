@@ -70,8 +70,8 @@ struct InstructionsOverlay: View {
                     .frame(height: 60)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    InstructionText(text: "1. Place your lego pieces in a pile on a flat surface in front of you")
-                    InstructionText(text: "2. Take a photo from a birds eye view")
+                    InstructionText(text: "1. Place your lego pieces in a pile on a **flat surface** in front of you")
+                    InstructionText(text: "2. Take a photo from a slightly elevated angle, aiming the camera about **60 degrees** above the floor. ")
                     InstructionText(text: "3. Discover the sets you can build!")
                 }
                 .padding()

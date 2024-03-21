@@ -17,6 +17,7 @@
 		79E1ABC12AF4B2A0005C22EA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1ABC02AF4B29F005C22EA /* LibraryView.swift */; };
 		7A1FA6DE2B583F4500D4C2D9 /* ColourModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FA6DD2B583F4500D4C2D9 /* ColourModule.swift */; };
 		7A1FA6E42B58735700D4C2D9 /* colors.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A1FA6E32B58735700D4C2D9 /* colors.csv */; };
+		7AB4AC042BAB69860084A9EB /* mar20.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 7AB4AC032BAB69860084A9EB /* mar20.mlpackage */; };
 		7ABB01672B59FB4B005211F3 /* OfficialLegoColourEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB01662B59FB4B005211F3 /* OfficialLegoColourEnum.swift */; };
 		7ABB01692B59FFCD005211F3 /* ClassToNameMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB01682B59FFCD005211F3 /* ClassToNameMap.swift */; };
 		7ABB016B2B5AD477005211F3 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB016A2B5AD477005211F3 /* utils.swift */; };
@@ -58,6 +59,7 @@
 		79E1ABC02AF4B29F005C22EA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		7A1FA6DD2B583F4500D4C2D9 /* ColourModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourModule.swift; sourceTree = "<group>"; };
 		7A1FA6E32B58735700D4C2D9 /* colors.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colors.csv; sourceTree = "<group>"; };
+		7AB4AC032BAB69860084A9EB /* mar20.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = mar20.mlpackage; sourceTree = "<group>"; };
 		7ABB01662B59FB4B005211F3 /* OfficialLegoColourEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OfficialLegoColourEnum.swift; path = MobileOgelUI/models/OfficialLegoColourEnum.swift; sourceTree = SOURCE_ROOT; };
 		7ABB01682B59FFCD005211F3 /* ClassToNameMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClassToNameMap.swift; path = MobileOgelUI/models/ClassToNameMap.swift; sourceTree = SOURCE_ROOT; };
 		7ABB016A2B5AD477005211F3 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = utils.swift; path = MobileOgelUI/models/utils.swift; sourceTree = SOURCE_ROOT; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */,
+				7AB4AC032BAB69860084A9EB /* mar20.mlpackage */,
 				C4A1F3492B5624F90017A1A3 /* LegoDetector.mlpackage */,
 				C4B184802B4F3926008EB167 /* LegoSet.swift */,
 				C4A1F3392B55AF830017A1A3 /* LegoPiece.swift */,
@@ -309,6 +312,7 @@
 			files = (
 				C4B184892B519BA8008EB167 /* LegoSetViewModel.swift in Sources */,
 				C4B184812B4F3926008EB167 /* LegoSet.swift in Sources */,
+				7AB4AC042BAB69860084A9EB /* mar20.mlpackage in Sources */,
 				C4FEEA192B3ECAF0000E7C3C /* CapturedImageView.swift in Sources */,
 				C4B01F3C2BA243D100A5E113 /* PieceTileView.swift in Sources */,
 				7AD6AB912AF82E66006C5BD7 /* Styling.swift in Sources */,

@@ -97,8 +97,10 @@ class ColourModule {
         return modeList
     }
 
-    func determineIdealSampleSize(population: Int, marginOfError: CGFloat = 0.01) -> Int {
-        return Int(Double(population) / (1 + Double(population) * pow(Double(marginOfError), 2))) + 1
+    func determineIdealSampleSize(N: Double, Z: Double = 1.96, p: Double = 0.5, E: Double = 0.05) -> Int {
+        let numerator = N * pow(Z, 2) * p * (1 - p)
+        let denominator = (N - 1 + pow(Z, 2) * p * (1 - p) * (N - 1) / N)
+        return Int(numerator / denominator / pow(E, 2))
     }
     //REMEMBER THE COORD SYSTEM IS FLIPPED, DOUBLE CHECK THE CROP VALUES
     func buildProbabilityGradient(img: CGImage, observation: VNRecognizedObjectObservation, gradientInterval: CGFloat = 0.25) -> [UIColor] {
@@ -159,7 +161,7 @@ class ColourModule {
         let boxWidth =  Int(boundingBox.size.width * CGFloat(img.width))
 
         DetectionDataManager.shared.updateData(with: ["capturedImage": UIImage(cgImage: img)])
-        let numPixelsToSample = determineIdealSampleSize(population: Int(boxWidth * boxHeight))
+        let numPixelsToSample = determineIdealSampleSize(N: Double(boxWidth * boxHeight))
         print("Box size \(boxWidth * boxHeight) pixels ")
         print("Sampling \(numPixelsToSample) pixels")
 

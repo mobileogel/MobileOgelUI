@@ -41,7 +41,7 @@ class LegoPieceDBManager {
     
     func addPiece(piece: LegoPiece) {
         guard let db = db else { return }
-        let existingPiece = piecesTable.filter(self.pieceName == piece.pieceName)
+        let existingPiece = piecesTable.filter(self.pieceName == piece.pieceName && self.colour == piece.officialColour.rawValue)
         do {
             // check if piece exists to update quantity instead
             if try db.pluck(existingPiece) != nil {
