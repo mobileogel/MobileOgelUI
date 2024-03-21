@@ -5,7 +5,7 @@
 //  Created by Guy Morgenshtern on 2024-01-18.
 //
 
-enum LegoColour: String, CaseIterable {
+enum LegoColour: String, CaseIterable, Codable {
     case unknown = "Unknown"
     case black = "Black"
     case blue = "Blue"

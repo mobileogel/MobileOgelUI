@@ -9,7 +9,10 @@ import SwiftUI
 
 struct LibraryView: View {
     @State private var viewModel = LegoSetViewModel()
+    @State private var pieceModel = LegoPieceViewModel()
     @State private var selectedItem: LegoSetViewModel.FilterCategory = .Perfect // Default
+    
+    @State private var isLoading = true
     
     var body: some View {
         NavigationStack{
@@ -38,6 +41,39 @@ struct LibraryView: View {
                     }
                 }
             }
+            .overlay(
+                Group {
+                    if isLoading {
+                        LoaderView()
+                    }
+                }
+            )
+            .onAppear(perform: {
+                var allSets: [[String:Any]] = []
+                Task {
+                    if viewModel.tableStatus(){
+                        print("table empty")
+                        guard let sets = await LegoSetDBManager.initializer.connectDbAndFetchAll()
+                        else {
+                            print("Failed to fetch sets from MongoDB")
+                            return
+                        }
+                        allSets = sets
+                    }
+                    
+                    
+                    //viewModel.populateSets(sets: allSets, myPieces: LegoPieceDBManager.shared.getAllPieces())
+                    //viewModel.populateSets(sets: allSets, myPieces: LegoPieceAppleMockData.pieces)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    isLoading = false
+                    Task {
+                        viewModel.populateSets(sets: allSets, myPieces: LegoPieceAppleMockData.pieces)
+                    }
+                }
+                
+            })
         }
     }
 }
