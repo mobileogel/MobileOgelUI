@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "CODE_OF_CONDUCT.md",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

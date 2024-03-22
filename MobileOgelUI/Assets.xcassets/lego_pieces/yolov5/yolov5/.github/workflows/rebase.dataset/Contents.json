@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "rebase.yml",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

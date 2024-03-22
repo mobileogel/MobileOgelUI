@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "yolov3-tiny.yaml",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

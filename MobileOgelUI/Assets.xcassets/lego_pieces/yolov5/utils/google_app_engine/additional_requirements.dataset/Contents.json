@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "additional_requirements.txt",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

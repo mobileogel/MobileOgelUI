@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "coco128-seg.yaml",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

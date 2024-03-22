@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "greetings.yml",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

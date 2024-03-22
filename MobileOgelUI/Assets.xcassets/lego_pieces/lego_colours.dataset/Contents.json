@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "lego_colours.csv",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

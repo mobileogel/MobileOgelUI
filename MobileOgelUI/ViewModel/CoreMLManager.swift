@@ -17,7 +17,7 @@ class CoreMLManager {
     init() {
         
         // load converted coreML model
-        guard let loadedModel = try?  mar20(configuration: MLModelConfiguration()) else {
+        guard let loadedModel = try?  March21Weights(configuration: MLModelConfiguration()) else {
             fatalError("Failed to load custom vision model")
         }
         

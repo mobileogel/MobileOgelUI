@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "Dockerfile-cpu",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

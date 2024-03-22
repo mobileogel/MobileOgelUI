@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "best.torchscript",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

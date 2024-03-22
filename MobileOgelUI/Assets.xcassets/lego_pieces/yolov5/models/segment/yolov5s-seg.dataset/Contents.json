@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "yolov5s-seg.yaml",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

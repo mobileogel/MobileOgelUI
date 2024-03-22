@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "yolov5s6.yaml",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

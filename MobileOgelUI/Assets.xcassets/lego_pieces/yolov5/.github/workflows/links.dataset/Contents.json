@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "links.yml",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

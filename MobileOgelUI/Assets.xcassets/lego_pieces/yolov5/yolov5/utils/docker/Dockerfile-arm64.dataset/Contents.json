@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "Dockerfile-arm64",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
