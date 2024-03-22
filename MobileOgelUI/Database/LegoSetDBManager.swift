@@ -274,7 +274,7 @@ class LegoSetDBManager{
     
     
     func findFuzzyMatches(allSets: [[String:Any]], myPieces: [LegoPiece]){
-        //print("in fuzzy")
+        print("in fuzzy")
         
         
         for set in allSets {
@@ -320,7 +320,6 @@ class LegoSetDBManager{
                 }
                 
                 if missingPieces.count < 4 {
-                    
                     let legoPieces = missingPieces.map { dict in
                         let imageName = (dict["dimension"] as? String)! + "_" + String(describing: LegoColour(rawValue: dict["colour"] as! String)!)
                         

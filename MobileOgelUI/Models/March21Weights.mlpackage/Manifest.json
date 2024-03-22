@@ -1,0 +1,24 @@
+{
+    "fileFormatVersion": "1.0.0",
+    "itemInfoEntries": {
+        "976AA09F-A417-4852-953B-005742ADA8D1": {
+            "author": "com.apple.CoreML",
+            "description": "External Metadata Overlay",
+            "name": "Metadata.json",
+            "path": "com.apple.CoreML/Metadata.json"
+        },
+        "C6E9390C-784B-40F7-B6EC-A85FAEAF97C8": {
+            "author": "com.apple.CoreML",
+            "description": "CoreML Model Specification",
+            "name": "March21Weights.mlmodel",
+            "path": "com.apple.CoreML/March21Weights.mlmodel"
+        },
+        "D864FC7E-B7A3-4CCE-8DD2-5CE078EBF9DC": {
+            "author": "com.apple.CoreML",
+            "description": "External FeatureDescription Overlay",
+            "name": "FeatureDescriptions.json",
+            "path": "com.apple.CoreML/FeatureDescriptions.json"
+        }
+    },
+    "rootModelIdentifier": "C6E9390C-784B-40F7-B6EC-A85FAEAF97C8"
+}
