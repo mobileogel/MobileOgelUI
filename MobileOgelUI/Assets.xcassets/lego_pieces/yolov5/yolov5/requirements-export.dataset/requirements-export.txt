@@ -1,2 +1,0 @@
-coremltools>=6.2.0
-scikit-learn==0.19.2
