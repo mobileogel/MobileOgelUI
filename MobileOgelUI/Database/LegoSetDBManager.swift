@@ -306,7 +306,7 @@ class LegoSetDBManager{
                     }
                 }
                 
-            
+                var totalMissing = 0
                 for setPiece in setPieces {
                     let pieceName = ClassToNameMap.getMappedValue(forKey: (setPiece["dimension"] as? String)!)
                     let quantity = Int((setPiece["quantity"] as? Int32)!)
@@ -316,10 +316,13 @@ class LegoSetDBManager{
                     
                     if !fuzzyMatchCriteria {
                         missingPieces.append(setPiece)
+                        totalMissing += quantity
+                        
                     }
                 }
                 
-                if missingPieces.count < 4 {
+            
+                if totalMissing < 4 {
                     let legoPieces = missingPieces.map { dict in
                         let imageName = (dict["dimension"] as? String)! + "_" + String(describing: LegoColour(rawValue: dict["colour"] as! String)!)
                         
