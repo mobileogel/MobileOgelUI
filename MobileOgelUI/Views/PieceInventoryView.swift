@@ -2,79 +2,107 @@
 //  PieceInventoryView.swift
 //  MobileOgel
 //
-//  Created by Shuvaethy Neill on 2023-11-02.
+//  Contributors: Shuvaethy Neill and Guy Morgenshtern
 //
 
 import SwiftUI
 
 struct PieceInventoryView: View {
+    @Environment(LegoPieceViewModel.self) private var viewModel
+    @State private var isEditMode = false
+    @State private var showPopup = false
+    
     var body: some View {
-        VStack {
-            HStack{
-                Text("My Pieces")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.leading)
-                Spacer()
-                Image(systemName: "house.fill")
-                    .font(.largeTitle)
-                    .padding(.trailing)
-                    .onTapGesture {
-                        // go to home page
+        ZStack {
+            NavigationStack {
+                VStack {
+                    HeaderView(title: "My Pieces")
+                    
+                    if viewModel.isLoading {
+                        LoaderView()
+                    } else {
+                        if viewModel.getAllPieces().isEmpty {
+                            Spacer()
+                            Text("Nothing here! Please scan your pieces to start.")
+                                .foregroundStyle(Color.gray)
+                            Spacer()
+                        } else {
+                            HStack {
+                                if isEditMode {
+                                    ActionButton(title: "Add Piece", buttonColour: Color.green, action: {
+                                        showPopup.toggle()
+                                    })
+                                    .disabled(showPopup)
+                                    .padding(EdgeInsets(top: 20, leading: 30, bottom: 0, trailing: 0))
+                                }
+                                
+                                Spacer()
+                                
+                                ActionButton(title: isEditMode ? "Done" : "Edit", buttonColour: Color.blue, action: {
+                                    isEditMode.toggle()
+                                })
+                                .disabled(showPopup)
+                                .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 30))
+                                
+                            }
+                            
+                            ScrollView {
+                
+                                LazyVStack(spacing: 20) {
+                                    ForEach(viewModel.getAllPieces(), id: \.id) { piece in
+                                        PieceTileView(piece: piece, isEditMode: isEditMode, showPopup: showPopup, onDelete: {
+                                            // delete action
+                                            viewModel.deletePiece(piece)
+                                        })
+                                    }
+                                }
+                                .padding(5)
+                                
+                                if !isEditMode {
+                                    NavButton(destination: DetectionView(), title:"Scan Summary" , width: 200, cornerRadius: 25)
+                                    
+                                }
+
+                            }
+                            .padding(20)
+                            
+                            if !isEditMode {
+                                NavButton(destination: LibraryView(), title:"See Build Options" , width: 200, cornerRadius: 25)
+                            }
+                            
+                        }
                     }
-            }
-            .padding(.top)
-            
-            ScrollView {
-                LazyVStack() {
-                    // for example...
-                    PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
-                    PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
-                    PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
-                    PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
-                    PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
-                    PieceTileView(imageName: "2x4_black", pieceName: "Brick 2x4", quantity: 4)
                 }
-                .padding(.horizontal, 10)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color(red: 0.961, green: 0.961, blue: 0.961))
+                .onAppear {
+                    // retrieve and update Lego pieces when the view appears
+                    viewModel.getInventoryPieces()
+                }
             }
-            
-            Button(action: {
-                // TODO: nav to library page
-            }) {
-                Text("See build options")
-                    .bold()
-                    .foregroundColor(.white)
-                    .padding(20)
+            if showPopup {
+                AddPiecePopup(vm: viewModel, showPopup: $showPopup)
+                    .zIndex(1) // place above navstack if i understand hierarchy correctly
             }
-                .background(Color.green)
-                .cornerRadius(20)
         }
     }
 }
 
-struct PieceTileView: View {
-    var imageName: String
-    var pieceName: String
-    var quantity: Int
+struct ActionButton: View {
+    let title: String
+    let buttonColour: Color
+    let action: () -> Void
     
     var body: some View {
-        HStack {
-            Image(imageName)
-                .resizable()
-                .frame(width: 80, height:80)
-            
-            VStack(alignment: .leading) {
-                Text(pieceName)
-                    .font(.headline)
-                Text("Quantity: \(quantity)")
-            }
-            
-            Spacer()
+        Button(action: action) {
+            Text(title)
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding(10)
+                .background(buttonColour)
+                .cornerRadius(8)
         }
-        .padding()
-        .background(Color.blue)
-        .cornerRadius(15)
-        .shadow(radius: 3)
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

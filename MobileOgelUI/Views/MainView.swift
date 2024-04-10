@@ -2,30 +2,56 @@
 //  MainView.swift
 //  MobileOgel
 //
-//  Created by Shuvaethy Neill on 2023-11-01.
+//  Contributors: Shuvaethy Neill and Harsimran Kanwar
 //
 
 import SwiftUI
 import AVFoundation
 
 struct MainView: View {
-    @State private var showingInstructions: Bool = true
-    //@State private var isShowingCamera = false
-    
+    @Environment(CameraViewModel.self) private var cameraViewModel
+    @Environment(LegoPieceViewModel.self) private var legoPieceViewModel
+
     var body: some View {
-        ZStack {
-            CameraPreview()
-            
-            //Overlay with instructions
-            if showingInstructions {
-                InstructionsOverlay(okAction: {
-                    showingInstructions = false
-                    // Show camera when instructions are dismissed
-                    //isShowingCamera = true
-                })
+        NavigationStack{
+            ZStack {
+                if cameraViewModel.isImagePickerPresented {
+                    // closure called when use photo button is pressed
+                    CameraView(viewModel: cameraViewModel, usePhotoNav: {
+                        cameraViewModel.isImageSelected = true
+                    })
+                    .ignoresSafeArea(.all)
+                    .zIndex(1)
+                }
+                
+                // overlay with instructions
+                if cameraViewModel.isShowingInstructions {
+                    InstructionsOverlay(okAction: {
+                        cameraViewModel.loadCamera = true
+                    })
+                }else{
+                    HomeView()
+                }
+                
+                // display captured image if one is taken
+                if cameraViewModel.isImageSelected {
+                    CapturedImageView(viewModel: CapturedImageViewModel(capturedImage: cameraViewModel.capturedImage ?? nil), legoPieceViewModel: legoPieceViewModel)
+                }
+                
+                if cameraViewModel.loadCamera{
+                    LoaderView()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                            cameraViewModel.launchCamera()
+                        }
+                    }
+                }
+            }
+            //.edgesIgnoringSafeArea(.all)
+            .onAppear {
+                cameraViewModel.handleInstructions()
             }
         }
-        .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -34,8 +60,9 @@ struct InstructionsOverlay: View {
     
     var body: some View {
         ZStack {
-            // Once we have the camera view working I can make the overlay look better
+            // For now, instructions overlay does not overlay live camera
             Color.black.opacity(0.85)
+                .edgesIgnoringSafeArea(.all)
             
             VStack {
                 TitleView()
@@ -43,8 +70,8 @@ struct InstructionsOverlay: View {
                     .frame(height: 60)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    InstructionText(text: "1. Place your lego pieces in a pile on a flat surface in front of you")
-                    InstructionText(text: "2. Take a photo from a birds eye view")
+                    InstructionText(text: "1. Place your lego pieces in a pile on a **flat surface** in front of you")
+                    InstructionText(text: "2. Take a photo from a slightly elevated angle, aiming the camera about **60 degrees** above the floor. ")
                     InstructionText(text: "3. Discover the sets you can build!")
                 }
                 .padding()
@@ -60,8 +87,8 @@ struct InstructionsOverlay: View {
                         .foregroundColor(.black)
                         .padding(20)
                 }
-                    .background(Color.white)
-                    .cornerRadius(20)
+                .background(Color.white)
+                .cornerRadius(20)
             }
         }
     }
@@ -77,7 +104,7 @@ struct TitleView: View {
 }
 
 struct InstructionText: View {
-    var text: String
+    var text: LocalizedStringResource
     
     var body: some View {
         Text(text)
@@ -87,16 +114,9 @@ struct InstructionText: View {
     }
 }
 
-//TODO: Implement camera view
-struct CameraPreview: View {
-    var body: some View {
-        Text("Camera Preview Goes Here")
-            .foregroundColor(.black)
-    }
-}
-
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environment(CameraViewModel())
     }
 }
