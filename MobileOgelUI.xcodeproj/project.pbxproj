@@ -27,6 +27,12 @@
 		7AEE2F312BA382D3006B4845 /* DetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE2F302BA382D3006B4845 /* DetectionViewModel.swift */; };
 		7AEE2F332BA3CBEA006B4845 /* DetectionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE2F322BA3CBEA006B4845 /* DetectionDataManager.swift */; };
 		7AEE2F352BA61CAA006B4845 /* colors2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AEE2F342BA61CAA006B4845 /* colors2.csv */; };
+		C40311772BC62BA500CFEA88 /* MobileOgelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40311762BC62BA500CFEA88 /* MobileOgelTests.swift */; };
+		C403117E2BC62BD300CFEA88 /* CameraViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C403117D2BC62BD300CFEA88 /* CameraViewModelTests.swift */; };
+		C40311802BC62C0100CFEA88 /* CapturedImageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C403117F2BC62C0100CFEA88 /* CapturedImageViewModelTests.swift */; };
+		C40311822BC62C3D00CFEA88 /* LegoPieceViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40311812BC62C3D00CFEA88 /* LegoPieceViewModelTests.swift */; };
+		C40311842BC62C8200CFEA88 /* LegoSetViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40311832BC62C8200CFEA88 /* LegoSetViewModelTests.swift */; };
+		C40311882BC6312F00CFEA88 /* LegoSetFilteringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40311872BC6312F00CFEA88 /* LegoSetFilteringTests.swift */; };
 		C41AF4982B62BF880008F6B5 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = C41AF4972B62BF880008F6B5 /* SQLite */; };
 		C41AF49A2B630CB90008F6B5 /* CapturedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41AF4992B630CB90008F6B5 /* CapturedImageViewModel.swift */; };
 		C4797B272B572E8C009B98A7 /* LegoDetectorNew.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */; };
@@ -53,6 +59,16 @@
 		C4FEEA192B3ECAF0000E7C3C /* CapturedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FEEA182B3ECAF0000E7C3C /* CapturedImageView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C40311782BC62BA500CFEA88 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C4CF89492AF496AB00034239 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4CF89502AF496AB00034239;
+			remoteInfo = MobileOgelUI;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		795062C52B585CEB006B5E9A /* LegoPieceDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegoPieceDBManager.swift; sourceTree = "<group>"; };
 		795062C72B585CF5006B5E9A /* LegoSetDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegoSetDBManager.swift; sourceTree = "<group>"; };
@@ -70,6 +86,13 @@
 		7AEE2F302BA382D3006B4845 /* DetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionViewModel.swift; sourceTree = "<group>"; };
 		7AEE2F322BA3CBEA006B4845 /* DetectionDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetectionDataManager.swift; path = MobileOgelUI/models/DetectionDataManager.swift; sourceTree = SOURCE_ROOT; };
 		7AEE2F342BA61CAA006B4845 /* colors2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colors2.csv; sourceTree = "<group>"; };
+		C40311742BC62BA500CFEA88 /* MobileOgelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileOgelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C40311762BC62BA500CFEA88 /* MobileOgelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileOgelTests.swift; sourceTree = "<group>"; };
+		C403117D2BC62BD300CFEA88 /* CameraViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModelTests.swift; sourceTree = "<group>"; };
+		C403117F2BC62C0100CFEA88 /* CapturedImageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedImageViewModelTests.swift; sourceTree = "<group>"; };
+		C40311812BC62C3D00CFEA88 /* LegoPieceViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoPieceViewModelTests.swift; sourceTree = "<group>"; };
+		C40311832BC62C8200CFEA88 /* LegoSetViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoSetViewModelTests.swift; sourceTree = "<group>"; };
+		C40311872BC6312F00CFEA88 /* LegoSetFilteringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoSetFilteringTests.swift; sourceTree = "<group>"; };
 		C41AF4992B630CB90008F6B5 /* CapturedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedImageViewModel.swift; sourceTree = "<group>"; };
 		C4797B262B572E8C009B98A7 /* LegoDetectorNew.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = LegoDetectorNew.mlpackage; sourceTree = "<group>"; };
 		C4A1F3372B55AEFD0017A1A3 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
@@ -97,6 +120,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C40311712BC62BA500CFEA88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4CF894E2AF496AB00034239 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,6 +175,19 @@
 			path = res;
 			sourceTree = "<group>";
 		};
+		C40311752BC62BA500CFEA88 /* MobileOgelTests */ = {
+			isa = PBXGroup;
+			children = (
+				C40311762BC62BA500CFEA88 /* MobileOgelTests.swift */,
+				C403117D2BC62BD300CFEA88 /* CameraViewModelTests.swift */,
+				C403117F2BC62C0100CFEA88 /* CapturedImageViewModelTests.swift */,
+				C40311812BC62C3D00CFEA88 /* LegoPieceViewModelTests.swift */,
+				C40311832BC62C8200CFEA88 /* LegoSetViewModelTests.swift */,
+				C40311872BC6312F00CFEA88 /* LegoSetFilteringTests.swift */,
+			);
+			path = MobileOgelTests;
+			sourceTree = "<group>";
+		};
 		C4A1F33B2B55E23B0017A1A3 /* Reusable */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				C4CF89532AF496AB00034239 /* MobileOgelUI */,
+				C40311752BC62BA500CFEA88 /* MobileOgelTests */,
 				C4CF89522AF496AB00034239 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -169,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				C4CF89512AF496AB00034239 /* MobileOgelUI.app */,
+				C40311742BC62BA500CFEA88 /* MobileOgelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -233,6 +278,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C40311732BC62BA500CFEA88 /* MobileOgelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C403117C2BC62BA500CFEA88 /* Build configuration list for PBXNativeTarget "MobileOgelTests" */;
+			buildPhases = (
+				C40311702BC62BA500CFEA88 /* Sources */,
+				C40311712BC62BA500CFEA88 /* Frameworks */,
+				C40311722BC62BA500CFEA88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C40311792BC62BA500CFEA88 /* PBXTargetDependency */,
+			);
+			name = MobileOgelTests;
+			productName = MobileOgelTests;
+			productReference = C40311742BC62BA500CFEA88 /* MobileOgelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C4CF89502AF496AB00034239 /* MobileOgelUI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4CF895F2AF496AD00034239 /* Build configuration list for PBXNativeTarget "MobileOgelUI" */;
@@ -264,9 +327,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					C40311732BC62BA500CFEA88 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = C4CF89502AF496AB00034239;
+					};
 					C4CF89502AF496AB00034239 = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -290,11 +357,19 @@
 			projectRoot = "";
 			targets = (
 				C4CF89502AF496AB00034239 /* MobileOgelUI */,
+				C40311732BC62BA500CFEA88 /* MobileOgelTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C40311722BC62BA500CFEA88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4CF894F2AF496AB00034239 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -309,6 +384,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C40311702BC62BA500CFEA88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C40311822BC62C3D00CFEA88 /* LegoPieceViewModelTests.swift in Sources */,
+				C40311772BC62BA500CFEA88 /* MobileOgelTests.swift in Sources */,
+				C40311882BC6312F00CFEA88 /* LegoSetFilteringTests.swift in Sources */,
+				C40311802BC62C0100CFEA88 /* CapturedImageViewModelTests.swift in Sources */,
+				C40311842BC62C8200CFEA88 /* LegoSetViewModelTests.swift in Sources */,
+				C403117E2BC62BD300CFEA88 /* CameraViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4CF894D2AF496AB00034239 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -353,7 +441,60 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C40311792BC62BA500CFEA88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C4CF89502AF496AB00034239 /* MobileOgelUI */;
+			targetProxy = C40311782BC62BA500CFEA88 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		C403117A2BC62BA500CFEA88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4RPYL3R62A;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuvaethy.MobileOgelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileOgelUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MobileOgelUI";
+			};
+			name = Debug;
+		};
+		C403117B2BC62BA500CFEA88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4RPYL3R62A;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuvaethy.MobileOgelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileOgelUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MobileOgelUI";
+			};
+			name = Release;
+		};
 		C4CF895D2AF496AD00034239 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -476,7 +617,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 354D93C92Q;
+				DEVELOPMENT_TEAM = 4RPYL3R62A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
@@ -491,7 +632,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = group4411.MobileOgelUI;
+				PRODUCT_BUNDLE_IDENTIFIER = group44.MobileOgelUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -507,7 +648,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileOgelUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 354D93C92Q;
+				DEVELOPMENT_TEAM = 4RPYL3R62A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed to capture images.";
@@ -522,7 +663,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = group4411.MobileOgelUI;
+				PRODUCT_BUNDLE_IDENTIFIER = group44.MobileOgelUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -533,6 +674,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C403117C2BC62BA500CFEA88 /* Build configuration list for PBXNativeTarget "MobileOgelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C403117A2BC62BA500CFEA88 /* Debug */,
+				C403117B2BC62BA500CFEA88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C4CF894C2AF496AB00034239 /* Build configuration list for PBXProject "MobileOgelUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

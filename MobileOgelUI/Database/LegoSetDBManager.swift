@@ -95,10 +95,10 @@ class LegoSetDBManager{
                 self.pieceCount <- matchedSet.pieceCount,
                 self.missingPieces <- missingPiecesString,
                 self.setMatchType <- matchType
-                )
-
+            )
+            
             //run the query
-                try db.run(insertSet)
+            try db.run(insertSet)
         } catch {
             print("Error adding piece: \(error)")
         }
@@ -121,7 +121,7 @@ class LegoSetDBManager{
         var fuzzyMatches: [LegoSet] = []
         do {
             guard let db = db else { return ([], []) }
-
+            
             let query = setsTable
             for setRow in try db.prepare(query) {
                 let setId = try setRow.get(self.setId)
@@ -144,8 +144,8 @@ class LegoSetDBManager{
                     setUrl: setUrl,
                     matchType: setMatchType
                     
-                    )
-
+                )
+                
                 if setMatchType == "Perfect" {
                     perfectMatches.append(set)
                 } else if setMatchType == "Fuzzy" {
@@ -155,7 +155,7 @@ class LegoSetDBManager{
         } catch {
             print("Error retrieving pieces: \(error)")
         }
-
+        
         return (perfectMatches, fuzzyMatches)
     }
     
@@ -222,7 +222,7 @@ class LegoSetDBManager{
     
     
     
-    func findPerfectMatches(allSets: [[String:Any]], myPieces: [LegoPiece]) {
+    func findPerfectMatches(allSets: [[String:Any]], myPieces: [LegoPiece]) -> [LegoSet] {
         //let allSets = await connectDbAndFetchAll()
         var matchingSets: [LegoSet] = []
         print("in perf matches")
@@ -270,73 +270,78 @@ class LegoSetDBManager{
             
         }
         
+        return matchingSets
+        
     }
     
     
-    func findFuzzyMatches(allSets: [[String:Any]], myPieces: [LegoPiece]){
+    func findFuzzyMatches(allSets: [[String:Any]], myPieces: [LegoPiece]) -> [LegoSet] {
+        var fuzzySets: [LegoSet] = []
         print("in fuzzy")
         
-        
         for set in allSets {
-                guard let piecesDocument = set["pieces"] as? Document else {
-                    print("Invalid or missing pieces data")
-                    continue
-                }
-                
-                var setPieces: [[String:Any]] = []
-                for (_, piece) in piecesDocument {
-                    var pieceDict: [String: Any] = [:]
-                    if let piece = piece as? Document {
-                        for (key, value) in piece {
-                            pieceDict[key] = value
-                        }
+            guard let piecesDocument = set["pieces"] as? Document else {
+                print("Invalid or missing pieces data")
+                continue
+            }
+            
+            var setPieces: [[String:Any]] = []
+            for (_, piece) in piecesDocument {
+                var pieceDict: [String: Any] = [:]
+                if let piece = piece as? Document {
+                    for (key, value) in piece {
+                        pieceDict[key] = value
                     }
-                    setPieces.append(pieceDict)
                 }
-                
+                setPieces.append(pieceDict)
+            }
+            
             var missingPieces: [[String:Any]] = []
-                var myPiecesDict: [String: Int] = [:]
+            var myPiecesDict: [String: Int] = [:]
             
-                //add up quatities of same pieces + create dictionary of piece name to quantity
-                for piece in myPieces {
-                    if let existingQuantity = myPiecesDict[piece.pieceName] {
-                        myPiecesDict[piece.pieceName] = existingQuantity + piece.quantity
-                    } else {
-                        myPiecesDict[piece.pieceName] = piece.quantity
-                    }
-                }
-                
-            
-                for setPiece in setPieces {
-                    let pieceName = ClassToNameMap.getMappedValue(forKey: (setPiece["dimension"] as? String)!)
-                    let quantity = Int((setPiece["quantity"] as? Int32)!)
-                    
-                    
-                    let fuzzyMatchCriteria = myPiecesDict.contains { $0.key == ClassToNameMap.getMappedValue(forKey: ((setPiece["dimension"] as? String)!)) && myPiecesDict[$0.key]! >= quantity }
-                    
-                    if !fuzzyMatchCriteria {
-                        missingPieces.append(setPiece)
-                    }
-                }
-                
-                if missingPieces.count < 4 {
-                    let legoPieces = missingPieces.map { dict in
-                        let imageName = (dict["dimension"] as? String)! + "_" + String(describing: LegoColour(rawValue: dict["colour"] as! String)!)
-                        
-                        return LegoPiece(imageName: Util.getImageNameOrPlaceHolder(withX: imageName),
-                                         pieceName: ClassToNameMap.getMappedValue(forKey: ((dict["dimension"] as? String)!)),
-                                         quantity: Int((dict["quantity"] as? Int32)!),
-                                         officialColour: LegoColour(rawValue: dict["colour"] as! String) ?? .unknown)
-                    }
-                    
-                    let convertedSet = convertToLegoSet(from: set, missingPieces: legoPieces,type: "Fuzzy")
-                    // Check if the set already exists as a perfect match
-                    if !checkSetStoredUnderPerf(setId: convertedSet!.setId){
-                        addSetToLocal(matchedSet: convertedSet!, matchType: "Fuzzy")
-                        //print("Missing pieces: \(missingPieces)")
-                    }
+            //add up quatities of same pieces + create dictionary of piece name to quantity
+            for piece in myPieces {
+                if let existingQuantity = myPiecesDict[piece.pieceName] {
+                    myPiecesDict[piece.pieceName] = existingQuantity + piece.quantity
+                } else {
+                    myPiecesDict[piece.pieceName] = piece.quantity
                 }
             }
+            
+            
+            for setPiece in setPieces {
+                let pieceName = ClassToNameMap.getMappedValue(forKey: (setPiece["dimension"] as? String)!)
+                let quantity = Int((setPiece["quantity"] as? Int32)!)
+                
+                
+                let fuzzyMatchCriteria = myPiecesDict.contains { $0.key == ClassToNameMap.getMappedValue(forKey: ((setPiece["dimension"] as? String)!)) && myPiecesDict[$0.key]! >= quantity }
+                
+                if !fuzzyMatchCriteria {
+                    missingPieces.append(setPiece)
+                }
+            }
+            
+            if missingPieces.count < 4 {
+                let legoPieces = missingPieces.map { dict in
+                    let imageName = (dict["dimension"] as? String)! + "_" + String(describing: LegoColour(rawValue: dict["colour"] as! String)!)
+                    
+                    return LegoPiece(imageName: Util.getImageNameOrPlaceHolder(withX: imageName),
+                                     pieceName: ClassToNameMap.getMappedValue(forKey: ((dict["dimension"] as? String)!)),
+                                     quantity: Int((dict["quantity"] as? Int32)!),
+                                     officialColour: LegoColour(rawValue: dict["colour"] as! String) ?? .unknown)
+                }
+                
+                let convertedSet = convertToLegoSet(from: set, missingPieces: legoPieces,type: "Fuzzy")
+                // Check if the set already exists as a perfect match
+                if !checkSetStoredUnderPerf(setId: convertedSet!.setId){
+                    addSetToLocal(matchedSet: convertedSet!, matchType: "Fuzzy")
+                    fuzzySets.append(convertedSet!)
+                    //print("Missing pieces: \(missingPieces)")
+                }
+            }
+        }
+        
+        return fuzzySets
     }
 }
 
