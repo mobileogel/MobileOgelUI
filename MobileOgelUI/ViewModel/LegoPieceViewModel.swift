@@ -9,9 +9,9 @@ import Foundation
 import Observation
 
 @Observable class LegoPieceViewModel {
-    private var legoPieces: [LegoPiece] = []
+    var legoPieces: [LegoPiece] = []
     var isLoading = false
-    private var isCacheValid = false
+    var isCacheValid = false
     
     init() {
     }

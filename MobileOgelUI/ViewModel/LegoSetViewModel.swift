@@ -16,8 +16,8 @@ import Observation
     
     //var perfectSets: [LegoSet] = LegoSetMockData.perfectSampleData
     var perfectSets: [LegoSet] = []
-    var fuzzySets: [LegoSet] = LegoSetMockData.fuzzySampleData
-    var allSets: [LegoSet] = LegoSetMockData.allSampleData
+    var fuzzySets: [LegoSet] = []
+    var allSets: [LegoSet] = []
     var isLoading = false
     var manager = LegoSetDBManager.initializer
     
@@ -65,10 +65,4 @@ import Observation
         manager.dropSetsTable()
         manager.createLocalTable()
     }
-    
-    
-    // TODO: Fuzzy matches
-    
-    
-    
 }
